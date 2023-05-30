@@ -7,11 +7,11 @@ extends Node
 signal transitioned(state_name)
 
 # initial state
-onready var state: State = get_node("InDeck")
+@onready var state: State = get_node("InDeck")
 
 
 func _ready() -> void:
-	yield(owner, "ready")
+	await owner.ready
 	# The state machine assigns itself to the State objects' state_machine property.
 	for child in get_children():
 		child.state_machine = self

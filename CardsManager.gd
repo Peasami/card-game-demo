@@ -4,7 +4,7 @@
 
 extends Node
 
-onready var handEllipseData = $"../HandPositioning" ## Has positional info for cards in hand
+@onready var handEllipseData = $"../HandPositioning" ## Has positional info for cards in hand
 
 var cardsInDeck = []
 var cardsInHand = []

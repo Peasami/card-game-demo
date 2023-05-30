@@ -4,8 +4,8 @@ extends Node2D
 
 var finalPosition:Vector2 ## The destination where card is tweened towards
 
-onready var fsm := $StateMachine
-onready var state_label := $StateLabel
+@onready var fsm := $StateMachine
+@onready var state_label := $StateLabel
 
 func _process(_delta):
 	state_label.text = fsm.state.name

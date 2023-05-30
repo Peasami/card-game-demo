@@ -4,9 +4,9 @@ class_name CardState
 extends State
 
 var cardBase: CardBase
-onready var tween
+@onready var tween
 
 func _ready() -> void:
-	yield(owner, "ready")
+	await owner.ready
 	cardBase = owner as CardBase
 	assert(cardBase != null)

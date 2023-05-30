@@ -1,46 +1,42 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://ddujmpbw7u7gp"]
 
-[ext_resource path="res://StateMachine/Card/InDeck.gd" type="Script" id=1]
-[ext_resource path="res://StateMachine/Card/CardBase.gd" type="Script" id=2]
-[ext_resource path="res://StateMachine/Card/InHand.gd" type="Script" id=3]
-[ext_resource path="res://StateMachine.gd" type="Script" id=4]
-[ext_resource path="res://Assets/CardBaseSimple.png" type="Texture" id=5]
-[ext_resource path="res://StateMachine/Card/InMouse.gd" type="Script" id=6]
-[ext_resource path="res://StateMachine/Card/CardInfoNode.gd" type="Script" id=7]
-[ext_resource path="res://StateMachine/Card/HandEllipse.gd" type="Script" id=8]
+[ext_resource type="Script" path="res://StateMachine/Card/InDeck.gd" id="1"]
+[ext_resource type="Script" path="res://StateMachine/Card/CardBase.gd" id="2"]
+[ext_resource type="Script" path="res://StateMachine/Card/InHand.gd" id="3"]
+[ext_resource type="Script" path="res://StateMachine.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://dte4ie6x8eqvq" path="res://Assets/CardBaseSimple.png" id="5"]
+[ext_resource type="Script" path="res://StateMachine/Card/InMouse.gd" id="6"]
+[ext_resource type="Script" path="res://StateMachine/Card/CardInfoNode.gd" id="7"]
 
 [node name="CardBase" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 5 )
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("5")
 
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource( 4 )
+script = ExtResource("4")
 
 [node name="InHand" type="Node" parent="StateMachine"]
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="InDeck" type="Node" parent="StateMachine"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="InMouse" type="Node" parent="StateMachine"]
-script = ExtResource( 6 )
+script = ExtResource("6")
 
 [node name="StateLabel" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
+offset_right = 40.0
+offset_bottom = 14.0
 
 [node name="Focus" type="TextureButton" parent="."]
-margin_left = -100.0
-margin_top = -150.0
-margin_right = 100.0
-margin_bottom = 150.0
+offset_left = -100.0
+offset_top = -150.0
+offset_right = 100.0
+offset_bottom = 150.0
 
 [node name="CardInfoNode" type="Node" parent="."]
-script = ExtResource( 7 )
-
-[node name="HandEllipse" type="Node" parent="."]
-script = ExtResource( 8 )
+script = ExtResource("7")
 
 [connection signal="gui_input" from="Focus" to="StateMachine" method="_on_Focus_gui_input"]
