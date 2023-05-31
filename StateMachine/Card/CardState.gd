@@ -4,7 +4,7 @@ class_name CardState
 extends State
 
 var cardBase: CardBase
-@onready var tween
+## @onready var tween ## maybe useless? should just create var tween whenever needed. Can't see if tween is in use then.
 
 func _ready() -> void:
 	await owner.ready

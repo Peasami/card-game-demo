@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cfborqb723c4i"]
 
-[ext_resource type="PackedScene" path="res://StateMachine/Card/CardBase.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://ddujmpbw7u7gp" path="res://StateMachine/Card/CardBase.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://0n3nwxr7avum" path="res://Assets/icon.png" id="2"]
 [ext_resource type="Script" path="res://HandPositioning.gd" id="3"]
 [ext_resource type="Script" path="res://DrawCard.gd" id="4"]

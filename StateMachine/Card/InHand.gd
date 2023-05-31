@@ -1,8 +1,9 @@
 extends CardState
 
+var originalZIndex ## stores value of z before zooming in, so we can return to it
+signal hovered_in_hand
 
 func enter(_msg := {}) -> void:
-	#$"../../HandEllipse".draw_card() #Useless if Board.tscn handles card movement
 	pass
 
 func physics_update(_delta: float) -> void:
@@ -10,7 +11,18 @@ func physics_update(_delta: float) -> void:
 	# state -> InMouse
 	pass
 
-func on_Focus_input_update(event):
-	if event.is_action_pressed("left_click") && !tween.is_running():
-		state_machine.transition_to("InMouse")
-		pass
+func on_Focus_input_update(_event):
+	pass
+
+func on_mouse_entered():
+	var tween = create_tween()
+	tween.tween_property(cardBase, 'scale', Vector2(1.5, 1.5), 0.05)
+	originalZIndex = cardBase.z_index
+	emit_signal('hoveredInHand', true)
+	cardBase.z_index = 10
+
+func on_mouse_exited():
+	var tween = create_tween()
+	tween.tween_property(cardBase, 'scale', Vector2(1, 1), 0.05)
+	emit_signal('hoveredInHand', false)
+	cardBase.z_index = originalZIndex

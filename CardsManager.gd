@@ -5,6 +5,7 @@
 extends Node
 
 @onready var handEllipseData = $"../HandPositioning" ## Has positional info for cards in hand
+@onready var playerStats = $"../PlayerStatsInfo"
 
 var cardsInDeck = []
 var cardsInHand = []
@@ -17,6 +18,8 @@ func _ready():
 #Draw n cards
 func _on_DrawCard_draw_cards(amountToDraw: int = 1):
 	for i in amountToDraw:	
+		if cardsInHand.size() >= playerStats.maxHandSize:
+			return
 		#Gets random card from hand
 		var drawnCard = cardsInDeck[randi() % cardsInDeck.size()]
 		

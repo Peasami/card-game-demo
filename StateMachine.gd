@@ -42,3 +42,11 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 
 func _on_Focus_gui_input(event) -> void: 
 	state.on_Focus_input_update(event)
+
+
+func _on_focus_mouse_entered():
+	state.on_mouse_entered()
+
+
+func _on_focus_mouse_exited():
+	state.on_mouse_exited()
