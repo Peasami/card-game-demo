@@ -47,17 +47,45 @@ func animate_card_to_hand(card):
 	card.z_index = cardsInHand.size()
 
 
-func animate_card(card, finalPosition):
+func animate_card(card, finalPosition, speed = 0.2):
 	var cardRotInHand:float = handEllipseData.get_card_hand_rotation(finalPosition.x)
 	var tween = create_tween().set_parallel(true)
-	tween.tween_property(card, 'position', finalPosition, 0.2)
-	tween.tween_property(card, 'rotation', cardRotInHand, .2)
+	tween.tween_property(card, 'position', finalPosition, speed)
+	tween.tween_property(card, 'rotation', cardRotInHand, speed)
 
 
 func reorganize_hand():
 	for i in cardsInHand:
 		var x = i.finalPosition.x - handEllipseData.distanceBetweenCards
-		var y = handEllipseData.calculate_ellipse_y(x - handEllipseData.xCenterOffset)
+		var y = get_card_y_position_in_hand(x)
 		i.finalPosition = Vector2(x,y)
 		animate_card(i, Vector2(x,y))
+		
 		print(i, " x:", x, " y:", y)
+
+
+func hovering_in_hand(targetCard):
+	var targetCardX = targetCard.position.x
+	var amountToMove = 75
+	for i in cardsInHand:
+		if i == targetCard:
+			continue
+		if i.position.x < targetCardX:
+			var x = i.finalPosition.x - amountToMove
+			var y = get_card_y_position_in_hand(x)
+			animate_card(i, Vector2(x, y), 0.05)
+		else:
+			var x = i.finalPosition.x + amountToMove
+			var y = get_card_y_position_in_hand(x)
+			animate_card(i, Vector2(x, y), 0.05)
+	print("hovering in hand: ", targetCard)
+
+func not_hovering_in_hand(targetCard):
+	for i in cardsInHand:
+		if i == targetCard:
+			continue
+		animate_card(i, i.finalPosition, 0.05)
+
+func get_card_y_position_in_hand(xPos):
+	var yPos = handEllipseData.calculate_ellipse_y(xPos - handEllipseData.xCenterOffset)
+	return yPos

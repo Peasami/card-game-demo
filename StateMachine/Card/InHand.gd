@@ -1,7 +1,6 @@
 extends CardState
 
 var originalZIndex ## stores value of z before zooming in, so we can return to it
-signal hovered_in_hand
 
 func enter(_msg := {}) -> void:
 	pass
@@ -18,11 +17,11 @@ func on_mouse_entered():
 	var tween = create_tween()
 	tween.tween_property(cardBase, 'scale', Vector2(1.5, 1.5), 0.05)
 	originalZIndex = cardBase.z_index
-	emit_signal('hoveredInHand', true)
+	cardBase.is_hovering_in_hand()
 	cardBase.z_index = 10
 
 func on_mouse_exited():
 	var tween = create_tween()
 	tween.tween_property(cardBase, 'scale', Vector2(1, 1), 0.05)
-	emit_signal('hoveredInHand', false)
+	cardBase.is_not_hovering_in_hand()
 	cardBase.z_index = originalZIndex
