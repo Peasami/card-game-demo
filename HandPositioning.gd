@@ -11,9 +11,9 @@ var ySemiAxel = 120.0    # and height
 
 
 var xCenterOffset = 500.0   # Center of ellipse x coordinate
-var yCenterOffset = 600.0   # Center of ellipse y coordinate
+var yCenterOffset = 650.0   # Center of ellipse y coordinate
 
-var distanceBetweenCards = 50
+var distanceBetweenCards = 60
 
 #--------------------------------------------#
 # Draws lines through the ellipse upper part #
