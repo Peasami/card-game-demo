@@ -11,7 +11,7 @@ var ySemiAxel = 120.0    # and height
 
 
 var xCenterOffset = 500.0   # Center of ellipse x coordinate
-var yCenterOffset = 500.0   # Center of ellipse y coordinate
+var yCenterOffset = 600.0   # Center of ellipse y coordinate
 
 var distanceBetweenCards = 50
 

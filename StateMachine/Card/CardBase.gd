@@ -7,6 +7,7 @@ extends Node2D
 @onready var cardsManager = $".."
 
 var finalPosition:Vector2 ## The destination where card is tweened towards
+var finalRotation:float   ## ^ but for rotation
 
 @onready var fsm := $StateMachine
 @onready var state_label := $StateLabel
@@ -26,4 +27,7 @@ func is_hovering_in_hand():
 	cardsManager.hovering_in_hand(self)
 
 func is_not_hovering_in_hand():
-	cardsManager.not_hovering_in_hand(self)
+	cardsManager.de_hovering_in_hand(self)
+
+func set_mouse_filter(value: int):
+	$Focus.mouse_filter = value
