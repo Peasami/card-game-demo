@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfborqb723c4i"]
+
+[ext_resource type="Texture2D" uid="uid://0n3nwxr7avum" path="res://Assets/icon.png" id="1_ha250"]
+[ext_resource type="Script" path="res://Board/DrawCard.gd" id="2_056xs"]
+[ext_resource type="Script" path="res://Board/CardsManager.gd" id="3_gaugg"]
+[ext_resource type="PackedScene" uid="uid://ddujmpbw7u7gp" path="res://Cards/Card/CardBase.tscn" id="4_1h27s"]
+[ext_resource type="Script" path="res://Board/HandPositioning.gd" id="5_5mq2q"]
+[ext_resource type="Script" path="res://Board/DebugDraw.gd" id="6_l0t44"]
+[ext_resource type="Script" path="res://Board/PlayerStatsInfo.gd" id="7_dduf4"]
+[ext_resource type="Script" path="res://Board/CardTracker.gd" id="8_ifeit"]
+[ext_resource type="PackedScene" uid="uid://dym0rqdekmfeg" path="res://CardSlots/CardSlotBase.tscn" id="9_s35uq"]
+
+[node name="BoardBase" type="Node2D"]
+
+[node name="DrawCard" type="TextureButton" parent="."]
+offset_left = 935.0
+offset_top = 374.0
+offset_right = 999.0
+offset_bottom = 438.0
+texture_normal = ExtResource("1_ha250")
+script = ExtResource("2_056xs")
+
+[node name="CardsManager" type="Node" parent="."]
+script = ExtResource("3_gaugg")
+
+[node name="CardBase" parent="CardsManager" instance=ExtResource("4_1h27s")]
+
+[node name="CardBase2" parent="CardsManager" instance=ExtResource("4_1h27s")]
+
+[node name="CardBase3" parent="CardsManager" instance=ExtResource("4_1h27s")]
+
+[node name="CardBase4" parent="CardsManager" instance=ExtResource("4_1h27s")]
+
+[node name="CardBase5" parent="CardsManager" instance=ExtResource("4_1h27s")]
+
+[node name="CardBase6" parent="CardsManager" instance=ExtResource("4_1h27s")]
+
+[node name="CardBase7" parent="CardsManager" instance=ExtResource("4_1h27s")]
+
+[node name="HandPositioning" type="Node" parent="."]
+script = ExtResource("5_5mq2q")
+yCenterOffset = 700.0
+distanceBetweenCards = 30
+
+[node name="Sprite2D" type="Sprite2D" parent="HandPositioning"]
+texture = ExtResource("1_ha250")
+
+[node name="DebugDraw" type="Control" parent="HandPositioning"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_l0t44")
+
+[node name="PlayerStatsInfo" type="Node" parent="."]
+script = ExtResource("7_dduf4")
+
+[node name="CardTracker" type="Label" parent="."]
+offset_left = 858.0
+offset_top = 50.0
+offset_right = 898.0
+offset_bottom = 64.0
+script = ExtResource("8_ifeit")
+
+[node name="CardSlotsManager" type="Node" parent="."]
+
+[node name="CardSlotBase" parent="CardSlotsManager" instance=ExtResource("9_s35uq")]
+position = Vector2(494, 312)
+
+[connection signal="draw_cards" from="DrawCard" to="CardsManager" method="_on_DrawCard_draw_cards"]

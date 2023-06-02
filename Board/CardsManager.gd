@@ -40,7 +40,7 @@ func animate_card_to_hand(card):
 	card.anchorPosition = handEllipseData.get_card_hand_position(cardsInHand.size())
 	var cardPosInHand:Vector2 = card.anchorPosition
 	card.anchorRotation = handEllipseData.get_card_hand_rotation(cardPosInHand.x)
-	var cardRotInHand:float = card.anchorRotation
+	#var cardRotInHand:float = card.anchorRotation
 	
 	#animate_card(card, cardPosInHand, cardRotInHand)
 	card.z_index = cardsInHand.size() ## give z_index higher than other cards in hand

@@ -8,6 +8,7 @@ func physics_update(_delta: float) -> void:
 	
 	#Get the global mouse position from CardBase
 	$"../..".position = $"../..".get_get_global_mouse_pos()
-	
+
+func on_Focus_input_update(_event):
 	if Input.is_action_just_pressed("right_click") || Input.is_action_just_released("left_click"):
-		state_machine.transition_to("InHand")
+		state_machine.transition_to("InHand", {'lastState' = 'InMouse'})

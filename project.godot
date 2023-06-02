@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="CardGameTwo"
-run/main_scene="res://Board.tscn"
+run/main_scene="res://Board/Board.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://Assets/icon.png"
 
 [autoload]
 
-PlayerVariables="*res://PlayerVariables.gd"
-Events="*res://Events.gd"
+PlayerVariables="*res://Autoloads/PlayerVariables.gd"
+Events="*res://Autoloads/Events.gd"
 
 [gui]
 

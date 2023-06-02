@@ -6,14 +6,14 @@ extends Node
 #    (500,500)|    ^x
 #             ¤
 
-var xSemiAxel = 450.0    # Defines the width of half of the ellipse
-var ySemiAxel = 120.0    # and height
+@export var xSemiAxel = 450.0    # Defines the width of half of the ellipse
+@export var ySemiAxel = 120.0    # and height
 
 
-var xCenterOffset = 500.0   # Center of ellipse x coordinate
-var yCenterOffset = 650.0   # Center of ellipse y coordinate
+@export var xCenterOffset = 500.0   # Center of ellipse x coordinate
+@export var yCenterOffset = 650.0   # Center of ellipse y coordinate
 
-var distanceBetweenCards = 60
+@export var distanceBetweenCards = 60
 
 #--------------------------------------------#
 # Draws lines through the ellipse upper part #
