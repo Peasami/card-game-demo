@@ -35,3 +35,9 @@ func set_mouse_filter(value: int):
 
 func get_get_global_mouse_pos():
 	return get_global_mouse_position()
+
+func get_in_hand_state():
+	return $StateMachine/InHand.local_state
+
+func set_in_hand_state(state):
+	$StateMachine/InHand.local_state = state

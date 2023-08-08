@@ -6,7 +6,7 @@ extends Node
 #    (500,500)|    ^x
 #             ¤
 
-@export var xSemiAxel = 450.0    # Defines the width of half of the ellipse
+@export var xSemiAxel = 450.0    # Defines the width of the ellipse
 @export var ySemiAxel = 120.0    # and height
 
 

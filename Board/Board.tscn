@@ -40,7 +40,7 @@ script = ExtResource("3_gaugg")
 [node name="HandPositioning" type="Node" parent="."]
 script = ExtResource("5_5mq2q")
 yCenterOffset = 700.0
-distanceBetweenCards = 30
+distanceBetweenCards = 45
 
 [node name="Sprite2D" type="Sprite2D" parent="HandPositioning"]
 texture = ExtResource("1_ha250")

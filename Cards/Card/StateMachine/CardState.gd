@@ -1,12 +1,51 @@
-# Boilerplate class to get full autocompletion and type checks for the `player` when coding the player's states.
-# Without this, we have to run the game to see typos and other errors the compiler could otherwise catch while scripting.
-class_name CardState
-extends State
+# Virtual base class for all card states.
 
+class_name CardState
+extends Node
+
+# We store a reference to the state machine to call its `transition_to()` method directly.
+var state_machine = null
 var cardBase: CardBase
-## @onready var tween ## maybe useless? should just create var tween whenever needed. Can't see if tween is in use then.
+
 
 func _ready() -> void:
 	await owner.ready
 	cardBase = owner as CardBase
 	assert(cardBase != null)
+
+# All methods below are virtual and called by the state machine.
+func handle_input(_event: InputEvent) -> void:
+	pass
+
+
+# Corresponds to the `_process()` callback.
+func update(_delta: float) -> void:
+	pass
+
+
+# Corresponds to the `_physics_process()` callback.
+func physics_update(_delta: float) -> void:
+	pass
+
+
+# Called by the state machine upon changing the active state. The `msg` parameter
+# is a dictionary with arbitrary data the state can use to initialize itself.
+func enter(_msg := {}) -> void:
+	pass
+
+
+# Called by the state machine before changing the active state. Use this function
+# to clean up the state.
+func exit() -> void:
+	pass
+
+func on_Focus_input_update(_event) -> void:
+	pass
+
+
+func on_mouse_entered():
+	pass
+
+
+func on_mouse_exited():
+	pass

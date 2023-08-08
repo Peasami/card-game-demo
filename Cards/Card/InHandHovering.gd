@@ -1,4 +1,4 @@
-class_name InHand
+class_name InHandHovering
 extends CardState
 
 var originalZIndex ## stores value of z before zooming in, so we can return to it

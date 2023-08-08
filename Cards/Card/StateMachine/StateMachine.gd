@@ -7,7 +7,7 @@ extends Node
 signal transitioned(state_name)
 
 # initial state
-@onready var state: State = get_node("InDeck")
+@onready var state: CardState = get_node("InDeck")
 
 
 func _ready() -> void:
