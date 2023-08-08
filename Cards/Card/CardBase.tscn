@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddujmpbw7u7gp"]
+[gd_scene load_steps=10 format=3 uid="uid://ddujmpbw7u7gp"]
 
 [ext_resource type="Script" path="res://Cards/Card/CardBase.gd" id="1_xh6q3"]
 [ext_resource type="Texture2D" uid="uid://dte4ie6x8eqvq" path="res://Assets/CardBaseSimple.png" id="2_pmdl2"]
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/StateMachine.gd" id="3_qd1es"]
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/InHand.gd" id="4_v7i73"]
+[ext_resource type="Script" path="res://Cards/Card/InHandDodging.gd" id="5_nvjfj"]
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/InDeck.gd" id="5_txtxl"]
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/InMouse.gd" id="6_1dwg2"]
+[ext_resource type="Script" path="res://Cards/Card/InHandHovering.gd" id="6_l7005"]
 [ext_resource type="Script" path="res://Cards/Card/CardInfoNode.gd" id="7_eyqqr"]
 
 [node name="CardBase" type="Node2D"]
@@ -20,6 +22,12 @@ script = ExtResource("3_qd1es")
 
 [node name="InHand" type="Node" parent="StateMachine"]
 script = ExtResource("4_v7i73")
+
+[node name="InHandDodging" type="Node" parent="StateMachine"]
+script = ExtResource("5_nvjfj")
+
+[node name="InHandHovering" type="Node" parent="StateMachine"]
+script = ExtResource("6_l7005")
 
 [node name="InDeck" type="Node" parent="StateMachine"]
 script = ExtResource("5_txtxl")

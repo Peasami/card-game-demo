@@ -31,19 +31,18 @@ func draw_cards(amountToDraw: int = 1):
 		
 		var drawnCard = cardsInDeck[randi() % cardsInDeck.size()] # Gets random card from hand
 		
-		animate_card_to_hand(drawnCard)
+		set_card_anchor_position(drawnCard)
 		reorganize_hand()
 		
 		drawnCard.transition_state_to("InHand")
 		cardsInDeck.erase(drawnCard)
-		print("cardsInDeck after: ", cardsInDeck.size())
 		cardsInHand.append(drawnCard)
 
+
 #----------------------------------------------------------------------------------#
-# Gets card's positioning and rotation, given the number of cards already in hand, #
-# and animates it into the position                                                #
+# Gets card's positioning and rotation, given the number of cards already in hand  #                                              #
 #----------------------------------------------------------------------------------#
-func animate_card_to_hand(card):
+func set_card_anchor_position(card):
 	card.anchorPosition = handEllipseData.get_card_hand_position(cardsInHand.size())
 	var cardPosInHand:Vector2 = card.anchorPosition
 	card.anchorRotation = handEllipseData.get_card_hand_rotation(cardPosInHand.x)
@@ -58,44 +57,52 @@ func animate_card_within_hand_ellipse(card, finalPosition, speed = 0.2):
 	tween.tween_property(card, 'position', finalPosition, speed)
 	tween.tween_property(card, 'rotation', cardRotInHand, speed)
 
-
+# Determine new position for each card in hand after drawing a card
 func reorganize_hand():
 	for i in cardsInHand:
-		var x = i.anchorPosition.x - handEllipseData.distanceBetweenCards
+		var x = i.anchorPosition.x - handEllipseData.distanceBetweenCards ## Calculate x and y in hand
 		var y = get_card_y_position_in_hand(x)
+		i.anchorRotation = handEllipseData.get_card_hand_rotation(x)
 		i.anchorPosition = Vector2(x,y)
-		animate_card_within_hand_ellipse(i, Vector2(x,y))
+		i.transition_state_to("InHand")
+#		animate_card_within_hand_ellipse(i, Vector2(x,y))
 #		print(i, " x:", x, " y:", y)
 
 
 func hovering_in_hand(targetCard):
-	var targetCardX = targetCard.position.x
 	var amountToMove = 50
 	
 	### Iterates through each other card, to make them move aside
 	for i in cardsInHand:
 		if i == targetCard:
 			continue
-		if i.position.x < targetCardX:
-			var x = i.anchorPosition.x - amountToMove
-			var y = get_card_y_position_in_hand(x)
-			animate_card_within_hand_ellipse(i, Vector2(x, y), 0.2)
-			i.set_mouse_filter(2)
+		if i.position.x < targetCard.position.x:
+			i.transition_state_to("InHandDodging", {"cardSide": "left"})
+			
+#			var x = i.anchorPosition.x - amountToMove
+#			var y = get_card_y_position_in_hand(x)
+#			animate_card_within_hand_ellipse(i, Vector2(x, y), 0.2)
+#			i.set_mouse_filter(2)
 		else:
-			var x = i.anchorPosition.x + amountToMove
-			var y = get_card_y_position_in_hand(x)
-			animate_card_within_hand_ellipse(i, Vector2(x, y), 0.2)
-			i.set_mouse_filter(2)
+			i.transition_state_to("InHandDodging", {"cardSide": "right"})
+#			var x = i.anchorPosition.x + amountToMove
+#			var y = get_card_y_position_in_hand(x)
+#			animate_card_within_hand_ellipse(i, Vector2(x, y), 0.2)
+#			i.set_mouse_filter(2)
 	print("hovering in hand: ", targetCard)
 
 func de_hovering_in_hand(targetCard):
-	for i in cardsInHand:
-		if i == targetCard:
-			continue
-		animate_card_within_hand_ellipse(i, i.anchorPosition, 0.05)
-		i.set_mouse_filter(0)
+	pass
+#	for i in cardsInHand:
+#		if i == targetCard:
+#			continue
+#		animate_card_within_hand_ellipse(i, i.anchorPosition, 0.05)
+#		i.set_mouse_filter(0)
 
 ## Calculates y position of the card on the hand ellipse
 func get_card_y_position_in_hand(xPos):
 	var yPos = handEllipseData.calculate_ellipse_y(xPos - handEllipseData.xCenterOffset)
 	return yPos
+
+func switch_card_state(card, newState):
+	card.transition_state_to(newState)

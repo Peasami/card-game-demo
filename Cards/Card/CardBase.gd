@@ -8,7 +8,8 @@ extends Node2D
 
 var anchorPosition:Vector2 ## The destination where card is tweened towards
 var anchorRotation:float   ## ^ but for rotation
-var baseScale:Vector2 = Vector2(0.5,0.5)
+var baseScale := Vector2(0.5,0.5)
+
 
 @onready var fsm := $StateMachine
 @onready var state_label := $StateLabel
@@ -20,8 +21,8 @@ func get_state():
 	return fsm.state.name
 
 #Called when something wants to draw this card
-func transition_state_to(newState):
-	fsm.transition_to(newState)
+func transition_state_to(newState, msg: Dictionary = {}):
+	fsm.transition_to(newState, msg)
 	print("In Cardbase, transitioning to: ", newState)
 
 func is_hovering_in_hand():
