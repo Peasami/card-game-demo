@@ -93,11 +93,10 @@ func hovering_in_hand(targetCard):
 
 func de_hovering_in_hand(targetCard):
 	pass
-#	for i in cardsInHand:
-#		if i == targetCard:
-#			continue
-#		animate_card_within_hand_ellipse(i, i.anchorPosition, 0.05)
-#		i.set_mouse_filter(0)
+	for i in cardsInHand:
+		if i == targetCard:
+			continue
+		i.transition_state_to("InHand")
 
 ## Calculates y position of the card on the hand ellipse
 func get_card_y_position_in_hand(xPos):

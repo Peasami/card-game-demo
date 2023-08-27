@@ -4,7 +4,8 @@
 class_name CardBase
 extends Node2D
 
-@onready var cardsManager = $".."
+## Takes the node that owns this node just above as cardsManager
+@onready var cardsManager: Node = $".."
 
 var anchorPosition:Vector2 ## The destination where card is tweened towards
 var anchorRotation:float   ## ^ but for rotation

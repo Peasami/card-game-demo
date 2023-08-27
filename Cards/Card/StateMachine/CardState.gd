@@ -4,9 +4,9 @@ class_name CardState
 extends Node
 
 # We store a reference to the state machine to call its `transition_to()` method directly.
-var state_machine = null
+var state_machine: Node = null
 var cardBase: CardBase
-
+var tween: Tween
 
 func _ready() -> void:
 	await owner.ready
