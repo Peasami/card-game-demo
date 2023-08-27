@@ -1,8 +1,6 @@
 class_name InHandHovering
 extends CardState
 
-var originalZIndex ## stores value of z before zooming in, so we can return to it
-
 func enter(_msg := {}) -> void:
 #	if  _msg.has('lastState') && _msg['lastState'] == 'InMouse':
 #		on_mouse_exited()
@@ -18,7 +16,7 @@ func enter(_msg := {}) -> void:
 	cardBase.rotation = 0
 	
 	## Put card to show on top of other cards
-	originalZIndex = cardBase.z_index
+	cardBase.anchorZIndex = cardBase.z_index
 	cardBase.z_index = 10
 
 func exit():
@@ -36,7 +34,7 @@ func on_Focus_input_update(_event):
 func on_mouse_exited():
 	cardBase.transition_state_to("InHand")
 	cardBase.is_not_hovering_in_hand()
-	cardBase.z_index = originalZIndex
+	cardBase.z_index = cardBase.anchorZIndex
 	## Put z_index back to normal so card doesn't show on top of other cards
 	
 #	var tween = create_tween().set_parallel(true)

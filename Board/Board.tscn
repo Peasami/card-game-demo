@@ -24,18 +24,25 @@ script = ExtResource("2_056xs")
 script = ExtResource("3_gaugg")
 
 [node name="CardBase" parent="CardsManager" instance=ExtResource("4_1h27s")]
+position = Vector2(55, 568)
 
 [node name="CardBase2" parent="CardsManager" instance=ExtResource("4_1h27s")]
+position = Vector2(55, 568)
 
 [node name="CardBase3" parent="CardsManager" instance=ExtResource("4_1h27s")]
+position = Vector2(55, 568)
 
 [node name="CardBase4" parent="CardsManager" instance=ExtResource("4_1h27s")]
+position = Vector2(55, 568)
 
 [node name="CardBase5" parent="CardsManager" instance=ExtResource("4_1h27s")]
+position = Vector2(55, 568)
 
 [node name="CardBase6" parent="CardsManager" instance=ExtResource("4_1h27s")]
+position = Vector2(55, 568)
 
 [node name="CardBase7" parent="CardsManager" instance=ExtResource("4_1h27s")]
+position = Vector2(55, 568)
 
 [node name="HandPositioning" type="Node" parent="."]
 script = ExtResource("5_5mq2q")

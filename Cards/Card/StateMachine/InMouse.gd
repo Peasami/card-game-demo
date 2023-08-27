@@ -1,15 +1,11 @@
 extends CardState
 
-var originalZIndex
-
 func enter(_msg := {}) -> void:
-	# Card goes to hand
-	originalZIndex = cardBase.z_index
 	cardBase.z_index = 10
 	pass
 
 func exit():
-	cardBase.z_index = originalZIndex
+	cardBase.z_index = cardBase.anchorZIndex
 
 func physics_update(_delta: float) -> void:
 	

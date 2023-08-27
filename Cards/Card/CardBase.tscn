@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddujmpbw7u7gp"]
+[gd_scene load_steps=11 format=3 uid="uid://ddujmpbw7u7gp"]
 
 [ext_resource type="Script" path="res://Cards/Card/CardBase.gd" id="1_xh6q3"]
 [ext_resource type="Texture2D" uid="uid://dte4ie6x8eqvq" path="res://Assets/CardBaseSimple.png" id="2_pmdl2"]
@@ -9,8 +9,10 @@
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/InMouse.gd" id="6_1dwg2"]
 [ext_resource type="Script" path="res://Cards/Card/InHandHovering.gd" id="6_l7005"]
 [ext_resource type="Script" path="res://Cards/Card/CardInfoNode.gd" id="7_eyqqr"]
+[ext_resource type="Script" path="res://Cards/Card/TargetingPath.gd" id="10_umcyt"]
 
 [node name="CardBase" type="Node2D"]
+position = Vector2(52, 73)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_xh6q3")
 
@@ -47,6 +49,9 @@ offset_bottom = 150.0
 
 [node name="CardInfoNode" type="Node" parent="."]
 script = ExtResource("7_eyqqr")
+
+[node name="TargetingPath" type="Node2D" parent="."]
+script = ExtResource("10_umcyt")
 
 [connection signal="gui_input" from="Focus" to="StateMachine" method="_on_Focus_gui_input"]
 [connection signal="mouse_entered" from="Focus" to="StateMachine" method="_on_focus_mouse_entered"]
