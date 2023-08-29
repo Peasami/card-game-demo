@@ -5,10 +5,10 @@
 
 extends Node
 
-@onready var handEllipseData = $"../HandPositioning" ## Has positional info for cards in hand
-@onready var playerStats = $"../PlayerStatsInfo"
+@export var handEllipseData: Node # Has positional info for cards in hand
+@export var playerStats: Node # stats like hp and base mana
 
-## Arrays for each field for cards
+## Arrays for each field for included cards
 var cardsInDeck = []
 var cardsInHand = []
 var cardsInGraveyard = []

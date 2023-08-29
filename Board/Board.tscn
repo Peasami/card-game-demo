@@ -20,8 +20,10 @@ offset_bottom = 438.0
 texture_normal = ExtResource("1_ha250")
 script = ExtResource("2_056xs")
 
-[node name="CardsManager" type="Node" parent="."]
+[node name="CardsManager" type="Node" parent="." node_paths=PackedStringArray("handEllipseData", "playerStats")]
 script = ExtResource("3_gaugg")
+handEllipseData = NodePath("../HandPositioning")
+playerStats = NodePath("../PlayerStatsInfo")
 
 [node name="CardBase" parent="CardsManager" instance=ExtResource("4_1h27s")]
 position = Vector2(55, 568)
