@@ -13,6 +13,8 @@ var anchorRotation:float   ## ^ but for rotation
 var anchorZIndex:int = 0 ## ^ but for z_index
 var baseScale := Vector2(0.5,0.5)
 
+const graveyardPos := Vector2(1100, 550)
+const deckPos := Vector2(50, 550)
 
 @onready var fsm := $StateMachine
 @onready var state_label := $StateLabel

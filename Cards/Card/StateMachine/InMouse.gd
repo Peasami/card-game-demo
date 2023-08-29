@@ -5,7 +5,7 @@ func enter(_msg := {}) -> void:
 	tween = create_tween().set_parallel(true)
 	tween.tween_property(cardBase, 'scale', Vector2(0.7,0.7), 0.1)
 	tween.tween_property(cardBase, 'position', cardBase.get_get_global_mouse_pos(), 0.1)
-	tween.tween_property(cardBase, 'rotation', cardBase.get_get_global_mouse_pos(), 0.1)
+	tween.tween_property(cardBase, 'rotation', 0, 0.1)
 
 func exit():
 	cardBase.z_index = cardBase.anchorZIndex

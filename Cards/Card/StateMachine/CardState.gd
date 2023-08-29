@@ -42,6 +42,8 @@ func exit() -> void:
 func on_Focus_input_update(_event) -> void:
 	pass
 
+func on_input(event) -> void:
+	pass
 
 func on_mouse_entered():
 	pass

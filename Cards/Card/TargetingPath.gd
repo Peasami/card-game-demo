@@ -7,6 +7,7 @@ extends Node2D
 
 var pointArray:PackedVector2Array
 var mousePoint:= Vector2(0,0)
+var lineColor := Color.BLACK
 
 func _ready():
 	## We disable this node, and enable only when needed
@@ -25,11 +26,12 @@ func _process(delta):
 	queue_redraw()
 
 func _draw():
-	draw_polyline(pointArray, Color.BLACK)
-	pointArray = []
+	if pointArray.size() >= 2:
+		draw_polyline(pointArray, lineColor)
+		pointArray = []
 
 func clear_draw():
-	pointArray = []
+	pointArray.clear()
 	queue_redraw()
 
 ## Calculates a point in bezier curve. 0<t<1
@@ -39,3 +41,8 @@ func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
 	var r = q0.lerp(q1, t)
 	return r
 
+func targeting_line_valid():
+	lineColor = Color.RED
+
+func targeting_line_invalid():
+	lineColor = Color.BLACK

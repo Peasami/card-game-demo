@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddujmpbw7u7gp"]
+[gd_scene load_steps=12 format=3 uid="uid://ddujmpbw7u7gp"]
 
 [ext_resource type="Script" path="res://Cards/Card/CardBase.gd" id="1_xh6q3"]
 [ext_resource type="Texture2D" uid="uid://dte4ie6x8eqvq" path="res://Assets/CardBaseSimple.png" id="2_pmdl2"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://Cards/Card/InHandHovering.gd" id="6_l7005"]
 [ext_resource type="Script" path="res://Cards/Card/CardInfoNode.gd" id="7_eyqqr"]
 [ext_resource type="Script" path="res://Cards/Card/InMouseTargeting.gd" id="9_neiyx"]
-[ext_resource type="Script" path="res://Cards/Card/InGraveyard.gd" id="10_avro7"]
 [ext_resource type="Script" path="res://Cards/Card/TargetingPath.gd" id="10_umcyt"]
 
 [node name="CardBase" type="Node2D"]
@@ -44,9 +43,6 @@ script = ExtResource("6_1dwg2")
 script = ExtResource("9_neiyx")
 targetingCardPos = Vector2(150, 300)
 TargetingPath = NodePath("../../TargetingPath")
-
-[node name="InGraveyard" type="Node" parent="StateMachine"]
-script = ExtResource("10_avro7")
 
 [node name="StateLabel" type="Label" parent="."]
 offset_right = 40.0
