@@ -37,6 +37,7 @@ func on_input(_event):
 		if hasLegalTarget == true:
 			state_machine.transition_to("InGraveyard")
 			Events.emit_signal("card_moved_within_hand")
+			play_card()
 		else:
 			state_machine.transition_to("InHand")
 			cardBase.is_not_hovering_in_hand()
@@ -44,11 +45,19 @@ func on_input(_event):
 		state_machine.transition_to("InHand")
 		cardBase.is_not_hovering_in_hand()
 
+func play_card():
+	cardBase.cardInfo.play_card()
 
-func _on_slot_hovered(isTrue: bool) -> void:
-	if isTrue == true:
-		hasLegalTarget = true
-		TargetingPath.targeting_line_valid()
-	else:
+func _on_slot_hovered(hovered: bool) -> void:
+	if hovered == false:
 		hasLegalTarget = false
 		TargetingPath.targeting_line_invalid()
+		return
+	match cardBase.cardInfo.target:
+		CardEnums.card_target.SINGLE, \
+		CardEnums.card_target.AOE_ENEMY, \
+		CardEnums.card_target.SINGLE_ENEMY:
+			hasLegalTarget = true
+			TargetingPath.targeting_line_valid()
+		_:
+			return

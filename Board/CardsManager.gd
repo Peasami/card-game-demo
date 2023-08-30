@@ -1,15 +1,25 @@
 # This node sees all cards and assigns them into proper states
 # Manages movement of cards in hand, and assigns anchorPositions for cards. 
-# manages drawing cards
+# manages instantiating and drawing cards
 
 class_name CardsManager
 extends Node
 
 @export var handEllipseData: Node # Has positional info for cards in hand
 @export var playerStats: Node # stats like hp and base mana
-
+@export var playerDeck: Node # info on all cards in deck
 
 func _ready():
+	for i in 3:
+		var card1 = load("res://Cards/Card/CardBase.tscn").instantiate()
+		card1.initialize_card_as(playerDeck.get_card_instance("Firebolt"))
+		add_child(card1)
+	for i in 4:
+		var card1 = load("res://Cards/Card/CardBase.tscn").instantiate()
+		card1.initialize_card_as(playerDeck.get_card_instance("HealingTouch"))
+		add_child(card1)
+	
+	
 	for i in get_children():
 		if i.get_state() == "InDeck":
 			CardTracking.cardsInDeck.append(i)

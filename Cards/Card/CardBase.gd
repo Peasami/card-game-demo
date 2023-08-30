@@ -8,6 +8,8 @@ extends Node2D
 ## Takes the node that owns this node just above as cardsManager
 @onready var cardsManager: Node = $".."
 
+var cardInfo
+
 var anchorPosition:Vector2 ## The destination where card is tweened towards
 var anchorRotation:float   ## ^ but for rotation
 var anchorZIndex:int = 0 ## ^ but for z_index
@@ -47,3 +49,8 @@ func get_in_hand_state():
 
 func set_in_hand_state(state):
 	$StateMachine/InHand.local_state = state
+
+func initialize_card_as(cardNodeInstance: Node):
+	add_child(cardNodeInstance)
+	cardInfo = cardNodeInstance
+	print("initializing card as: ",cardNodeInstance)

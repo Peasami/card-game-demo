@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ckjg17ndabxk0"]
 
-[ext_resource type="Script" path="res://CardLibrary/Firebolt.gd" id="1_kuf2d"]
+[ext_resource type="Script" path="res://CardLibrary/Firebolt.gd" id="1_n6dao"]
 
 [node name="Firebolt" type="Node"]
-script = ExtResource("1_kuf2d")
+script = ExtResource("1_n6dao")

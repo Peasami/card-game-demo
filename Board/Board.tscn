@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfborqb723c4i"]
+[gd_scene load_steps=10 format=3 uid="uid://cfborqb723c4i"]
 
 [ext_resource type="Texture2D" uid="uid://0n3nwxr7avum" path="res://Assets/icon.png" id="1_ha250"]
 [ext_resource type="Script" path="res://Board/DrawCard.gd" id="2_056xs"]
 [ext_resource type="Script" path="res://Board/CardsManager.gd" id="3_gaugg"]
-[ext_resource type="PackedScene" uid="uid://ddujmpbw7u7gp" path="res://Cards/Card/CardBase.tscn" id="4_1h27s"]
 [ext_resource type="Script" path="res://Board/HandPositioning.gd" id="5_5mq2q"]
 [ext_resource type="Script" path="res://Board/DebugDraw.gd" id="6_l0t44"]
 [ext_resource type="Script" path="res://Board/PlayerStatsInfo.gd" id="7_dduf4"]
@@ -21,31 +20,11 @@ offset_bottom = 438.0
 texture_normal = ExtResource("1_ha250")
 script = ExtResource("2_056xs")
 
-[node name="CardsManager" type="Node" parent="." node_paths=PackedStringArray("handEllipseData", "playerStats")]
+[node name="CardsManager" type="Node" parent="." node_paths=PackedStringArray("handEllipseData", "playerStats", "playerDeck")]
 script = ExtResource("3_gaugg")
 handEllipseData = NodePath("../HandPositioning")
 playerStats = NodePath("../PlayerStatsInfo")
-
-[node name="CardBase" parent="CardsManager" instance=ExtResource("4_1h27s")]
-position = Vector2(55, 568)
-
-[node name="CardBase2" parent="CardsManager" instance=ExtResource("4_1h27s")]
-position = Vector2(55, 568)
-
-[node name="CardBase3" parent="CardsManager" instance=ExtResource("4_1h27s")]
-position = Vector2(55, 568)
-
-[node name="CardBase4" parent="CardsManager" instance=ExtResource("4_1h27s")]
-position = Vector2(55, 568)
-
-[node name="CardBase5" parent="CardsManager" instance=ExtResource("4_1h27s")]
-position = Vector2(55, 568)
-
-[node name="CardBase6" parent="CardsManager" instance=ExtResource("4_1h27s")]
-position = Vector2(55, 568)
-
-[node name="CardBase7" parent="CardsManager" instance=ExtResource("4_1h27s")]
-position = Vector2(55, 568)
+playerDeck = NodePath("../PlayerDeck")
 
 [node name="HandPositioning" type="Node" parent="."]
 script = ExtResource("5_5mq2q")
