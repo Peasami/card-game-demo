@@ -1,6 +1,8 @@
 class_name InHand
 extends CardState
 
+@export var Focus: TextureButton
+
 func enter(_msg := {}) -> void:
 	
 #	$"../../Focus".disabled = true
@@ -10,16 +12,17 @@ func enter(_msg := {}) -> void:
 	tween.tween_property(cardBase, 'position', cardBase.anchorPosition, 0.2)
 	tween.tween_property(cardBase, 'rotation', cardBase.anchorRotation, 0.2)
 	
-#	await tween.finished
-#	$"../../Focus".disabled = false
+	# If tweening finishes and mouse is on card, change state accordingly.
+	# Has to be custom function inside Focus.gd, because mouse_entered signal 
+	# doesn't work when mouse isn't moving.
+	await tween.finished
+	if Focus.is_being_hovered():
+		if tween:
+			tween.stop()
+		cardBase.transition_state_to("InHandHovering")
 
 func exit():
 	tween.stop()
-
-func physics_update(_delta: float) -> void:
-	# if mouse is on card, and click event occurs,
-	# state -> InMouse
-	pass
 
 func on_mouse_entered():
 	if tween:

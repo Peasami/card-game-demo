@@ -24,7 +24,7 @@ func _on_DrawCard_draw_cards(amountToDraw: int = 1):
 # Draw n cards to hand
 func draw_cards(amountToDraw: int = 1):
 	for i in amountToDraw:	
-		if CardTracking.cardsInHand.size() >= playerStats.maxHandSize:
+		if CardTracking.cardsInHand.size() >= playerStats.maxHandSize || CardTracking.cardsInDeck.size() == 0:
 			return
 		
 		var drawnCard = CardTracking.cardsInDeck[randi() % CardTracking.cardsInDeck.size()] # Gets random card from hand

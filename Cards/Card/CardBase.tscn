@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddujmpbw7u7gp"]
+[gd_scene load_steps=14 format=3 uid="uid://ddujmpbw7u7gp"]
 
 [ext_resource type="Script" path="res://Cards/Card/CardBase.gd" id="1_xh6q3"]
 [ext_resource type="Texture2D" uid="uid://dte4ie6x8eqvq" path="res://Assets/CardBaseSimple.png" id="2_pmdl2"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Cards/Card/InMouseTargeting.gd" id="9_neiyx"]
 [ext_resource type="Script" path="res://Cards/Card/InGraveyard.gd" id="10_avro7"]
 [ext_resource type="Script" path="res://Cards/Card/TargetingPath.gd" id="10_umcyt"]
+[ext_resource type="Script" path="res://Cards/Card/Focus.gd" id="11_htnrv"]
 
 [node name="CardBase" type="Node2D" groups=["cards"]]
 position = Vector2(52, 73)
@@ -24,8 +25,9 @@ texture = ExtResource("2_pmdl2")
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_qd1es")
 
-[node name="InHand" type="Node" parent="StateMachine"]
+[node name="InHand" type="Node" parent="StateMachine" node_paths=PackedStringArray("Focus")]
 script = ExtResource("4_v7i73")
+Focus = NodePath("../../Focus")
 
 [node name="InHandDodging" type="Node" parent="StateMachine"]
 script = ExtResource("5_nvjfj")
@@ -57,6 +59,7 @@ offset_left = -75.0
 offset_top = -130.0
 offset_right = 75.0
 offset_bottom = 150.0
+script = ExtResource("11_htnrv")
 
 [node name="CardInfoNode" type="Node" parent="."]
 script = ExtResource("7_eyqqr")
