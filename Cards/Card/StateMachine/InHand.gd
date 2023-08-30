@@ -5,7 +5,7 @@ func enter(_msg := {}) -> void:
 	
 #	$"../../Focus".disabled = true
 	
-	tween = create_tween().set_parallel(true)
+	tween = create_tween().set_parallel(true).set_ease(Tween.EASE_OUT)
 	tween.tween_property(cardBase, 'scale', cardBase.baseScale, 0.2)
 	tween.tween_property(cardBase, 'position', cardBase.anchorPosition, 0.2)
 	tween.tween_property(cardBase, 'rotation', cardBase.anchorRotation, 0.2)

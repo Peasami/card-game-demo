@@ -4,3 +4,5 @@
 extends Node
 
 signal slot_hovered(isTrue: bool)
+
+signal card_moved_within_hand

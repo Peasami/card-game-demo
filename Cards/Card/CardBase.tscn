@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://Cards/Card/InGraveyard.gd" id="10_avro7"]
 [ext_resource type="Script" path="res://Cards/Card/TargetingPath.gd" id="10_umcyt"]
 
-[node name="CardBase" type="Node2D"]
+[node name="CardBase" type="Node2D" groups=["cards"]]
 position = Vector2(52, 73)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_xh6q3")

@@ -9,7 +9,7 @@ func enter(_msg := {}) -> void:
 	Events.slot_hovered.connect(_on_slot_hovered)
 	cardBase.z_index = 10
 	# Animating card to hover on left side of screen
-	tween = create_tween().set_parallel(true)
+	tween = create_tween().set_parallel(true).set_ease(Tween.EASE_OUT)
 	tween.tween_property(cardBase, 'scale', Vector2(1,1), 0.1)
 	tween.tween_property(cardBase, 'position', targetingCardPos, 0.1)
 	tween.tween_property(cardBase, 'rotation', 0, 0.1)
@@ -26,19 +26,24 @@ func exit():
 	TargetingPath.clear_draw()
 	TargetingPath.set_process(false)
 
+
 func physics_update(_delta: float) -> void:
 	if cardBase.get_get_global_mouse_pos().y > 500:
 		state_machine.transition_to("InMouse")
+
+
 func on_input(_event):
 	if Input.is_action_just_released("left_click"):
 		if hasLegalTarget == true:
 			state_machine.transition_to("InGraveyard")
+			Events.emit_signal("card_moved_within_hand")
 		else:
 			state_machine.transition_to("InHand")
 			cardBase.is_not_hovering_in_hand()
 	elif Input.is_action_just_pressed("right_click"):
 		state_machine.transition_to("InHand")
 		cardBase.is_not_hovering_in_hand()
+
 
 func _on_slot_hovered(isTrue: bool) -> void:
 	if isTrue == true:

@@ -38,12 +38,19 @@ func calculate_ellipse_y(xA):
 #------------------------------------------------------------------#
 # Takes in cards in hand count                                     #
 # Returns array containing correspoding card position and rotation #
+# SHOULD BECOME USELESS WHEN REDONE FOR MORE GENERAL PURPOSE       #
 #------------------------------------------------------------------#
 func get_card_hand_position(inHandCount) -> Vector2:
 	var xAxis = inHandCount*distanceBetweenCards
 	var yAxis = calculate_ellipse_y(xAxis)
 	print("xAxis: ", xAxis, ", yAxis: ", yAxis)
 	return Vector2(xAxis + xCenterOffset, yAxis)
+
+
+func get_card_position_in_hand(cardIndex: int, handSize: int) -> Vector2:
+	var xPos = (cardIndex*2+1-handSize)*50
+	var yPos = calculate_ellipse_y(xPos)
+	return Vector2(xPos + xCenterOffset, yPos)
 
 func get_card_hand_rotation(xCoordinate: float):
 	return (xCoordinate - xCenterOffset) / 1500
