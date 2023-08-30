@@ -28,26 +28,12 @@ func draw_cards(amountToDraw: int = 1):
 			return
 		
 		var drawnCard = CardTracking.cardsInDeck[randi() % CardTracking.cardsInDeck.size()] # Gets random card from hand
-		
-#		set_card_anchor_position(drawnCard)
-		
-		
-		
+
 		CardTracking.cardsInDeck.erase(drawnCard)
 		CardTracking.cardsInHand.append(drawnCard)
 		organize_hand()
 		drawnCard.transition_state_to("InHand")
 
-
-
-# Gets card's positioning and rotation, given the number of cards already in hand
-# MAY BECOME UNNECESSARY
-func set_card_anchor_position(card):
-	card.anchorPosition = handEllipseData.get_card_hand_position(CardTracking.cardsInHand.size())
-	var cardPosInHand:Vector2 = card.anchorPosition
-	card.anchorRotation = handEllipseData.get_card_hand_rotation(cardPosInHand.x)
-
-	card.z_index = CardTracking.cardsInHand.size() ## give z_index higher than other cards in hand
 
 # Replaces reorganize_hand() function, which should be deleted if this works
 func organize_hand():
@@ -58,15 +44,6 @@ func organize_hand():
 		print(card, " AnchorPosition: ",card.anchorPosition)
 		print(card, " bsearch: ",CardTracking.cardsInHand.find(card))
 
-# Determine new position for each card in hand after drawing a card
-# SHOULD BE REDONE FOR GENERAL USE, NOT JUST FOR ADDING CARDS TO HAND
-func reorganize_hand():
-	for i in CardTracking.cardsInHand:
-		var x = i.anchorPosition.x - handEllipseData.distanceBetweenCards ## Calculate x and y in hand
-		var y = get_card_y_position_in_hand(x)
-		i.anchorRotation = handEllipseData.get_card_hand_rotation(x)
-		i.anchorPosition = Vector2(x,y)
-		i.transition_state_to("InHand")
 
 # Called when a CardBase is hovered. Informs other CardBases to dodge
 func hovering_in_hand(targetCard: CardBase):
