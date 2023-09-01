@@ -7,8 +7,12 @@ extends Node2D
 
 ## Takes the node that owns this node just above as cardsManager
 @onready var cardsManager: Node = $".."
+@onready var cardGraphics := $CardGraphics
+@onready var fsm := $StateMachine
+@onready var state_label := $StateLabel
 
-var cardInfo
+var cardInfo: Dictionary
+var cardProperties: Node
 
 var anchorPosition:Vector2 ## The destination where card is tweened towards
 var anchorRotation:float   ## ^ but for rotation
@@ -18,10 +22,25 @@ var baseScale := Vector2(0.5,0.5)
 const graveyardPos := Vector2(1100, 550)
 const deckPos := Vector2(50, 550)
 
-@onready var fsm := $StateMachine
-@onready var state_label := $StateLabel
+
+# Initializing card properities
+func initialize_card_as(cardNodeInstance: Node):
+	cardProperties = cardNodeInstance
+	# Cloning cardInfo -Array to parent node for better access
+	cardInfo = cardNodeInstance.get_card_info_array()
+	add_child(cardNodeInstance)
+	# Connecting signal so 
+	initialize_graphics()
+	print("initializing card as: ",cardNodeInstance)
+
+func initialize_graphics():
+	$CardGraphics.set_header(cardInfo["name"])
+
+func play_card() -> void:
+	cardProperties.play_card()
 
 func _process(_delta):
+	# DEBUGGING #
 	state_label.text = fsm.state.name + "\n" + str(z_index)
 
 func get_state():
@@ -50,7 +69,3 @@ func get_in_hand_state():
 func set_in_hand_state(state):
 	$StateMachine/InHand.local_state = state
 
-func initialize_card_as(cardNodeInstance: Node):
-	add_child(cardNodeInstance)
-	cardInfo = cardNodeInstance
-	print("initializing card as: ",cardNodeInstance)

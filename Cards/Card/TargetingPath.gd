@@ -13,7 +13,7 @@ func _ready():
 	## We disable this node, and enable only when needed
 	set_process(false)
 
-func _process(delta):
+func _process(_delta):
 	var sampleSize: = 10
 	var samples:float = 1.0/sampleSize
 	

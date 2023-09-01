@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddujmpbw7u7gp"]
+[gd_scene load_steps=14 format=3 uid="uid://ddujmpbw7u7gp"]
 
 [ext_resource type="Script" path="res://Cards/Card/CardBase.gd" id="1_xh6q3"]
 [ext_resource type="Texture2D" uid="uid://dte4ie6x8eqvq" path="res://Assets/CardBaseSimple.png" id="2_pmdl2"]
@@ -12,14 +12,12 @@
 [ext_resource type="Script" path="res://Cards/Card/InGraveyard.gd" id="10_avro7"]
 [ext_resource type="Script" path="res://Cards/Card/TargetingPath.gd" id="10_umcyt"]
 [ext_resource type="Script" path="res://Cards/Card/Focus.gd" id="11_htnrv"]
+[ext_resource type="Script" path="res://Cards/Card/CardGraphics.gd" id="12_2suqo"]
 
 [node name="CardBase" type="Node2D" groups=["cards"]]
-position = Vector2(52, 73)
+position = Vector2(50, 76)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_xh6q3")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_pmdl2")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_qd1es")
@@ -63,6 +61,20 @@ script = ExtResource("11_htnrv")
 [node name="TargetingPath" type="Node2D" parent="."]
 script = ExtResource("10_umcyt")
 bezierCurve2ndPoint = Vector2(0, -200)
+
+[node name="CardGraphics" type="Node2D" parent="." node_paths=PackedStringArray("Header")]
+script = ExtResource("12_2suqo")
+Header = NodePath("Header")
+
+[node name="Sprite2D" type="Sprite2D" parent="CardGraphics"]
+texture = ExtResource("2_pmdl2")
+
+[node name="Header" type="Label" parent="CardGraphics"]
+offset_left = -80.0
+offset_top = -130.0
+offset_right = -40.0
+offset_bottom = -107.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 
 [connection signal="gui_input" from="Focus" to="StateMachine" method="_on_Focus_gui_input"]
 [connection signal="mouse_entered" from="Focus" to="StateMachine" method="_on_focus_mouse_entered"]

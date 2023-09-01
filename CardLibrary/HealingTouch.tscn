@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1esea3l0xjnk"]
-
-[ext_resource type="Script" path="res://CardLibrary/HealingTouch.gd" id="1_ht76p"]
-
-[node name="HealingTouch" type="Node"]
-script = ExtResource("1_ht76p")

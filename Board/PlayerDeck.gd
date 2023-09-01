@@ -1,10 +1,10 @@
 # Contains name of all cards in player's deck
 extends Node
 
-var mainDeck: Array = ["Firebolt", "Firebolt", "HealingTouch"]
+var mainDeck: Array = ["Firebolt", "Firebolt", "Firebolt"]
 
 func get_card_instance(cardName: String) -> Node:
-	var path = load("res://CardLibrary/"+cardName+".tscn")
+	var path = load("res://CardLibrary/"+cardName+"/"+cardName+".tscn")
 	return path.instantiate()
 
 func add_card_to_deck(cardName: String) -> void:

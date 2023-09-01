@@ -46,7 +46,7 @@ func on_input(_event):
 		cardBase.is_not_hovering_in_hand()
 
 func play_card():
-	cardBase.cardInfo.play_card()
+	cardBase.play_card()
 
 func _on_slot_hovered(hovered: bool) -> void:
 	if hovered == false:

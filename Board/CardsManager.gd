@@ -14,10 +14,10 @@ func _ready():
 		var card1 = load("res://Cards/Card/CardBase.tscn").instantiate()
 		card1.initialize_card_as(playerDeck.get_card_instance("Firebolt"))
 		add_child(card1)
-	for i in 4:
-		var card1 = load("res://Cards/Card/CardBase.tscn").instantiate()
-		card1.initialize_card_as(playerDeck.get_card_instance("HealingTouch"))
-		add_child(card1)
+	# for i in 4:
+	# 	var card1 = load("res://Cards/Card/CardBase.tscn").instantiate()
+	# 	card1.initialize_card_as(playerDeck.get_card_instance("HealingTouch"))
+	# 	add_child(card1)
 	
 	
 	for i in get_children():
@@ -57,9 +57,7 @@ func organize_hand():
 
 # Called when a CardBase is hovered. Informs other CardBases to dodge
 func hovering_in_hand(targetCard: CardBase):
-	var amountToMove = 50
-	
-	### Iterates through each other card, to make them move aside by changing their state
+	# Iterates through each other card, to make them move aside by changing their state
 	for i in CardTracking.cardsInHand:
 		if i == targetCard:
 			continue
