@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1esea3l0xjnk"]
+[gd_scene load_steps=3 format=3 uid="uid://0eqqmitfp2q4"]
 
 [ext_resource type="Script" path="res://CardLibrary/HealingTouch/HealingTouch.gd" id="1_c7vq1"]
+[ext_resource type="Script" path="res://CardLibrary/HealingTouch/InfoNode.gd" id="2_732s7"]
 
 [node name="HealingTouch" type="Node"]
 script = ExtResource("1_c7vq1")
+
+[node name="InfoNode" type="Node" parent="."]
+script = ExtResource("2_732s7")
