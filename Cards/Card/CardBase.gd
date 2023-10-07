@@ -28,6 +28,9 @@ var baseScale := Vector2(0.5,0.5)
 const graveyardPos := Vector2(1100, 550)
 const deckPos := Vector2(50, 550)
 
+func _process(_delta):
+	# DEBUGGING #
+	state_label.text = fsm.state.name + "\n" + str(z_index) + "\n" + str(anchorPosition)
 
 # Initializing card properities.
 # Takes in an instance of cardProperties node,
@@ -50,9 +53,7 @@ func initialize_graphics():
 func play_card() -> void:
 	cardProperties.play_card()
 
-func _process(_delta):
-	# DEBUGGING #
-	state_label.text = fsm.state.name + "\n" + str(z_index)
+
 
 func get_state():
 	return fsm.state.name
@@ -61,6 +62,12 @@ func get_state():
 # call a transition to another state 
 func transition_state_to(newState, msg: Dictionary = {}):
 	fsm.transition_to(newState, msg)
+	print("transitioning to: ", newState)
+
+# When you want to call teh on_enter() method without transitioning.
+func invoke_enter():
+	fsm.invoke_enter()
+
 
 # Child nodes can call this to inform main scene that this is being hovered 
 func is_hovering_in_hand():

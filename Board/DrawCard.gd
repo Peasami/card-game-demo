@@ -1,5 +1,5 @@
 extends TextureButton
-signal draw_cards()
+signal clicked()
 
 func _pressed():
-	emit_signal("draw_cards", 1)
+	emit_signal("clicked", 1)

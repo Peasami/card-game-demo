@@ -31,26 +31,17 @@ func _ready():
 	$DebugDraw.xEllipseCenter = xCenterOffset
 	$DebugDraw.yEllipseCenter = yCenterOffset
 
-
+# Returns the y coordinate of the ellipse at the given x coordinate.
 func calculate_ellipse_y(xA):
 	return (-ySemiAxel*(sqrt((pow(xSemiAxel,2.0))-(pow(xA,2.0)))))/xSemiAxel + yCenterOffset
 
-#------------------------------------------------------------------#
-# Takes in cards in hand count                                     #
-# Returns array containing correspoding card position and rotation #
-# SHOULD BECOME USELESS WHEN REDONE FOR MORE GENERAL PURPOSE       #
-#------------------------------------------------------------------#
-func get_card_hand_position(inHandCount) -> Vector2:
-	var xAxis = inHandCount*distanceBetweenCards
-	var yAxis = calculate_ellipse_y(xAxis)
-	print("xAxis: ", xAxis, ", yAxis: ", yAxis)
-	return Vector2(xAxis + xCenterOffset, yAxis)
-
-
+# Returns the anchor position for a card based on its index in hand.
+# The anchor position is the default position of the card.
 func get_card_position_in_hand(cardIndex: int, handSize: int) -> Vector2:
 	var xPos = (cardIndex*2+1-handSize)*50
 	var yPos = calculate_ellipse_y(xPos)
 	return Vector2(xPos + xCenterOffset, yPos)
 
+# Returns the anchor rotation of the card at the given x coordinate.
 func get_card_hand_rotation(xCoordinate: float):
 	return (xCoordinate - xCenterOffset) / 1500

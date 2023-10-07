@@ -22,8 +22,9 @@ func exit():
 
 func on_Focus_input_update(_event):
 	if _event.is_action_pressed('left_click'):
-		print('right mouse click')
+		print('left mouse click')
 		state_machine.transition_to('InMouse')
+		CardTracking.cardsInHand.erase(cardBase)
 	pass
 
 
