@@ -23,7 +23,6 @@ func _ready():
 
 # Called when a card is moved within hand
 func _on_card_moved_within_hand():
-	print("Signal received in CardsManager card moved within hand")
 	organize_hand()
 
 # Called when DrawCards button is clicked
@@ -40,10 +39,8 @@ func draw_cards(amountToDraw: int = 1):
 		# Get random card from deck
 		var drawnCard = CardTracking.cardsInDeck[randi() % CardTracking.cardsInDeck.size()]
 
-		print("Drawing card in draw_cards(): ", drawnCard)
 		drawnCard.transition_state_to("InHand")
 		organize_hand()
-		
 
 
 # Organizes cards in hand. Assigns anchorPositions to cards based on the number of cards in hand.
@@ -52,11 +49,12 @@ func organize_hand():
 	for card in CardTracking.cardsInHand:
 		card.anchorPosition = handEllipseData.get_card_position_in_hand(CardTracking.cardsInHand.find(card), CardTracking.cardsInHand.size())
 		card.anchorRotation = handEllipseData.get_card_hand_rotation(card.anchorPosition.x)
-		# Invokes the enter() function of the current state.
-		if card.get_state() == "InHand":
-			card.invoke_enter()
-		else:
-			card.transition_state_to("InHand")
+		# If card is already InHand, only call the enter() function. 
+		# if card.get_state() == "InHand":
+		# 	card.invoke_enter()
+		# else:
+		# 	card.transition_state_to("InHand")
+		card.transition_state_to("InHand")
 
 # Called when a card is hovered. Informs other CardBases to dodge
 func hovering_in_hand(targetCard: CardBase):
