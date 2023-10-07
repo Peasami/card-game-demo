@@ -1,9 +1,12 @@
-# Base for every card
-# Handles interface functions and signals
-# Global variables within a card are declared here
+# Base for every card.
+# Handles interface functions and signals to communicate with other nodes.
+# Global variables within a card are declared here?
 
 class_name CardBase
 extends Node2D
+
+signal hovered_in_hand
+signal de_hovered_in_hand
 
 ## Takes the node that owns this node just above as cardsManager
 @onready var cardsManager: Node = $".."
@@ -61,14 +64,17 @@ func transition_state_to(newState, msg: Dictionary = {}):
 
 # Child nodes can call this to inform main scene that this is being hovered 
 func is_hovering_in_hand():
-	print("hovering in hand from cardbase")
-	cardsManager.hovering_in_hand(self)
+	emit_signal("hovered_in_hand", self)
 
+# Child nodes can call this to inform main scene that this is not being hovered
 func is_not_hovering_in_hand():
-	cardsManager.de_hovering_in_hand(self)
+	emit_signal("de_hovered_in_hand", self)
 
+# Maybe needed. Sometimes cards in hand do not overlap properly,
+# and one card is on top of another card based on initialization order.
 func set_mouse_filter(value: int):
 	$Focus.mouse_filter = value
 
+# Returns the global mouse position for child nodes
 func get_get_global_mouse_pos():
 	return get_global_mouse_position()

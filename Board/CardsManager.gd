@@ -10,14 +10,13 @@ extends Node
 @export var playerDeck: Node # info on all cards in deck
 
 func _ready():
+	# loads and instantiates cards
 	for i in 3:
 		var card1 = load("res://Cards/Card/CardBase.tscn").instantiate()
+		card1.connect("hovered_in_hand", hovering_in_hand)
+		card1.connect("de_hovered_in_hand", de_hovering_in_hand)
 		card1.initialize_card_as(playerDeck.get_card_instance("Firebolt"))
 		add_child(card1)
-	# for i in 4:
-	# 	var card1 = load("res://Cards/Card/CardBase.tscn").instantiate()
-	# 	card1.initialize_card_as(playerDeck.get_card_instance("HealingTouch"))
-	# 	add_child(card1)
 	
 	
 	for i in get_children():
@@ -55,7 +54,7 @@ func organize_hand():
 		print(card, " bsearch: ",CardTracking.cardsInHand.find(card))
 
 
-# Called when a CardBase is hovered. Informs other CardBases to dodge
+# Called when a card is hovered. Informs other CardBases to dodge
 func hovering_in_hand(targetCard: CardBase):
 	# Iterates through each other card, to make them move aside by changing their state
 	for i in CardTracking.cardsInHand:
@@ -66,7 +65,7 @@ func hovering_in_hand(targetCard: CardBase):
 		else:
 			i.transition_state_to("InHandDodging", {"cardSide": "right"})
 
-# Called when a CardBase is dehovered. Informs other CardBases to go back to anchorPositions
+# Called when a card is dehovered. Informs other CardBases to go back to anchorPositions
 func de_hovering_in_hand(targetCard: CardBase):
 	for i in CardTracking.cardsInHand:
 		if i == targetCard:
