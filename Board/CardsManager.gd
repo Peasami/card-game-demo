@@ -44,16 +44,13 @@ func draw_cards(amountToDraw: int = 1):
 
 
 # Organizes cards in hand. Assigns anchorPositions to cards based on the number of cards in hand.
+# Calls transition to InHand even when they are already in InHand state.
+# transition_state_to() function just calls current node exit() and new node enter()
 # Takes into account cards that are InMouse.
 func organize_hand():
 	for card in CardTracking.cardsInHand:
 		card.anchorPosition = handEllipseData.get_card_position_in_hand(CardTracking.cardsInHand.find(card), CardTracking.cardsInHand.size())
 		card.anchorRotation = handEllipseData.get_card_hand_rotation(card.anchorPosition.x)
-		# If card is already InHand, only call the enter() function. 
-		# if card.get_state() == "InHand":
-		# 	card.invoke_enter()
-		# else:
-		# 	card.transition_state_to("InHand")
 		card.transition_state_to("InHand")
 
 # Called when a card is hovered. Informs other CardBases to dodge
@@ -74,14 +71,6 @@ func de_hovering_in_hand(targetCard: CardBase):
 		if i == targetCard:
 			continue
 		i.transition_state_to("InHand")
-
-## Calculates y-position of the card on the hand ellipse when x-position is known
-func get_card_y_position_in_hand(xPos):
-	var yPos = handEllipseData.calculate_ellipse_y(xPos - handEllipseData.xCenterOffset)
-	return yPos
-
-func switch_card_state(card, newState):
-	card.transition_state_to(newState)
 
 
 

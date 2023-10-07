@@ -3,8 +3,6 @@
 class_name StateMachine
 extends Node
 
-# Emitted when transitioning to a new state.
-signal transitioned(state_name)
 
 # initial state
 @onready var state: CardState = get_node("InDeck")
@@ -39,7 +37,6 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
 	state.exit()
 	state = get_node(target_state_name)
 	state.enter(msg)
-	emit_signal("transitioned", state.name)
 
 
 func _on_Focus_gui_input(event) -> void: 
