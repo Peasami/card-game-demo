@@ -50,6 +50,7 @@ func on_input(_event):
 func play_card():
 	cardBase.play_card()
 
+# Called when a slot sends a signal that it is hovered. Takes in the slot's state.
 func _on_slot_hovered(slotState: int):
 	match cardBase.cardInfo.target:
 		CardEnums.card_target.SINGLE, \

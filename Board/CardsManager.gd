@@ -18,11 +18,8 @@ func _ready():
 		card1.initialize_card_as(playerDeck.get_card_instance("Firebolt"))
 		add_child(card1)
 	
-	
-	for i in get_children():
-		if i.get_state() == "InDeck":
-			CardTracking.cardsInDeck.append(i)
 	Events.card_moved_within_hand.connect(_on_card_moved_within_hand)
+
 
 func _on_card_moved_within_hand():
 	organize_hand()
