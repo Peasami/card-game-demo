@@ -6,8 +6,9 @@ extends Node
 var cardsInDeck = []
 var cardsInHand = []
 var cardsInGraveyard = []
+var cardsInMouse = []
 
-var listOfLocations = [cardsInDeck, cardsInHand, cardsInGraveyard]
+var listOfLocations = [cardsInDeck, cardsInHand, cardsInGraveyard, cardsInMouse]
 
 # Changes card location.
 # Removes card from previous location and adds it to the next location.

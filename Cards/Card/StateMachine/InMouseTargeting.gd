@@ -36,6 +36,7 @@ func physics_update(_delta: float) -> void:
 
 func on_input(_event):
 	if Input.is_action_just_released("left_click"):
+		CardTracking.cardsInMouse.erase(cardBase)
 		if hasLegalTarget == true:
 			state_machine.transition_to("InGraveyard")
 			Events.emit_signal("card_moved_within_hand")
@@ -44,6 +45,7 @@ func on_input(_event):
 			state_machine.transition_to("InHand")
 			cardBase.is_not_hovering_in_hand()
 	elif Input.is_action_just_pressed("right_click"):
+		CardTracking.cardsInMouse.erase(cardBase)
 		state_machine.transition_to("InHand")
 		cardBase.is_not_hovering_in_hand()
 

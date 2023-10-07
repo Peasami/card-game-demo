@@ -2,9 +2,6 @@ class_name InHandHovering
 extends CardState
 
 func enter(_msg := {}) -> void:
-#	if  _msg.has('lastState') && _msg['lastState'] == 'InMouse':
-#		on_mouse_exited()
-	
 	cardBase.is_hovering_in_hand()
 	
 	cardBase.scale = Vector2(0.8, 0.8)

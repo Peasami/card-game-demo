@@ -53,7 +53,10 @@ func organize_hand():
 		card.anchorPosition = handEllipseData.get_card_position_in_hand(CardTracking.cardsInHand.find(card), CardTracking.cardsInHand.size())
 		card.anchorRotation = handEllipseData.get_card_hand_rotation(card.anchorPosition.x)
 		# Invokes the enter() function of the current state.
-		card.invoke_enter()
+		if card.get_state() == "InHand":
+			card.invoke_enter()
+		else:
+			card.transition_state_to("InHand")
 
 # Called when a card is hovered. Informs other CardBases to dodge
 func hovering_in_hand(targetCard: CardBase):
