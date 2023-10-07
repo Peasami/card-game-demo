@@ -1,7 +1,8 @@
+class_name ENUMS
 extends Node
 
-enum in_hand_states{
-	DEFAULT,
-	HOVERING,
-	DODGING
+enum slot_state{
+	EMPTY,
+	ENEMY,
+	ALLY
 }

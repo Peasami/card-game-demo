@@ -7,6 +7,7 @@ var hasLegalTarget: bool = false
 
 func enter(_msg := {}) -> void:
 	Events.slot_hovered.connect(_on_slot_hovered)
+	Events.slot_de_hovered.connect(_on_slot_de_hovered)
 	cardBase.z_index = 10
 	# Animating card to hover on left side of screen
 	tween = create_tween().set_parallel(true).set_ease(Tween.EASE_OUT)
@@ -20,6 +21,7 @@ func enter(_msg := {}) -> void:
 func exit():
 	hasLegalTarget = false
 	Events.slot_hovered.disconnect(_on_slot_hovered)
+	Events.slot_de_hovered.disconnect(_on_slot_de_hovered)
 	cardBase.z_index = cardBase.anchorZIndex
 	
 	# Disabling targetingLine, first clearing latest draw
@@ -48,11 +50,7 @@ func on_input(_event):
 func play_card():
 	cardBase.play_card()
 
-func _on_slot_hovered(hovered: bool) -> void:
-	if hovered == false:
-		hasLegalTarget = false
-		TargetingPath.targeting_line_invalid()
-		return
+func _on_slot_hovered(slotState: int):
 	match cardBase.cardInfo.target:
 		CardEnums.card_target.SINGLE, \
 		CardEnums.card_target.AOE_ENEMY, \
@@ -61,3 +59,7 @@ func _on_slot_hovered(hovered: bool) -> void:
 			TargetingPath.targeting_line_valid()
 		_:
 			return
+
+func _on_slot_de_hovered():
+	hasLegalTarget = false
+	TargetingPath.targeting_line_invalid()

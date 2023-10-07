@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dym0rqdekmfeg"]
+[gd_scene load_steps=5 format=3 uid="uid://dym0rqdekmfeg"]
 
 [ext_resource type="Script" path="res://CardSlots/CardSlotBase.gd" id="1_3mjmu"]
 [ext_resource type="Texture2D" uid="uid://bsp06w4l42j2t" path="res://Assets/CardSlotSimple.png" id="1_t0thw"]
+[ext_resource type="Script" path="res://CardSlots/SlotStateMachine/SlotStateMachine.gd" id="3_3jd87"]
+[ext_resource type="Script" path="res://CardSlots/SlotStateMachine/SlotEmpty.gd" id="4_y0xbc"]
 
 [node name="CardSlotBase" type="Node2D"]
 scale = Vector2(0.5, 0.5)
@@ -16,6 +18,12 @@ offset_top = -74.0
 offset_right = -34.0
 offset_bottom = -34.0
 scale = Vector2(3.7288, 3.72119)
+
+[node name="SlotStateMachine" type="Node" parent="."]
+script = ExtResource("3_3jd87")
+
+[node name="SlotEmpty" type="Node" parent="SlotStateMachine"]
+script = ExtResource("4_y0xbc")
 
 [connection signal="mouse_entered" from="Focus" to="." method="_on_focus_mouse_entered"]
 [connection signal="mouse_exited" from="Focus" to="." method="_on_focus_mouse_exited"]

@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://Cards/Card/CardBase.gd" id="1_xh6q3"]
 [ext_resource type="Texture2D" uid="uid://dte4ie6x8eqvq" path="res://Assets/CardBaseSimple.png" id="2_pmdl2"]
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/StateMachine.gd" id="3_qd1es"]
+[ext_resource type="Script" path="res://Cards/Card/StateMachine/InHandDodging.gd" id="4_ksbwj"]
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/InHand.gd" id="4_v7i73"]
-[ext_resource type="Script" path="res://Cards/Card/InHandDodging.gd" id="5_nvjfj"]
+[ext_resource type="Script" path="res://Cards/Card/StateMachine/InHandHovering.gd" id="5_33fhk"]
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/InDeck.gd" id="5_txtxl"]
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/InMouse.gd" id="6_1dwg2"]
-[ext_resource type="Script" path="res://Cards/Card/InHandHovering.gd" id="6_l7005"]
-[ext_resource type="Script" path="res://Cards/Card/InMouseTargeting.gd" id="9_neiyx"]
-[ext_resource type="Script" path="res://Cards/Card/InGraveyard.gd" id="10_avro7"]
+[ext_resource type="Script" path="res://Cards/Card/StateMachine/InMouseTargeting.gd" id="8_gypmt"]
+[ext_resource type="Script" path="res://Cards/Card/StateMachine/InGraveyard.gd" id="9_xqn0n"]
 [ext_resource type="Script" path="res://Cards/Card/TargetingPath.gd" id="10_umcyt"]
 [ext_resource type="Script" path="res://Cards/Card/Focus.gd" id="11_htnrv"]
 [ext_resource type="Script" path="res://Cards/Card/CardGraphics.gd" id="12_2suqo"]
@@ -27,11 +27,10 @@ script = ExtResource("4_v7i73")
 Focus = NodePath("../../Focus")
 
 [node name="InHandDodging" type="Node" parent="StateMachine"]
-script = ExtResource("5_nvjfj")
-amountToDodge = 35
+script = ExtResource("4_ksbwj")
 
 [node name="InHandHovering" type="Node" parent="StateMachine"]
-script = ExtResource("6_l7005")
+script = ExtResource("5_33fhk")
 
 [node name="InDeck" type="Node" parent="StateMachine"]
 script = ExtResource("5_txtxl")
@@ -40,12 +39,11 @@ script = ExtResource("5_txtxl")
 script = ExtResource("6_1dwg2")
 
 [node name="InMouseTargeting" type="Node" parent="StateMachine" node_paths=PackedStringArray("TargetingPath")]
-script = ExtResource("9_neiyx")
-targetingCardPos = Vector2(150, 300)
+script = ExtResource("8_gypmt")
 TargetingPath = NodePath("../../TargetingPath")
 
 [node name="InGraveyard" type="Node" parent="StateMachine"]
-script = ExtResource("10_avro7")
+script = ExtResource("9_xqn0n")
 
 [node name="StateLabel" type="Label" parent="."]
 offset_right = 40.0

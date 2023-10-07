@@ -3,6 +3,7 @@
 
 extends Node
 
-signal slot_hovered(isTrue: bool)
+signal slot_hovered(slotState: int)
+signal slot_de_hovered
 
 signal card_moved_within_hand
