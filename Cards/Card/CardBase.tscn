@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ddujmpbw7u7gp"]
+[gd_scene load_steps=15 format=3 uid="uid://ddujmpbw7u7gp"]
 
 [ext_resource type="Script" path="res://Cards/Card/CardBase.gd" id="1_xh6q3"]
 [ext_resource type="Texture2D" uid="uid://dte4ie6x8eqvq" path="res://Assets/CardBaseSimple.png" id="2_pmdl2"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Cards/Card/TargetingPath.gd" id="10_umcyt"]
 [ext_resource type="Script" path="res://Cards/Card/Focus.gd" id="11_htnrv"]
 [ext_resource type="Script" path="res://Cards/Card/CardGraphics.gd" id="12_2suqo"]
+[ext_resource type="Texture2D" uid="uid://dufw4pi4pkto3" path="res://Assets/Plink.png" id="14_kuqrf"]
 
 [node name="CardBase" type="Node2D" groups=["cards"]]
 position = Vector2(50, 76)
@@ -61,7 +62,7 @@ bezierCurve2ndPoint = Vector2(0, -200)
 script = ExtResource("12_2suqo")
 Header = NodePath("Header")
 
-[node name="Sprite2D" type="Sprite2D" parent="CardGraphics"]
+[node name="CardBackground" type="Sprite2D" parent="CardGraphics"]
 texture = ExtResource("2_pmdl2")
 
 [node name="Header" type="Label" parent="CardGraphics"]
@@ -70,6 +71,12 @@ offset_top = -130.0
 offset_right = -40.0
 offset_bottom = -107.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "HEADER"
+
+[node name="CardImage" type="Sprite2D" parent="CardGraphics"]
+position = Vector2(-0.451185, -46.0625)
+scale = Vector2(0.252386, 0.199879)
+texture = ExtResource("14_kuqrf")
 
 [node name="StateLabel" type="Label" parent="."]
 offset_right = 40.0
