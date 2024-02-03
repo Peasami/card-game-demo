@@ -1,3 +1,6 @@
+# This state is entered when player drags the card from hand to board.
+# Card is zoomed in, and an indicator shows where it is being played on.
+
 extends CardState
 
 @export var targetingCardPos: Vector2

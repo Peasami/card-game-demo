@@ -1,6 +1,5 @@
 # Tracks the position/state of cards on the board.
 # For easier access to location of each card.
-
 extends Node
 
 var cardsInDeck = []

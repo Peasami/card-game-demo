@@ -1,3 +1,5 @@
+# Stores possible values for card functions
+
 class_name CardEnums
 extends Node
 

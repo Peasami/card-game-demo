@@ -42,6 +42,7 @@ script = ExtResource("6_1dwg2")
 
 [node name="InMouseTargeting" type="Node" parent="StateMachine" node_paths=PackedStringArray("TargetingPath")]
 script = ExtResource("8_gypmt")
+targetingCardPos = Vector2(120, 300)
 TargetingPath = NodePath("../../TargetingPath")
 
 [node name="InGraveyard" type="Node" parent="StateMachine"]
