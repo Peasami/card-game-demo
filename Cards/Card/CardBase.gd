@@ -53,8 +53,6 @@ func initialize_graphics():
 func play_card() -> void:
 	cardProperties.play_card()
 
-
-
 func get_state():
 	return fsm.state.name
 
@@ -68,7 +66,6 @@ func transition_state_to(newState, msg: Dictionary = {}):
 func invoke_enter():
 	fsm.invoke_enter()
 
-
 # Child nodes can call this to inform main scene that this is being hovered 
 func is_hovering_in_hand():
 	emit_signal("hovered_in_hand", self)
@@ -76,12 +73,3 @@ func is_hovering_in_hand():
 # Child nodes can call this to inform main scene that this is not being hovered
 func is_not_hovering_in_hand():
 	emit_signal("de_hovered_in_hand", self)
-
-# Maybe needed. Sometimes cards in hand do not overlap properly,
-# and one card is on top of another card based on initialization order.
-func set_mouse_filter(value: int):
-	$Focus.mouse_filter = value
-
-# Returns the global mouse position for child nodes
-func get_get_global_mouse_pos():
-	return get_global_mouse_position()

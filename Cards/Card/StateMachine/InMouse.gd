@@ -6,7 +6,7 @@ func enter(_msg := {}) -> void:
 	cardBase.z_index = 10
 	tween = create_tween().set_parallel(true)
 	tween.tween_property(cardBase, 'scale', Vector2(0.7,0.7), 0.1)
-	tween.tween_property(cardBase, 'position', cardBase.get_get_global_mouse_pos(), 0.1)
+	tween.tween_property(cardBase, 'position', cardBase.get_global_mouse_position(), 0.1)
 	tween.tween_property(cardBase, 'rotation', 0, 0.1)
 
 func exit():
@@ -14,7 +14,7 @@ func exit():
 
 func physics_update(_delta: float) -> void:
 	#Get the global mouse position from CardBase
-	cardBase.position = cardBase.get_get_global_mouse_pos()
+	cardBase.position = cardBase.get_global_mouse_position()
 	if cardBase.position.y < 500:
 		state_machine.transition_to("InMouseTargeting")
 		
