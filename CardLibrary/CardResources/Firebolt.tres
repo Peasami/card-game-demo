@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CardResBase" load_steps=3 format=3 uid="uid://c3x4wh20w8euw"]
+
+[ext_resource type="Script" path="res://CardLibrary/CardResBase.gd" id="1_3ecgt"]
+[ext_resource type="Script" path="res://CardLibrary/CardScripts/FireboltAction.gd" id="1_y1v0s"]
+
+[resource]
+script = ExtResource("1_3ecgt")
+name = ""
+legal_targets = Array[int]([])
+on_play_script = ExtResource("1_y1v0s")
+cost = 0

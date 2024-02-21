@@ -15,7 +15,7 @@ func _ready():
 		var card1 = load("res://Cards/Card/CardBase.tscn").instantiate()
 		card1.connect("hovered_in_hand", hovering_in_hand)
 		card1.connect("de_hovered_in_hand", de_hovering_in_hand)
-		card1.initialize_card_as(playerDeck.get_card_instance("Firebolt"))
+		#card1.initialize_card_as(playerDeck.get_card_instance("Firebolt"))
 		add_child(card1)
 	
 	# Connect signal from event bus. Called whenever a card is moved within hand
