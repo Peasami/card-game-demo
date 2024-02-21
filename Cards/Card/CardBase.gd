@@ -8,6 +8,8 @@ extends Node2D
 signal hovered_in_hand
 signal de_hovered_in_hand
 
+@export var card_res: CardResBase
+
 ## Takes the node that owns this node just above as cardsManager
 @onready var cardsManager: Node = $".."
 @onready var cardGraphics := $CardGraphics
@@ -27,6 +29,9 @@ var baseScale := Vector2(0.5,0.5)
 # Should probably be a global singleton
 const graveyardPos := Vector2(1100, 550)
 const deckPos := Vector2(50, 550)
+
+func _ready():
+	cardGraphics.set_header(card_res.name)
 
 func _process(_delta):
 	# DEBUGGING #
@@ -51,7 +56,7 @@ func initialize_graphics():
 
 # Called when card is played legally
 func play_card() -> void:
-	cardProperties.play_card()
+	card_res._on_play(self, 1, [4])
 
 func get_state():
 	return fsm.state.name

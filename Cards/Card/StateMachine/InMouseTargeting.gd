@@ -57,14 +57,15 @@ func play_card():
 
 # Called when a slot sends a signal that it is hovered. Takes in the slot's state.
 func _on_slot_hovered(slotState: int):
-	match cardBase.cardInfo.target:
-		CardEnums.card_target.SINGLE, \
-		CardEnums.card_target.AOE_ENEMY, \
-		CardEnums.card_target.SINGLE_ENEMY:
-			hasLegalTarget = true
-			TargetingPath.targeting_line_valid()
-		_:
-			return
+	for i in cardBase.card_res.legal_targets:
+		match i:
+			CardEnums.card_target.SINGLE, \
+			CardEnums.card_target.AOE_ENEMY, \
+			CardEnums.card_target.SINGLE_ENEMY:
+				hasLegalTarget = true
+				TargetingPath.targeting_line_valid()
+			_:
+				return
 
 func _on_slot_de_hovered():
 	hasLegalTarget = false

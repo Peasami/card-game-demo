@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://ddujmpbw7u7gp"]
+[gd_scene load_steps=16 format=3 uid="uid://ddujmpbw7u7gp"]
 
 [ext_resource type="Script" path="res://Cards/Card/CardBase.gd" id="1_xh6q3"]
+[ext_resource type="Resource" uid="uid://c3x4wh20w8euw" path="res://CardLibrary/CardResources/Firebolt.tres" id="2_m7akh"]
 [ext_resource type="Texture2D" uid="uid://dte4ie6x8eqvq" path="res://Assets/CardBaseSimple.png" id="2_pmdl2"]
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/StateMachine.gd" id="3_qd1es"]
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/InHandDodging.gd" id="4_ksbwj"]
@@ -19,6 +20,7 @@
 position = Vector2(50, 76)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_xh6q3")
+card_res = ExtResource("2_m7akh")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_qd1es")
