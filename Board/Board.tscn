@@ -59,19 +59,68 @@ script = ExtResource("8_ifeit")
 
 [node name="CardSlotsManager" type="Node" parent="."]
 
-[node name="CardSlotBase1" parent="CardSlotsManager" instance=ExtResource("9_s35uq")]
-position = Vector2(500, 300)
+[node name="CardSlotBase9" parent="CardSlotsManager" instance=ExtResource("9_s35uq")]
+position = Vector2(490, 342)
 
-[node name="CardSlotBase2" parent="CardSlotsManager" instance=ExtResource("9_s35uq")]
-position = Vector2(580, 300)
+[node name="CardSlotBase10" parent="CardSlotsManager" instance=ExtResource("9_s35uq")]
+position = Vector2(570, 342)
 card_slot_id = 1
 
-[node name="CardSlotBase3" parent="CardSlotsManager" instance=ExtResource("9_s35uq")]
-position = Vector2(500, 380)
+[node name="CardSlotBase11" parent="CardSlotsManager" instance=ExtResource("9_s35uq")]
+position = Vector2(490, 422)
 card_slot_id = 2
 
-[node name="CardSlotBase4" parent="CardSlotsManager" instance=ExtResource("9_s35uq")]
-position = Vector2(580, 380)
+[node name="CardSlotBase12" parent="CardSlotsManager" instance=ExtResource("9_s35uq")]
+position = Vector2(570, 422)
+card_slot_id = 3
+
+[node name="CardSlotBase13" parent="CardSlotsManager" instance=ExtResource("9_s35uq")]
+position = Vector2(650, 342)
+
+[node name="CardSlotBase14" parent="CardSlotsManager" instance=ExtResource("9_s35uq")]
+position = Vector2(730, 342)
+card_slot_id = 1
+
+[node name="CardSlotBase15" parent="CardSlotsManager" instance=ExtResource("9_s35uq")]
+position = Vector2(650, 422)
+card_slot_id = 2
+
+[node name="CardSlotBase16" parent="CardSlotsManager" instance=ExtResource("9_s35uq")]
+position = Vector2(730, 422)
+card_slot_id = 3
+
+[node name="GridContainer" type="GridContainer" parent="CardSlotsManager"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CardSlotBase1" parent="CardSlotsManager/GridContainer" instance=ExtResource("9_s35uq")]
+position = Vector2(490, 180)
+
+[node name="CardSlotBase2" parent="CardSlotsManager/GridContainer" instance=ExtResource("9_s35uq")]
+position = Vector2(570, 180)
+card_slot_id = 1
+
+[node name="CardSlotBase3" parent="CardSlotsManager/GridContainer" instance=ExtResource("9_s35uq")]
+position = Vector2(490, 260)
+card_slot_id = 2
+
+[node name="CardSlotBase4" parent="CardSlotsManager/GridContainer" instance=ExtResource("9_s35uq")]
+position = Vector2(570, 260)
+card_slot_id = 3
+
+[node name="CardSlotBase5" parent="CardSlotsManager/GridContainer" instance=ExtResource("9_s35uq")]
+position = Vector2(650, 180)
+
+[node name="CardSlotBase6" parent="CardSlotsManager/GridContainer" instance=ExtResource("9_s35uq")]
+position = Vector2(730, 180)
+card_slot_id = 1
+
+[node name="CardSlotBase7" parent="CardSlotsManager/GridContainer" instance=ExtResource("9_s35uq")]
+position = Vector2(650, 260)
+card_slot_id = 2
+
+[node name="CardSlotBase8" parent="CardSlotsManager/GridContainer" instance=ExtResource("9_s35uq")]
+position = Vector2(730, 260)
 card_slot_id = 3
 
 [node name="PlayerDeck" type="Node" parent="."]
