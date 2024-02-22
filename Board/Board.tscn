@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfborqb723c4i"]
+[gd_scene load_steps=12 format=3 uid="uid://cfborqb723c4i"]
 
 [ext_resource type="Texture2D" uid="uid://0n3nwxr7avum" path="res://Assets/icon.png" id="1_ha250"]
 [ext_resource type="Script" path="res://Board/DrawCard.gd" id="2_056xs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Board/HandPositioning.gd" id="5_5mq2q"]
 [ext_resource type="Script" path="res://Board/DebugDraw.gd" id="6_l0t44"]
 [ext_resource type="Script" path="res://Board/PlayerStatsInfo.gd" id="7_dduf4"]
+[ext_resource type="Script" path="res://Board/EnemyManager.gd" id="7_un35l"]
 [ext_resource type="Script" path="res://Board/CardSlotsManager.gd" id="8_hmci2"]
 [ext_resource type="Script" path="res://Board/CardTracker.gd" id="8_ifeit"]
 [ext_resource type="PackedScene" uid="uid://umgwevyujq4" path="res://Enemies/EnemyBase.tscn" id="10_6e0a5"]
@@ -50,6 +51,17 @@ metadata/_edit_use_anchors_ = true
 [node name="PlayerStatsInfo" type="Node" parent="."]
 script = ExtResource("7_dduf4")
 
+[node name="EnemyManager" type="Node" parent="."]
+script = ExtResource("7_un35l")
+
+[node name="EnemyBase2" parent="EnemyManager" instance=ExtResource("10_6e0a5")]
+z_index = 1
+position = Vector2(123, 506)
+
+[node name="EnemyBase" parent="EnemyManager" instance=ExtResource("10_6e0a5")]
+z_index = 1
+position = Vector2(256, 506)
+
 [node name="CardTracker" type="Label" parent="."]
 offset_left = 858.0
 offset_top = 50.0
@@ -62,8 +74,5 @@ script = ExtResource("8_hmci2")
 
 [node name="PlayerDeck" type="Node" parent="."]
 script = ExtResource("10_yycy3")
-
-[node name="EnemyBase" parent="." instance=ExtResource("10_6e0a5")]
-position = Vector2(31, 315)
 
 [connection signal="clicked" from="DrawCard" to="CardsManager" method="_on_draw_card_clicked"]

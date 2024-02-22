@@ -7,8 +7,9 @@
 [ext_resource type="Script" path="res://Enemies/HealthComponent.gd" id="5_oo3tg"]
 [ext_resource type="Script" path="res://Enemies/GridMoveComponent.gd" id="6_8tcx2"]
 
-[node name="EnemyBase" type="Node2D"]
+[node name="EnemyBase" type="Node2D" node_paths=PackedStringArray("move_component")]
 script = ExtResource("1_qsgn3")
+move_component = NodePath("GridMoveComponent")
 
 [node name="EnemyGraphics" type="Node2D" parent="."]
 
