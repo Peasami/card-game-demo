@@ -2,5 +2,5 @@ extends Node
 
 @export var movespeed: int
 
-func move():
+func move(target_slot: int):
 	pass

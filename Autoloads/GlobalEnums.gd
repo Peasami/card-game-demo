@@ -11,3 +11,8 @@ enum damage_type{
 	NORMAL,
 	HEAL
 }
+
+enum card_slot_type{
+	ALLY,
+	ENEMY
+}
