@@ -1,0 +1,90 @@
+[gd_scene load_steps=16 format=3 uid="uid://ddujmpbw7u7gp"]
+
+[ext_resource type="Script" path="res://Cards/Card/CardBase.gd" id="1_xh6q3"]
+[ext_resource type="Resource" uid="uid://c3x4wh20w8euw" path="res://CardLibrary/CardResources/Firebolt.tres" id="2_m7akh"]
+[ext_resource type="Texture2D" uid="uid://dte4ie6x8eqvq" path="res://Assets/CardBaseSimple.png" id="2_pmdl2"]
+[ext_resource type="Script" path="res://Cards/Card/StateMachine/StateMachine.gd" id="3_qd1es"]
+[ext_resource type="Script" path="res://Cards/Card/StateMachine/InHandDodging.gd" id="4_ksbwj"]
+[ext_resource type="Script" path="res://Cards/Card/StateMachine/InHand.gd" id="4_v7i73"]
+[ext_resource type="Script" path="res://Cards/Card/StateMachine/InHandHovering.gd" id="5_33fhk"]
+[ext_resource type="Script" path="res://Cards/Card/StateMachine/InDeck.gd" id="5_txtxl"]
+[ext_resource type="Script" path="res://Cards/Card/StateMachine/InMouse.gd" id="6_1dwg2"]
+[ext_resource type="Script" path="res://Cards/Card/StateMachine/InMouseTargeting.gd" id="8_gypmt"]
+[ext_resource type="Script" path="res://Cards/Card/StateMachine/InGraveyard.gd" id="9_xqn0n"]
+[ext_resource type="Script" path="res://Cards/Card/TargetingPath.gd" id="10_umcyt"]
+[ext_resource type="Script" path="res://Cards/Card/Focus.gd" id="11_htnrv"]
+[ext_resource type="Script" path="res://Cards/Card/CardGraphics.gd" id="12_2suqo"]
+[ext_resource type="Texture2D" uid="uid://dufw4pi4pkto3" path="res://Assets/Plink.png" id="14_kuqrf"]
+
+[node name="CardBase" type="Node2D" groups=["cards"]]
+position = Vector2(50, 76)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_xh6q3")
+card_res = ExtResource("2_m7akh")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_qd1es")
+
+[node name="InHand" type="Node" parent="StateMachine" node_paths=PackedStringArray("Focus")]
+script = ExtResource("4_v7i73")
+Focus = NodePath("../../Focus")
+
+[node name="InHandDodging" type="Node" parent="StateMachine"]
+script = ExtResource("4_ksbwj")
+amountToDodge = 25
+
+[node name="InHandHovering" type="Node" parent="StateMachine"]
+script = ExtResource("5_33fhk")
+
+[node name="InDeck" type="Node" parent="StateMachine"]
+script = ExtResource("5_txtxl")
+
+[node name="InMouse" type="Node" parent="StateMachine"]
+script = ExtResource("6_1dwg2")
+
+[node name="InMouseTargeting" type="Node" parent="StateMachine" node_paths=PackedStringArray("TargetingPath")]
+script = ExtResource("8_gypmt")
+targetingCardPos = Vector2(120, 300)
+TargetingPath = NodePath("../../TargetingPath")
+
+[node name="InGraveyard" type="Node" parent="StateMachine"]
+script = ExtResource("9_xqn0n")
+
+[node name="Focus" type="TextureButton" parent="."]
+offset_left = -75.0
+offset_top = -130.0
+offset_right = 75.0
+offset_bottom = 150.0
+script = ExtResource("11_htnrv")
+
+[node name="TargetingPath" type="Node2D" parent="."]
+script = ExtResource("10_umcyt")
+bezierCurve2ndPoint = Vector2(0, -200)
+
+[node name="CardGraphics" type="Node2D" parent="." node_paths=PackedStringArray("Header")]
+script = ExtResource("12_2suqo")
+Header = NodePath("Header")
+
+[node name="CardBackground" type="Sprite2D" parent="CardGraphics"]
+texture = ExtResource("2_pmdl2")
+
+[node name="Header" type="Label" parent="CardGraphics"]
+offset_left = -80.0
+offset_top = -130.0
+offset_right = -40.0
+offset_bottom = -107.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "HEADER"
+
+[node name="CardImage" type="Sprite2D" parent="CardGraphics"]
+position = Vector2(-0.451185, -46.0625)
+scale = Vector2(0.252386, 0.199879)
+texture = ExtResource("14_kuqrf")
+
+[node name="StateLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="gui_input" from="Focus" to="StateMachine" method="_on_Focus_gui_input"]
+[connection signal="mouse_entered" from="Focus" to="StateMachine" method="_on_focus_mouse_entered"]
+[connection signal="mouse_exited" from="Focus" to="StateMachine" method="_on_focus_mouse_exited"]

@@ -8,5 +8,5 @@ extends Resource
 @export var cost: int
 
 func _on_play(source_card: CardBase, target_slot_num: int, values: Array[int]):
-	if on_play_script != null and on_play_script.has_method('on_play'):
+	if on_play_script != null :
 		on_play_script.on_play(source_card, target_slot_num, values)
