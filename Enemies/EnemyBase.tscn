@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://umgwevyujq4"]
+[gd_scene load_steps=7 format=3 uid="uid://umgwevyujq4"]
 
 [ext_resource type="Script" path="res://Enemies/EnemyBase.gd" id="1_qsgn3"]
 [ext_resource type="Texture2D" uid="uid://0n3nwxr7avum" path="res://Assets/icon.png" id="1_sg5jm"]
 [ext_resource type="Script" path="res://Enemies/EnemyStats.gd" id="2_rhynl"]
 [ext_resource type="Script" path="res://Enemies/PositionalInfo.gd" id="3_5ct4i"]
+[ext_resource type="Script" path="res://Enemies/HealthComponent.gd" id="5_oo3tg"]
+[ext_resource type="Script" path="res://Enemies/GridMoveComponent.gd" id="6_8tcx2"]
 
 [node name="EnemyBase" type="Node2D"]
 script = ExtResource("1_qsgn3")
@@ -21,3 +23,9 @@ script = ExtResource("2_rhynl")
 script = ExtResource("3_5ct4i")
 
 [node name="StateMachine" type="Node" parent="."]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("5_oo3tg")
+
+[node name="GridMoveComponent" type="Node" parent="."]
+script = ExtResource("6_8tcx2")

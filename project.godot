@@ -17,9 +17,9 @@ config/icon="res://Assets/icon.png"
 
 [autoload]
 
-PlayerVariables="*res://Autoloads/PlayerVariables.gd"
+PlayerVariables="res://Autoloads/PlayerVariables.gd"
 Events="*res://Autoloads/Events.gd"
-GlobalEnums="*res://Autoloads/GlobalEnums.gd"
+GlobalEnums="res://Autoloads/GlobalEnums.gd"
 CardTracking="*res://Autoloads/CardTracking.gd"
 
 [gui]
