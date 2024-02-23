@@ -5,7 +5,7 @@ func enter(_msg := {}) -> void:
 	cardBase.is_hovering_in_hand()
 	
 	cardBase.scale = Vector2(0.8, 0.8)
-	cardBase.position = Vector2(cardBase.anchorPosition.x, 540)
+	cardBase.position = Vector2(cardBase.anchorPosition.x, 1000)
 	cardBase.rotation = 0
 	
 	## Put card to show on top of other cards

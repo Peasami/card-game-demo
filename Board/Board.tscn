@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfborqb723c4i"]
+[gd_scene load_steps=14 format=3 uid="uid://cfborqb723c4i"]
 
 [ext_resource type="Texture2D" uid="uid://0n3nwxr7avum" path="res://Assets/icon.png" id="1_ha250"]
 [ext_resource type="Script" path="res://Board/DrawCard.gd" id="2_056xs"]
@@ -11,9 +11,10 @@
 [ext_resource type="Script" path="res://Board/CardTracker.gd" id="8_ifeit"]
 [ext_resource type="PackedScene" uid="uid://umgwevyujq4" path="res://Enemies/EnemyBase.tscn" id="10_6e0a5"]
 [ext_resource type="Script" path="res://Board/PlayerDeck.gd" id="10_yycy3"]
+[ext_resource type="Texture2D" uid="uid://byfxbvt7s0v1k" path="res://Assets/BoardBase.png" id="12_4m3al"]
+[ext_resource type="Texture2D" uid="uid://dkb7nxs1teb1i" path="res://Assets/Slot.png" id="12_p2oka"]
 
 [node name="BoardBase" type="Node2D"]
-position = Vector2(108, 118)
 
 [node name="DrawCard" type="TextureButton" parent="."]
 offset_left = 935.0
@@ -31,7 +32,6 @@ playerDeck = NodePath("../PlayerDeck")
 
 [node name="HandPositioning" type="Node" parent="."]
 script = ExtResource("5_5mq2q")
-yCenterOffset = 700.0
 distanceBetweenCards = 45
 
 [node name="Sprite2D" type="Sprite2D" parent="HandPositioning"]
@@ -74,5 +74,25 @@ script = ExtResource("8_hmci2")
 
 [node name="PlayerDeck" type="Node" parent="."]
 script = ExtResource("10_yycy3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(584, 100)
+scale = Vector2(4, 4)
+texture = ExtResource("12_p2oka")
+centered = false
+
+[node name="BoardSprite" type="Sprite2D" parent="."]
+z_index = -10
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("12_4m3al")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(669, 184)
+scale = Vector2(4, 4)
+texture = ExtResource("12_p2oka")
 
 [connection signal="clicked" from="DrawCard" to="CardsManager" method="_on_draw_card_clicked"]

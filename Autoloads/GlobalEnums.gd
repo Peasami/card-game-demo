@@ -1,5 +1,4 @@
 class_name Enums
-extends Node
 
 enum slot_state{
 	EMPTY,

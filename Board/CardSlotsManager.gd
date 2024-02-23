@@ -10,8 +10,10 @@ var card_slot_base = preload("res://CardSlots/CardSlotBase.tscn")
 func _ready():
 	for i in 16:
 		var card_slot_instance = card_slot_base.instantiate()
-		add_child(card_slot_instance)
 		card_slot_instance.position = CardSlotData.get_slot_position(i)
+		card_slot_instance.z_index = -5
+		add_child(card_slot_instance)
+		
 
 func get_card_slot_position(slot_id: int) -> Vector2:
 	if ! get_child(slot_id):

@@ -10,8 +10,8 @@ extends Node
 @export var ySemiAxel = 120.0    # and height
 
 
-@export var xCenterOffset = 500.0   # Center of ellipse x coordinate
-@export var yCenterOffset = 650.0   # Center of ellipse y coordinate
+@export var xCenterOffset = 1920/2   # Center of ellipse x coordinate
+@export var yCenterOffset = 1100   # Center of ellipse y coordinate
 
 @export var distanceBetweenCards = 60
 
