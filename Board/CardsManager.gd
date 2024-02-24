@@ -5,7 +5,6 @@
 class_name CardsManager
 extends Node
 
-@export var handEllipseData: Node # Has positional info for cards in hand
 @export var playerStats: Node # stats like hp and base mana
 @export var playerDeck: Node # info on all cards in deck
 
@@ -49,8 +48,8 @@ func draw_cards(amountToDraw: int = 1):
 # Takes into account cards that are InMouse.
 func organize_hand():
 	for card in CardTracking.cardsInHand:
-		card.anchorPosition = handEllipseData.get_card_position_in_hand(CardTracking.cardsInHand.find(card), CardTracking.cardsInHand.size())
-		card.anchorRotation = handEllipseData.get_card_hand_rotation(card.anchorPosition.x)
+		card.anchorPosition = CardPositionData.get_card_position_in_hand(CardTracking.cardsInHand.find(card), CardTracking.cardsInHand.size())
+		card.anchorRotation = CardPositionData.get_card_hand_rotation(card.anchorPosition.x)
 		card.transition_state_to("InHand")
 
 # Called when a card is hovered. Informs other CardBases to dodge
