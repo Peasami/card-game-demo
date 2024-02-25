@@ -4,6 +4,7 @@ extends CardState
 @export var Focus: TextureButton
 
 func enter(_msg := {}) -> void:
+	print(name)
 	if !CardTracking.cardsInHand.has(cardBase):
 		CardTracking.cardsInHand.append(cardBase)
 

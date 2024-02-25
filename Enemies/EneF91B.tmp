@@ -21,7 +21,6 @@ texture = ExtResource("1_sg5jm")
 script = ExtResource("5_oo3tg")
 
 [node name="GridMoveComponent" type="Node" parent="."]
-unique_name_in_owner = true
 script = ExtResource("6_8tcx2")
+movespeed = null
 signal_to_emit = "enemy_moved_in_grid"
-ENEMY = true

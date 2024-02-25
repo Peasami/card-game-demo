@@ -1,14 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://dym0rqdekmfeg"]
+[gd_scene load_steps=8 format=3 uid="uid://dym0rqdekmfeg"]
 
 [ext_resource type="Script" path="res://CardSlots/CardSlotBase.gd" id="1_3mjmu"]
 [ext_resource type="Texture2D" uid="uid://dkb7nxs1teb1i" path="res://Assets/Slot.png" id="2_x0h4x"]
 [ext_resource type="Script" path="res://CardSlots/SlotStateMachine/SlotStateMachine.gd" id="3_3jd87"]
 [ext_resource type="Script" path="res://CardSlots/CardSlotFocus.gd" id="3_jt4j8"]
 [ext_resource type="Script" path="res://CardSlots/SlotStateMachine/SlotEmpty.gd" id="4_y0xbc"]
-[ext_resource type="Script" path="res://CardSlots/CardSlotInfo.gd" id="5_564p6"]
+[ext_resource type="Script" path="res://CardSlots/SlotEnemy.gd" id="6_blvs3"]
+[ext_resource type="Script" path="res://CardSlots/SlottedTracking.gd" id="7_vlofm"]
 
-[node name="CardSlotBase" type="Node2D"]
+[node name="CardSlotBase" type="Node2D" node_paths=PackedStringArray("state_machine")]
 script = ExtResource("1_3mjmu")
+state_machine = NodePath("SlotStateMachine")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -31,8 +33,11 @@ script = ExtResource("3_3jd87")
 [node name="SlotEmpty" type="Node" parent="SlotStateMachine"]
 script = ExtResource("4_y0xbc")
 
-[node name="CardSlotInfo" type="Node" parent="."]
-script = ExtResource("5_564p6")
+[node name="SlotEnemy" type="Node" parent="SlotStateMachine"]
+script = ExtResource("6_blvs3")
+
+[node name="SlottedTrackingComponent" type="Node" parent="."]
+script = ExtResource("7_vlofm")
 
 [connection signal="mouse_entered" from="CardSlotFocus" to="CardSlotFocus" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="CardSlotFocus" to="CardSlotFocus" method="_on_mouse_exited"]

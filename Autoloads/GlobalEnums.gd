@@ -1,3 +1,4 @@
+extends Node
 class_name Enums
 
 enum slot_state{

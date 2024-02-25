@@ -54,7 +54,8 @@ func on_input(_event):
 		cardBase.is_not_hovering_in_hand()
 
 
-# Called when a slot sends a signal that it is hovered. Takes in the slot's state.
+# Called when a slot sends a signal that it is hovered.
+#/ TODO: Match each slot state to card's legal targets
 func _on_slot_hovered(slotState: int, slot_id: int):
 	targeted_slot_id = slot_id
 	for i in cardBase.card_res.legal_targets:
@@ -63,7 +64,7 @@ func _on_slot_hovered(slotState: int, slot_id: int):
 			CardEnums.card_target.AOE_ENEMY, \
 			CardEnums.card_target.SINGLE_ENEMY:
 				hasLegalTarget = true
-				TargetingPath.targeting_line_valid()
+				TargetingPath.targeting_line_valid() 
 			_:
 				return
 

@@ -35,19 +35,6 @@ func _process(_delta):
 	# DEBUGGING #
 	state_label.text = fsm.state.name + "\n" + str(z_index) + "\n" + str(anchorPosition)
 
-# Initializing card properities.
-# Takes in an instance of cardProperties node,
-# Which defines the functionality of each card
-func initialize_card_as(cardNodeInstance: Node):
-	cardProperties = cardNodeInstance
-	# Cloning cardInfo -Array to this node for better access
-	cardInfo = cardNodeInstance.get_card_info_array()
-	#legalTargets = CARDINFO.
-	print("legal targets: ", legalTargets)
-	add_child(cardNodeInstance)
-	initialize_graphics()
-	print("initializing card as: ",cardNodeInstance)
-
 # Set graphics and text
 func initialize_graphics():
 	$CardGraphics.set_header(cardInfo["name"])
