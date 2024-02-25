@@ -14,7 +14,7 @@ func _ready():
 		card_slot_instance.card_slot_id = i
 		card_slot_instance.z_index = -5
 		add_child(card_slot_instance)
-		
+	Events.emit_signal('grid_created')
 
 func get_card_slot_position(slot_id: int) -> Vector2:
 	if ! get_child(slot_id):

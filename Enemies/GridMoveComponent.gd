@@ -1,7 +1,9 @@
 extends Node
 
+const thing1 := ['hi', 'hello']
+
 @export var movespeed: int
-@export var signal_to_emit: String
+@export_enum('enemy_moved_in_grid') var signal_to_emit: String
 @export var clamp_values: int
 
 @export_category('legal_slots')
