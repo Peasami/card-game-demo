@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://Cards/Card/TargetingPath.gd" id="10_umcyt"]
 [ext_resource type="Script" path="res://Cards/Card/Focus.gd" id="11_htnrv"]
 [ext_resource type="Script" path="res://Cards/Card/CardGraphics.gd" id="12_2suqo"]
-[ext_resource type="Texture2D" uid="uid://dufw4pi4pkto3" path="res://Assets/Plink.png" id="14_kuqrf"]
+[ext_resource type="Texture2D" uid="uid://cjj3fjokrg81m" path="res://Assets/Cat-mage.png" id="15_hwf1s"]
 
 [node name="CardBase" type="Node2D" groups=["cards"]]
 position = Vector2(50, 76)
@@ -51,6 +51,7 @@ TargetingPath = NodePath("../../TargetingPath")
 script = ExtResource("9_xqn0n")
 
 [node name="Focus" type="TextureButton" parent="."]
+unique_name_in_owner = true
 offset_left = -75.0
 offset_top = -130.0
 offset_right = 75.0
@@ -58,6 +59,7 @@ offset_bottom = 150.0
 script = ExtResource("11_htnrv")
 
 [node name="TargetingPath" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("10_umcyt")
 bezierCurve2ndPoint = Vector2(0, -200)
 
@@ -77,9 +79,10 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "HEADER"
 
 [node name="CardImage" type="Sprite2D" parent="CardGraphics"]
-position = Vector2(-0.451185, -46.0625)
-scale = Vector2(0.252386, 0.199879)
-texture = ExtResource("14_kuqrf")
+texture_filter = 1
+position = Vector2(0, -64)
+scale = Vector2(4, 4)
+texture = ExtResource("15_hwf1s")
 
 [node name="StateLabel" type="Label" parent="."]
 offset_right = 40.0

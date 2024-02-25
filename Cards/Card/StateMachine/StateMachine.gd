@@ -3,10 +3,8 @@
 class_name StateMachine
 extends Node
 
-
 # initial state
 @onready var state: CardState = get_node("InDeck")
-
 
 func _ready() -> void:
 	await owner.ready
@@ -32,6 +30,7 @@ func _physics_process(delta: float) -> void:
 
 
 func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:
+	print("transitioning to: ", target_state_name)
 	if not has_node(target_state_name):
 		return
 	state.exit()

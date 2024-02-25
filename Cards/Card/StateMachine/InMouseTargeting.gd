@@ -33,7 +33,7 @@ func exit():
 
 
 func physics_update(_delta: float) -> void:
-	if cardBase.get_global_mouse_position().y > 500:
+	if cardBase.get_global_mouse_position().y > CardPositionData.hand_targeting_height:
 		state_machine.transition_to("InMouse")
 
 

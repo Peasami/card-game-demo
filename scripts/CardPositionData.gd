@@ -15,11 +15,16 @@ class_name CardPositionData
 const xSemiAxel = 450.0    # Defines the width of the ellipse
 const ySemiAxel = 120.0    # and height
 
-
 const xCenterOffset = 1920/2   # Center of ellipse x coordinate
 const yCenterOffset = 1100   # Center of ellipse y coordinate
 
 const distanceBetweenCards = 60
+
+# y value above which a card becomes enlarged while in hand
+const hand_targeting_height := 900
+const zoom_height := 950
+
+const graveyard_position := Vector2(1800, 900)
 
 # Returns the y coordinate of the ellipse at the given x coordinate.
 static func calculate_ellipse_y(xA):

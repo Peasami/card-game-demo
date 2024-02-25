@@ -26,8 +26,6 @@ var anchorRotation:float   ## ^ but for rotation
 var anchorZIndex:int = 0 ## ^ but for z_index
 var baseScale := Vector2(0.5,0.5)
 
-# Should probably be a global singleton
-const graveyardPos := Vector2(1100, 550)
 const deckPos := Vector2(50, 550)
 
 func _ready():
@@ -65,7 +63,6 @@ func get_state():
 # call a transition to another state 
 func transition_state_to(newState, msg: Dictionary = {}):
 	fsm.transition_to(newState, msg)
-	print("transitioning to: ", newState)
 
 # When you want to call teh on_enter() method without transitioning.
 func invoke_enter():

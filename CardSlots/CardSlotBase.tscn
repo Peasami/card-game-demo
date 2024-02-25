@@ -21,7 +21,7 @@ offset_top = -74.0
 offset_right = -34.0
 offset_bottom = -34.0
 scale = Vector2(3.7288, 3.72119)
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource("3_jt4j8")
 
 [node name="SlotStateMachine" type="Node" parent="."]

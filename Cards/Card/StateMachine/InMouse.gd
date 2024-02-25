@@ -15,7 +15,7 @@ func exit():
 func physics_update(_delta: float) -> void:
 	#Get the global mouse position from CardBase
 	cardBase.position = cardBase.get_global_mouse_position()
-	if cardBase.position.y < 500:
+	if cardBase.position.y < CardPositionData.hand_targeting_height:
 		state_machine.transition_to("InMouseTargeting")
 		
 
