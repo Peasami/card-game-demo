@@ -53,8 +53,8 @@ func initialize_graphics():
 	$CardGraphics.set_header(cardInfo["name"])
 
 # Called when card is played legally
-func play_card() -> void:
-	card_res._on_play(self, 1, [4])
+func play_card(target_slot) -> void:
+	card_res._on_play(self, target_slot)
 
 func get_state():
 	return fsm.state.name

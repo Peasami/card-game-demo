@@ -11,6 +11,7 @@ func _ready():
 	for i in 16:
 		var card_slot_instance = card_slot_base.instantiate()
 		card_slot_instance.position = CardSlotData.get_slot_position(i)
+		card_slot_instance.card_slot_id = i
 		card_slot_instance.z_index = -5
 		add_child(card_slot_instance)
 		

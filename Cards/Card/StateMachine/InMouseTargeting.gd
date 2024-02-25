@@ -7,6 +7,7 @@ extends CardState
 @export var TargetingPath: Node2D # Node that handles drawing the targeting line
 
 var hasLegalTarget: bool = false
+var targeted_slot_id: int
 
 func enter(_msg := {}) -> void:
 	Events.slot_hovered.connect(_on_slot_hovered)
@@ -43,7 +44,7 @@ func on_input(_event):
 		if hasLegalTarget == true:
 			state_machine.transition_to("InGraveyard")
 			Events.emit_signal("card_moved_within_hand")
-			play_card()
+			cardBase.play_card(targeted_slot_id)
 		else:
 			state_machine.transition_to("InHand")
 			cardBase.is_not_hovering_in_hand()
@@ -52,11 +53,10 @@ func on_input(_event):
 		state_machine.transition_to("InHand")
 		cardBase.is_not_hovering_in_hand()
 
-func play_card():
-	cardBase.play_card()
 
 # Called when a slot sends a signal that it is hovered. Takes in the slot's state.
-func _on_slot_hovered(slotState: int):
+func _on_slot_hovered(slotState: int, slot_id: int):
+	targeted_slot_id = slot_id
 	for i in cardBase.card_res.legal_targets:
 		match i:
 			CardEnums.card_target.SINGLE, \

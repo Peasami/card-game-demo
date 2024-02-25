@@ -15,7 +15,7 @@ texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("2_x0h4x")
 
-[node name="CardSlotFocus" type="TextureButton" parent="."]
+[node name="CardSlotFocus" type="TextureButton" parent="." node_paths=PackedStringArray("parent")]
 offset_left = -74.0
 offset_top = -74.0
 offset_right = -34.0
@@ -23,6 +23,7 @@ offset_bottom = -34.0
 scale = Vector2(3.7288, 3.72119)
 mouse_filter = 1
 script = ExtResource("3_jt4j8")
+parent = NodePath("..")
 
 [node name="SlotStateMachine" type="Node" parent="."]
 script = ExtResource("3_3jd87")
