@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="CardResBase" load_steps=3 format=3 uid="uid://c3x4wh20w8euw"]
+[gd_resource type="Resource" script_class="CardResBase" load_steps=4 format=3 uid="uid://c3x4wh20w8euw"]
 
 [ext_resource type="Script" path="res://CardLibrary/CardResBase.gd" id="1_3ecgt"]
 [ext_resource type="Script" path="res://CardLibrary/CardScripts/FireboltAction.gd" id="1_y1v0s"]
+[ext_resource type="Texture2D" uid="uid://dufw4pi4pkto3" path="res://Assets/Plink.png" id="3_1jlkr"]
 
 [resource]
 script = ExtResource("1_3ecgt")
 name = "Firebolt"
+sprite = ExtResource("3_1jlkr")
 legal_targets = Array[int]([1])
 on_play_script = ExtResource("1_y1v0s")
 cost = 0
