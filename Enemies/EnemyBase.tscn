@@ -1,19 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://umgwevyujq4"]
+[gd_scene load_steps=6 format=3 uid="uid://umgwevyujq4"]
 
 [ext_resource type="Script" path="res://Enemies/EnemyBase.gd" id="1_qsgn3"]
-[ext_resource type="Texture2D" uid="uid://0n3nwxr7avum" path="res://Assets/icon.png" id="1_sg5jm"]
+[ext_resource type="Resource" uid="uid://chlkxvr5ttvrk" path="res://Enemies/EnemyResources/GunRat.tres" id="2_q7rrj"]
+[ext_resource type="Texture2D" uid="uid://bqldpxyjn3abg" path="res://Assets/Tortoise.png" id="3_cx6vc"]
 [ext_resource type="Script" path="res://Enemies/HealthComponent.gd" id="5_oo3tg"]
 [ext_resource type="Script" path="res://Enemies/GridMoveComponent.gd" id="6_8tcx2"]
 
-[node name="EnemyBase" type="Node2D" node_paths=PackedStringArray("move_component")]
+[node name="EnemyBase" type="Node2D"]
 script = ExtResource("1_qsgn3")
-move_component = NodePath("GridMoveComponent")
+enemy_resource = ExtResource("2_q7rrj")
 
 [node name="EnemyGraphics" type="Node2D" parent="."]
 
 [node name="EnemySprite" type="Sprite2D" parent="EnemyGraphics"]
-modulate = Color(1, 0, 0, 1)
-texture = ExtResource("1_sg5jm")
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(0, -20)
+scale = Vector2(4, 4)
+texture = ExtResource("3_cx6vc")
 
 [node name="StateMachine" type="Node" parent="."]
 

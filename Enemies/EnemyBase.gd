@@ -1,7 +1,10 @@
 extends Node
 class_name EnemyBase
 
-@export var move_component: Node
+@export var enemy_resource: Resource
+
+func _ready():
+	%EnemySprite.texture = enemy_resource.sprite
 
 func move_enemy(target_slot: int):
 	$GridMoveComponent.move(self, target_slot)
