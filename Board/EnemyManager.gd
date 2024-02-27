@@ -3,7 +3,7 @@ extends Node
 var enemy_base = preload("res://Enemies/EnemyBase.tscn")
 
 func _init():
-	Events.grid_created.connect(_on_grid_created())
+	Events.grid_created.connect(_on_grid_created)
 
 func _on_grid_created():
 	var enemy_instance = enemy_base.instantiate()

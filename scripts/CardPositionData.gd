@@ -18,7 +18,7 @@ const ySemiAxel = 120.0    # and height
 const xCenterOffset = 1920/2   # Center of ellipse x coordinate
 const yCenterOffset = 1100   # Center of ellipse y coordinate
 
-const distanceBetweenCards = 60
+const distanceBetweenCards = 120
 
 # y value above which a card becomes enlarged while in hand
 const hand_targeting_height := 900

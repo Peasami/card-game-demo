@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Cards/Card/CardBase.gd" id="1_xh6q3"]
 [ext_resource type="Resource" uid="uid://c3x4wh20w8euw" path="res://CardLibrary/CardResources/Firebolt.tres" id="2_m7akh"]
-[ext_resource type="Texture2D" uid="uid://dte4ie6x8eqvq" path="res://Assets/CardBaseSimple.png" id="2_pmdl2"]
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/StateMachine.gd" id="3_qd1es"]
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/InHandDodging.gd" id="4_ksbwj"]
 [ext_resource type="Script" path="res://Cards/Card/StateMachine/InHand.gd" id="4_v7i73"]
@@ -14,7 +13,8 @@
 [ext_resource type="Script" path="res://Cards/Card/TargetingPath.gd" id="10_umcyt"]
 [ext_resource type="Script" path="res://Cards/Card/Focus.gd" id="11_htnrv"]
 [ext_resource type="Script" path="res://Cards/Card/CardGraphics.gd" id="12_2suqo"]
-[ext_resource type="Texture2D" uid="uid://cjj3fjokrg81m" path="res://Assets/Cat-mage.png" id="15_hwf1s"]
+[ext_resource type="Texture2D" uid="uid://guvepjtwla6o" path="res://Assets/card-base-blue.png" id="14_smlq8"]
+[ext_resource type="Texture2D" uid="uid://ce5de8gh3j60j" path="res://Assets/cat-mage-card-art.png" id="15_83ml2"]
 
 [node name="CardBase" type="Node2D" groups=["cards"]]
 position = Vector2(50, 76)
@@ -31,7 +31,7 @@ Focus = NodePath("../../Focus")
 
 [node name="InHandDodging" type="Node" parent="StateMachine"]
 script = ExtResource("4_ksbwj")
-amountToDodge = 25
+amountToDodge = 85
 
 [node name="InHandHovering" type="Node" parent="StateMachine"]
 script = ExtResource("5_33fhk")
@@ -52,10 +52,10 @@ script = ExtResource("9_xqn0n")
 
 [node name="Focus" type="TextureButton" parent="."]
 unique_name_in_owner = true
-offset_left = -75.0
-offset_top = -130.0
-offset_right = 75.0
-offset_bottom = 150.0
+offset_left = -100.0
+offset_top = -152.0
+offset_right = 116.0
+offset_bottom = 152.0
 script = ExtResource("11_htnrv")
 
 [node name="TargetingPath" type="Node2D" parent="."]
@@ -68,21 +68,24 @@ script = ExtResource("12_2suqo")
 Header = NodePath("Header")
 
 [node name="CardBackground" type="Sprite2D" parent="CardGraphics"]
-texture = ExtResource("2_pmdl2")
+texture_filter = 1
+position = Vector2(8, 0)
+scale = Vector2(4, 4)
+texture = ExtResource("14_smlq8")
 
 [node name="Header" type="Label" parent="CardGraphics"]
-offset_left = -80.0
-offset_top = -130.0
-offset_right = -40.0
-offset_bottom = -107.0
+offset_left = -90.0
+offset_top = 30.0
+offset_right = -27.0
+offset_bottom = 53.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "HEADER"
 
 [node name="CardImage" type="Sprite2D" parent="CardGraphics"]
 texture_filter = 1
-position = Vector2(0, -64)
+position = Vector2(8, 0)
 scale = Vector2(4, 4)
-texture = ExtResource("15_hwf1s")
+texture = ExtResource("15_83ml2")
 
 [node name="StateLabel" type="Label" parent="."]
 offset_right = 40.0

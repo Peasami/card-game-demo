@@ -24,7 +24,7 @@ var legalTargets: Array
 var anchorPosition:Vector2 ## The destination where card is tweened towards
 var anchorRotation:float   ## ^ but for rotation
 var anchorZIndex:int = 0 ## ^ but for z_index
-var baseScale := Vector2(0.5,0.5)
+var baseScale := Vector2(1, 1)
 
 const deckPos := Vector2(50, 550)
 

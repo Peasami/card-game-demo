@@ -5,6 +5,12 @@ extends Node2D
 @export var card_slot_type: Enums.card_slot_type
 @export var state_machine: Node
 
+enum state {
+	EMPTY,
+	ENEMY,
+	ALLY
+}
+
 var slotted_enemy: EnemyBase
 
 func _init():

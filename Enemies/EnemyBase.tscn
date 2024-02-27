@@ -22,6 +22,7 @@ texture = ExtResource("3_cx6vc")
 [node name="StateMachine" type="Node" parent="."]
 
 [node name="HealthComponent" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("5_oo3tg")
 
 [node name="GridMoveComponent" type="Node" parent="."]
