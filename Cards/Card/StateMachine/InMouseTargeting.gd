@@ -18,9 +18,6 @@ func enter(_msg := {}) -> void:
 	tween.tween_property(cardBase, 'scale', Vector2(1,1), 0.1)
 	tween.tween_property(cardBase, 'position', targetingCardPos, 0.1)
 	tween.tween_property(cardBase, 'rotation', 0, 0.1)
-	
-	# Enabling targetingline
-	#TargetingPath.set_process(true)
 
 func exit():
 	hasLegalTarget = false
@@ -28,9 +25,7 @@ func exit():
 	Events.slot_de_hovered.disconnect(_on_slot_de_hovered)
 	cardBase.z_index = cardBase.anchorZIndex
 	
-	# Disabling targetingLine, first clearing latest draw
 	TargetingPath.clear_draw()
-	#TargetingPath.set_process(false)
 
 
 func physics_update(_delta: float) -> void:
@@ -41,12 +36,12 @@ func physics_update(_delta: float) -> void:
 
 
 func on_input(_event):
-	if Input.is_action_just_released("left_click"):
+	if Input.is_action_just_released("left_click"): 
 		CardTracking.cardsInMouse.erase(cardBase)
 		if hasLegalTarget == true:
 			state_machine.transition_to("InGraveyard")
 			Events.emit_signal("card_moved_within_hand")
-			cardBase.play_card(targeted_slot_id)
+			cardBase.card_res._on_play(cardBase, targeted_slot_id)
 		else:
 			state_machine.transition_to("InHand")
 			cardBase.is_not_hovering_in_hand()

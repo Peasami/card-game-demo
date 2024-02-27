@@ -1,11 +1,9 @@
 extends Node
 
-const thing1 := ['hi', 'hello']
+signal moved_in_grid(new_slot_id)
 
 @export var movespeed: int
-@export_enum('enemy_moved_in_grid') var signal_to_emit: String
 @export var clamp_values: int
-
 @export_category('legal_slots')
 @export var ALLY: bool
 @export var ENEMY: bool
@@ -21,19 +19,24 @@ func _ready():
 	if ENEMY == true:
 		legal_slots.append_array(CardSlotData.legal_slots_enemy)
 
+# moves target unconditionally without checking legality
 func move(moving_node: EnemyBase, target_slot: int):
 	moving_node.position = CardSlotData.get_slot_position(target_slot)
-	Events.emit_signal(signal_to_emit, moving_node, target_slot)
-	on_slot_id = target_slot
+	set_current_slot(target_slot)
 
+# Called with an offset by move_dir() methods
 func directional_move(moving_node: EnemyBase, target_offset: int):
 	var target_slot = on_slot_id + target_offset
 	if !legal_slots.has(target_slot):
 		print('invalid move direction')
 		return
 	moving_node.position = CardSlotData.get_slot_position(target_slot)
-	Events.emit_signal(signal_to_emit, moving_node, target_slot)
-	on_slot_id = target_slot
+	set_current_slot(target_slot)
+
+# send a signal whenever on_slot_id is changed
+func set_current_slot(slot_id: int) -> void:
+	on_slot_id = slot_id
+	emit_signal('moved_in_grid', on_slot_id)
 
 func move_left(moving_node: EnemyBase):
 	directional_move(moving_node, -1)
@@ -46,4 +49,3 @@ func move_up(moving_node: EnemyBase):
 
 func move_down(moving_node: EnemyBase):
 	directional_move(moving_node, +4)
-

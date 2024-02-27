@@ -2,5 +2,4 @@
 class_name CardActions
 
 static func deal_damage (source_card: CardBase, target_slot_num: int, damage_amount: int):
-	print('deal ', damage_amount, ' damage to slot number ', target_slot_num, '. source of damage: ', source_card)
-
+	Events.emit_signal('damage_triggered', source_card, target_slot_num, damage_amount)

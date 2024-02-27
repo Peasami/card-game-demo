@@ -11,10 +11,9 @@
 script = ExtResource("1_qsgn3")
 enemy_resource = ExtResource("2_q7rrj")
 
-[node name="EnemyGraphics" type="Node2D" parent="." node_paths=PackedStringArray("health_ui")]
+[node name="EnemyGraphics" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_jt3ia")
-health_ui = NodePath("Health")
 
 [node name="EnemySprite" type="Sprite2D" parent="EnemyGraphics"]
 unique_name_in_owner = true
@@ -24,11 +23,8 @@ scale = Vector2(4, 4)
 texture = ExtResource("3_cx6vc")
 
 [node name="Health" type="Label" parent="EnemyGraphics"]
-offset_left = -97.0
-offset_top = -100.0
-offset_right = -57.0
-offset_bottom = -77.0
-text = "3"
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="StateMachine" type="Node" parent="."]
 
