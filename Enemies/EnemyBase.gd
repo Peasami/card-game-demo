@@ -10,12 +10,19 @@ var on_slot_id: int
 func _ready():
 	# Connect signals
 	%GridMoveComponent.moved_in_grid.connect(set_on_slot_id) # whenever move occurs
+	%HealthComponent.died.connect(_on_death)
 	Events.damage_triggered.connect(check_damage_event) # Whenever damage event is triggered
 	
 	%HealthComponent.health_changed.connect(%EnemyGraphics.set_health_ui)
 
 	# Set sprite
 	%EnemySprite.texture = enemy_resource.sprite
+	
+	# Set health
+	%HealthComponent.set_current_health(enemy_resource.max_health)
+
+func _on_death():
+	queue_free()
 
 # called when a signal is received from a move component
 func set_on_slot_id(slot_id):

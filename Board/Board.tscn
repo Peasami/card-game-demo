@@ -33,10 +33,11 @@ script = ExtResource("7_dduf4")
 script = ExtResource("7_un35l")
 
 [node name="CardTracker" type="Label" parent="."]
-offset_left = 858.0
-offset_top = 50.0
-offset_right = 898.0
-offset_bottom = 64.0
+offset_left = 1572.0
+offset_top = 137.0
+offset_right = 1612.0
+offset_bottom = 160.0
+pivot_offset = Vector2(-501, 174)
 script = ExtResource("8_ifeit")
 
 [node name="CardSlotsManager" type="Node" parent="."]

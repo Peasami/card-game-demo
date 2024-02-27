@@ -7,3 +7,4 @@
 script = ExtResource("1_5ytja")
 name = "GunRat"
 sprite = ExtResource("2_54vdw")
+max_health = 7
