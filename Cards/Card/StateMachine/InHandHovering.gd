@@ -4,7 +4,7 @@ extends CardState
 func enter(_msg := {}) -> void:
 	cardBase.is_hovering_in_hand()
 	
-	cardBase.scale = Vector2(0.8, 0.8)
+	cardBase.scale = Vector2(1.2, 1.2)
 	cardBase.position = Vector2(cardBase.anchorPosition.x, CardPositionData.zoom_height)
 	cardBase.rotation = 0
 	

@@ -9,11 +9,7 @@ var pointArray:PackedVector2Array
 var mousePoint:= Vector2(0,0)
 var lineColor := Color.BLACK
 
-func _ready():
-	## We disable this node, and enable only when needed
-	set_process(false)
-
-func _process(_delta):
+func draw_curve():
 	var sampleSize: = 10
 	var samples:float = 1.0/sampleSize
 	

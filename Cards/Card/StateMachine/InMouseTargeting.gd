@@ -20,7 +20,7 @@ func enter(_msg := {}) -> void:
 	tween.tween_property(cardBase, 'rotation', 0, 0.1)
 	
 	# Enabling targetingline
-	TargetingPath.set_process(true)
+	#TargetingPath.set_process(true)
 
 func exit():
 	hasLegalTarget = false
@@ -30,10 +30,12 @@ func exit():
 	
 	# Disabling targetingLine, first clearing latest draw
 	TargetingPath.clear_draw()
-	TargetingPath.set_process(false)
+	#TargetingPath.set_process(false)
 
 
 func physics_update(_delta: float) -> void:
+	TargetingPath.draw_curve()
+	
 	if cardBase.get_global_mouse_position().y > CardPositionData.hand_targeting_height:
 		state_machine.transition_to("InMouse")
 
