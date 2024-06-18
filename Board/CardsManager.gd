@@ -37,7 +37,7 @@ func draw_cards(amountToDraw: int = 1):
 		
 		# Get random card from deck
 		var drawnCard = CardTracking.cardsInDeck[randi() % CardTracking.cardsInDeck.size()]
-
+		drawnCard.anchorZIndex = CardTracking.cardsInHand.size()
 		drawnCard.transition_state_to("InHand")
 		organize_hand()
 

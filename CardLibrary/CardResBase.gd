@@ -8,6 +8,6 @@ extends Resource
 @export var cost: int
 @export var values: Array[int]
 
-func _on_play(source_card: CardBase, target_slot_num: int):
+func _on_play(source_card: CardBase, target_slots: Array[int]):
 	if on_play_script != null :
-		on_play_script.on_play(source_card, target_slot_num, values)
+		on_play_script.on_play(source_card, target_slots, values)

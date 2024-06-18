@@ -12,4 +12,5 @@ signal enemy_moved_in_grid(moving_enemy: Node2D, slot_id: int)
 
 signal grid_created
 
-signal damage_triggered(source: Node, slot_number: int, amount: int)
+# Sent when a card or unit deals damage
+signal damage_triggered(source: Node, slot_numbers: Array[int], amount: int)

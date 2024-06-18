@@ -9,7 +9,7 @@ func enter(_msg := {}) -> void:
 	cardBase.rotation = 0
 	
 	## Put card to show on top of other cards
-	cardBase.anchorZIndex = cardBase.z_index
+	#cardBase.anchorZIndex = cardBase.z_index
 	cardBase.z_index = 10
 
 func exit():
@@ -19,7 +19,6 @@ func exit():
 
 func on_Focus_input_update(_event):
 	if _event.is_action_pressed('left_click'):
-		print('left mouse click')
 		state_machine.transition_to('InMouse')
 		CardTracking.cardsInHand.erase(cardBase)
 	pass

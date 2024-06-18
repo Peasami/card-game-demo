@@ -22,10 +22,10 @@ func enter(_msg := {}) -> void:
 			tween.stop()
 		cardBase.transition_state_to("InHandHovering")
 
-func exit():
+func exit() -> void:
 	tween.stop()
 
-func on_mouse_entered():
+func on_mouse_entered() -> void:
 	if tween:
 		tween.stop()
 	cardBase.transition_state_to("InHandHovering")

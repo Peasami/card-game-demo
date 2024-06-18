@@ -16,6 +16,8 @@ var slotted_enemy: EnemyBase
 func _init():
 	Events.enemy_moved_in_grid.connect(_on_enemy_moved_in_grid)
 
+# Check if moving enemy moved to this slot
+# Save enemy to slotted_enemy
 func _on_enemy_moved_in_grid(enemy: EnemyBase, slot_id: int):
 	if slotted_enemy == enemy:
 		slotted_enemy = null

@@ -41,7 +41,7 @@ func on_input(_event):
 		if hasLegalTarget == true:
 			state_machine.transition_to("InGraveyard")
 			Events.emit_signal("card_moved_within_hand")
-			cardBase.card_res._on_play(cardBase, targeted_slot_id)
+			cardBase.card_res._on_play(cardBase, [targeted_slot_id])
 		else:
 			state_machine.transition_to("InHand")
 			cardBase.is_not_hovering_in_hand()

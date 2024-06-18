@@ -16,7 +16,7 @@ func enter(_msg := {}) -> void:
 				tween.tween_property(cardBase, 'position', cardBase.anchorPosition - Vector2(-amountToDodge, 0), 0.1)
 				tween.tween_property(cardBase, 'scale', cardBase.baseScale, 0.2)
 			_:
-				print(self, ": There should be a left or right _msg here!!!")
+				push_error(self, ": There should be a left or right _msg here!!!")
 
 
 func exit():

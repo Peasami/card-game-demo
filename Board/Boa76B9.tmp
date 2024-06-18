@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://cfborqb723c4i"]
+
+[ext_resource type="Texture2D" uid="uid://0n3nwxr7avum" path="res://Assets/icon.png" id="1_ha250"]
+[ext_resource type="Script" path="res://Board/DrawCard.gd" id="2_056xs"]
+[ext_resource type="Script" path="res://Board/CardsManager.gd" id="3_gaugg"]
+[ext_resource type="Script" path="res://Board/PlayerStatsInfo.gd" id="7_dduf4"]
+[ext_resource type="Script" path="res://Board/EnemyManager.gd" id="7_un35l"]
+[ext_resource type="Script" path="res://Board/CardSlotsManager.gd" id="8_hmci2"]
+[ext_resource type="Script" path="res://Board/CardTracker.gd" id="8_ifeit"]
+[ext_resource type="Script" path="res://Board/PlayerDeck.gd" id="10_yycy3"]
+[ext_resource type="Texture2D" uid="uid://byfxbvt7s0v1k" path="res://Assets/BoardBase.png" id="12_4m3al"]
+[ext_resource type="Texture2D" uid="uid://dkb7nxs1teb1i" path="res://Assets/Slot.png" id="12_p2oka"]
+
+[node name="BoardBase" type="Node2D"]
+
+[node name="DrawCard" type="TextureButton" parent="."]
+offset_left = 1708.0
+offset_top = 807.0
+offset_right = 1772.0
+offset_bottom = 871.0
+texture_normal = ExtResource("1_ha250")
+script = ExtResource("2_056xs")
+
+[node name="CardsManager" type="Node" parent="." node_paths=PackedStringArray("playerStats", "playerDeck")]
+script = ExtResource("3_gaugg")
+playerStats = NodePath("../PlayerStatsInfo")
+playerDeck = NodePath("../PlayerDeck")
+
+[node name="PlayerStatsInfo" type="Node" parent="."]
+script = ExtResource("7_dduf4")
+
+[node name="EnemyManager" type="Node" parent="."]
+script = ExtResource("7_un35l")
+
+[node name="CardTracker" type="Label" parent="."]
+offset_left = 1572.0
+offset_top = 137.0
+offset_right = 1612.0
+offset_bottom = 160.0
+pivot_offset = Vector2(-501, 174)
+script = ExtResource("8_ifeit")
+
+[node name="CardSlotsManager" type="Node" parent="."]
+script = ExtResource("8_hmci2")
+
+[node name="PlayerDeck" type="Node" parent="."]
+script = ExtResource("10_yycy3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(584, 100)
+scale = Vector2(4, 4)
+texture = ExtResource("12_p2oka")
+centered = false
+
+[node name="BoardSprite" type="Sprite2D" parent="."]
+z_index = -10
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("12_4m3al")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(669, 184)
+scale = Vector2(4, 4)
+texture = ExtResource("12_p2oka")
+
+[connection signal="clicked" from="DrawCard" to="CardsManager" method="_on_draw_card_clicked"]

@@ -5,7 +5,7 @@ func enter(_msg := {}) -> void:
 		CardTracking.cardsInMouse.append(cardBase)
 	cardBase.z_index = 10
 	tween = create_tween().set_parallel(true)
-	tween.tween_property(cardBase, 'scale', Vector2(0.7,0.7), 0.1)
+	tween.tween_property(cardBase, 'scale', Vector2(1.4,1.4), 0.1)
 	tween.tween_property(cardBase, 'position', cardBase.get_global_mouse_position(), 0.1)
 	tween.tween_property(cardBase, 'rotation', 0, 0.1)
 
