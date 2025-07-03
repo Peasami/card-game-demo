@@ -14,3 +14,5 @@ signal grid_created
 
 # Sent when a card or unit deals damage
 signal damage_triggered(source: Node, slot_numbers: Array[int], amount: int)
+
+signal turn_ended()

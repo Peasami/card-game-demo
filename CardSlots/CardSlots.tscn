@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnijepsb3qfkr"]
+
+[ext_resource type="PackedScene" uid="uid://dym0rqdekmfeg" path="res://CardSlots/CardSlotBase.tscn" id="1_oj4c4"]
+
+[node name="CardSlots" type="GridContainer"]
+columns = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_right = 200
+
+[node name="CardSlotBase" parent="MarginContainer" instance=ExtResource("1_oj4c4")]
+position = Vector2(84, 84)
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="CardSlotBase" parent="MarginContainer2" node_paths=PackedStringArray("state_machine") instance=ExtResource("1_oj4c4")]
+position = Vector2(84, 84)
+state_machine = NodePath("../../MarginContainer/CardSlotBase/SlotStateMachine")
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="CardSlotBase" parent="MarginContainer3" node_paths=PackedStringArray("state_machine") instance=ExtResource("1_oj4c4")]
+position = Vector2(84, 84)
+state_machine = NodePath("../../MarginContainer/CardSlotBase/SlotStateMachine")

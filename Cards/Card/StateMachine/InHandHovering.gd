@@ -35,4 +35,3 @@ func on_mouse_exited():
 #	tween.tween_property(cardBase, 'position', cardBase.anchorPosition, 0.05)
 #	tween.tween_property(cardBase, 'rotation', cardBase.anchorRotation, 0.05)
 #	cardBase.is_not_hovering_in_hand()
-

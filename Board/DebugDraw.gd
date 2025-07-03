@@ -1,6 +1,6 @@
 extends Control
 
-var points = []
+var points := []
 var xEllipseCenter
 var yEllipseCenter
 

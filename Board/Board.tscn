@@ -1,15 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://cfborqb723c4i"]
+[gd_scene load_steps=12 format=3 uid="uid://cfborqb723c4i"]
 
 [ext_resource type="Texture2D" uid="uid://0n3nwxr7avum" path="res://Assets/icon.png" id="1_ha250"]
-[ext_resource type="Script" path="res://Board/DrawCard.gd" id="2_056xs"]
-[ext_resource type="Script" path="res://Board/CardsManager.gd" id="3_gaugg"]
-[ext_resource type="Script" path="res://Board/PlayerStatsInfo.gd" id="7_dduf4"]
-[ext_resource type="Script" path="res://Board/EnemyManager.gd" id="7_un35l"]
-[ext_resource type="Script" path="res://Board/CardSlotsManager.gd" id="8_hmci2"]
-[ext_resource type="Script" path="res://Board/CardTracker.gd" id="8_ifeit"]
-[ext_resource type="Script" path="res://Board/PlayerDeck.gd" id="10_yycy3"]
+[ext_resource type="Script" uid="uid://7o2yy76amsfs" path="res://Board/DrawCard.gd" id="2_056xs"]
+[ext_resource type="Texture2D" uid="uid://bsp06w4l42j2t" path="res://Assets/CardSlotSimple.png" id="3_641ut"]
+[ext_resource type="Script" uid="uid://d2n7n7lro34vc" path="res://Board/CardsManager.gd" id="3_gaugg"]
+[ext_resource type="Script" uid="uid://b8js21npaptck" path="res://Board/PlayerStatsInfo.gd" id="7_dduf4"]
+[ext_resource type="Script" uid="uid://lduuj4uuxq4l" path="res://Board/EnemyManager.gd" id="7_un35l"]
+[ext_resource type="Script" uid="uid://dmwcg15s6b2t6" path="res://Board/CardSlotsManager.gd" id="8_hmci2"]
+[ext_resource type="Script" uid="uid://shqoix7oi015" path="res://Board/CardTracker.gd" id="8_ifeit"]
+[ext_resource type="Script" uid="uid://dkna0d5kqfbrn" path="res://Board/PlayerDeck.gd" id="10_yycy3"]
 [ext_resource type="Texture2D" uid="uid://byfxbvt7s0v1k" path="res://Assets/BoardBase.png" id="12_4m3al"]
-[ext_resource type="Texture2D" uid="uid://dkb7nxs1teb1i" path="res://Assets/Slot.png" id="12_p2oka"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i0c0l"]
+font_color = Color(0, 0, 0, 1)
+outline_size = 5
 
 [node name="BoardBase" type="Node2D"]
 
@@ -20,6 +24,23 @@ offset_right = 1772.0
 offset_bottom = 871.0
 texture_normal = ExtResource("1_ha250")
 script = ExtResource("2_056xs")
+
+[node name="EndTurnButton" type="TextureButton" parent="."]
+offset_left = 1617.0
+offset_top = 958.0
+offset_right = 1767.0
+offset_bottom = 1108.0
+scale = Vector2(1.77711, 0.578437)
+texture_normal = ExtResource("3_641ut")
+
+[node name="Label" type="Label" parent="EndTurnButton"]
+offset_left = 16.1392
+offset_top = 1.0
+offset_right = 98.1392
+offset_bottom = 24.0
+scale = Vector2(1.41478, 6.07775)
+text = "END TURN"
+label_settings = SubResource("LabelSettings_i0c0l")
 
 [node name="CardsManager" type="Node" parent="." node_paths=PackedStringArray("playerStats", "playerDeck")]
 script = ExtResource("3_gaugg")
@@ -46,24 +67,11 @@ script = ExtResource("8_hmci2")
 [node name="PlayerDeck" type="Node" parent="."]
 script = ExtResource("10_yycy3")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(584, 100)
-scale = Vector2(4, 4)
-texture = ExtResource("12_p2oka")
-centered = false
-
 [node name="BoardSprite" type="Sprite2D" parent="."]
 z_index = -10
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("12_4m3al")
 centered = false
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(669, 184)
-scale = Vector2(4, 4)
-texture = ExtResource("12_p2oka")
 
 [connection signal="clicked" from="DrawCard" to="CardsManager" method="_on_draw_card_clicked"]

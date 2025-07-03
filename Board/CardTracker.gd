@@ -2,7 +2,7 @@
 
 extends Label
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	text = "CardsInDeck: " + str(CardTracking.cardsInDeck.size()) + str(CardTracking.cardsInDeck) +\
 		"\nCardsInHand: " + str(CardTracking.cardsInHand.size()) + str(CardTracking.cardsInHand) +\
 		"\nCardsInGraveyard: " + str(CardTracking.cardsInGraveyard.size()) + str(CardTracking.cardsInGraveyard) +\

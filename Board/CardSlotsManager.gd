@@ -16,13 +16,13 @@ var card_slot_base := preload("res://CardSlots/CardSlotBase.tscn")
 # 12| 13| 14| 15|
 # ---------------
 
-func _ready():
-	for i in 16:
-		var card_slot_instance = card_slot_base.instantiate()
+func _ready() -> void:
+	for i in CardSlotData.total_slot_amount:
+		var card_slot_instance: CardSlotBase = card_slot_base.instantiate()
 		card_slot_instance.position = CardSlotData.get_slot_position(i)
 		
 		# TODO Delete this, prints slot number for debugging
-		var test_label = Label.new()
+		var test_label := Label.new()
 		card_slot_instance.add_child(test_label)
 		test_label.text = str(i)
 		

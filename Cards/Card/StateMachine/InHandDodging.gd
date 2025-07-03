@@ -21,4 +21,3 @@ func enter(_msg := {}) -> void:
 
 func exit():
 	tween.stop()
-
