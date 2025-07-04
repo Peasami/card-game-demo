@@ -38,6 +38,17 @@ func set_current_slot(slot_id: int) -> void:
 	on_slot_id = slot_id
 	emit_signal('moved_in_grid', on_slot_id)
 
+func move_direction(direction: GEnums.DIR, moving_node: EnemyBase) -> void:
+	match direction:
+		GEnums.DIR.LEFT:
+			move_left(moving_node)
+		GEnums.DIR.RIGHT:
+			move_right(moving_node)
+		GEnums.DIR.UP:
+			move_up(moving_node)
+		GEnums.DIR.DOWN:
+			move_down(moving_node)
+
 func move_left(moving_node: EnemyBase) -> void:
 	directional_move(moving_node, -1)
 
@@ -45,7 +56,7 @@ func move_right(moving_node: EnemyBase) -> void:
 	directional_move(moving_node, +1)
 
 func move_up(moving_node: EnemyBase) -> void:
-	directional_move(moving_node, -4)
+	directional_move(moving_node, -GConst.grid_x_length)
 
 func move_down(moving_node: EnemyBase) -> void:
-	directional_move(moving_node, +4)
+	directional_move(moving_node, GConst.grid_x_length)

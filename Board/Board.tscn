@@ -1,15 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfborqb723c4i"]
+[gd_scene load_steps=14 format=3 uid="uid://cfborqb723c4i"]
 
 [ext_resource type="Texture2D" uid="uid://0n3nwxr7avum" path="res://Assets/icon.png" id="1_ha250"]
 [ext_resource type="Script" uid="uid://7o2yy76amsfs" path="res://Board/DrawCard.gd" id="2_056xs"]
 [ext_resource type="Texture2D" uid="uid://bsp06w4l42j2t" path="res://Assets/CardSlotSimple.png" id="3_641ut"]
 [ext_resource type="Script" uid="uid://d2n7n7lro34vc" path="res://Board/CardsManager.gd" id="3_gaugg"]
+[ext_resource type="Script" uid="uid://d04rsftfpgtge" path="res://Board/EndTurnButton.gd" id="4_i0c0l"]
 [ext_resource type="Script" uid="uid://b8js21npaptck" path="res://Board/PlayerStatsInfo.gd" id="7_dduf4"]
 [ext_resource type="Script" uid="uid://lduuj4uuxq4l" path="res://Board/EnemyManager.gd" id="7_un35l"]
 [ext_resource type="Script" uid="uid://dmwcg15s6b2t6" path="res://Board/CardSlotsManager.gd" id="8_hmci2"]
 [ext_resource type="Script" uid="uid://shqoix7oi015" path="res://Board/CardTracker.gd" id="8_ifeit"]
 [ext_resource type="Script" uid="uid://dkna0d5kqfbrn" path="res://Board/PlayerDeck.gd" id="10_yycy3"]
 [ext_resource type="Texture2D" uid="uid://byfxbvt7s0v1k" path="res://Assets/BoardBase.png" id="12_4m3al"]
+[ext_resource type="Script" uid="uid://b86swxhhmu5pr" path="res://helpers/TurnHelper.gd" id="12_rkmjv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i0c0l"]
 font_color = Color(0, 0, 0, 1)
@@ -32,6 +34,7 @@ offset_right = 1767.0
 offset_bottom = 1108.0
 scale = Vector2(1.77711, 0.578437)
 texture_normal = ExtResource("3_641ut")
+script = ExtResource("4_i0c0l")
 
 [node name="Label" type="Label" parent="EndTurnButton"]
 offset_left = 16.1392
@@ -70,8 +73,12 @@ script = ExtResource("10_yycy3")
 [node name="BoardSprite" type="Sprite2D" parent="."]
 z_index = -10
 texture_filter = 1
+position = Vector2(337, 161)
 scale = Vector2(4, 4)
 texture = ExtResource("12_4m3al")
 centered = false
+
+[node name="TurnHelper" type="Node" parent="."]
+script = ExtResource("12_rkmjv")
 
 [connection signal="clicked" from="DrawCard" to="CardsManager" method="_on_draw_card_clicked"]

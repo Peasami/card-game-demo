@@ -1,6 +1,13 @@
 extends Node
 class_name Enums
 
+enum DIR {
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN
+}
+
 enum slot_state{
 	EMPTY,
 	ENEMY,

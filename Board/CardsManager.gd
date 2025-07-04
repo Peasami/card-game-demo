@@ -19,6 +19,16 @@ func _ready() -> void:
 	
 	# Connect signal from event bus. Called whenever a card is moved within hand
 	Events.card_moved_within_hand.connect(_on_card_moved_within_hand)
+	Events.draw_cards_called.connect(draw_cards)
+	Events.hand_reset_called.connect(reset_hand)
+
+func reset_hand(redraw_amount: int) -> void:
+	discard_hand()
+	draw_cards(redraw_amount)
+
+func discard_hand() -> void:
+	for card: CardBase in CardTracking.cardsInHand:
+		card.transition_state_to("InGraveyard")
 
 # Called when a card is moved within hand
 func _on_card_moved_within_hand() -> void:

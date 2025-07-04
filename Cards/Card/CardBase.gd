@@ -28,33 +28,33 @@ var baseScale := Vector2(1, 1)
 
 const deckPos := Vector2(50, 550)
 
-func _ready():
+func _ready() -> void:
 	cardGraphics.set_header(card_res.name)
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	# DEBUGGING #
 	state_label.text = fsm.state.name + "\n" + str(z_index) + "\n" + str(anchorPosition)
 
 # Set graphics and text
-func initialize_graphics():
+func initialize_graphics() -> void:
 	$CardGraphics.set_header(cardInfo["name"])
 
-func get_state():
+func get_state() -> String:
 	return fsm.state.name
 
 # Other nodes outside of this node can call this function to 
 # call a transition to another state 
-func transition_state_to(newState, msg: Dictionary = {}):
+func transition_state_to(newState: String, msg: Dictionary = {}) -> void:
 	fsm.transition_to(newState, msg)
 
 # When you want to call teh on_enter() method without transitioning.
-func invoke_enter():
+func invoke_enter() -> void:
 	fsm.invoke_enter()
 
 # Child nodes can call this to inform main scene that this is being hovered 
-func is_hovering_in_hand():
+func is_hovering_in_hand() -> void:
 	emit_signal("hovered_in_hand", self)
 
 # Child nodes can call this to inform main scene that this is not being hovered
-func is_not_hovering_in_hand():
+func is_not_hovering_in_hand() -> void:
 	emit_signal("de_hovered_in_hand", self)

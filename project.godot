@@ -19,8 +19,10 @@ config/icon="res://Assets/icon.png"
 
 PlayerVariables="res://Autoloads/PlayerVariables.gd"
 Events="*res://Autoloads/Events.gd"
-GlobalEnums="res://Autoloads/GlobalEnums.gd"
+GEnums="*res://Autoloads/GlobalEnums.gd"
 CardTracking="*res://Autoloads/CardTracking.gd"
+EventQueue="*res://Autoloads/EventQueue.gd"
+GConst="*res://Autoloads/GlobalConstants.gd"
 
 [debug]
 
