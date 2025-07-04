@@ -2,7 +2,7 @@ class_name InHandHovering
 extends CardState
 
 func _init() -> void:
-	state_name = GEnums.card_state.IN_HAND_HOVERING
+	state_enum = GEnums.card_state.IN_HAND_HOVERING
 	super()
 
 func enter(_msg := {}) -> void:

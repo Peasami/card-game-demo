@@ -8,6 +8,9 @@ extends Node
 @export var playerStats: Node # stats like hp and base mana
 @export var playerDeck: Node # info on all cards in deck
 
+func _init() -> void:
+	CardTracking
+
 func _ready() -> void:
 	# loads and instantiates cards
 	for i in 10:

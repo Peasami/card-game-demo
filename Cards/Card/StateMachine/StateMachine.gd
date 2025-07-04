@@ -3,8 +3,13 @@
 class_name StateMachine
 extends Node
 
+signal state_changed(new_state_enum: GEnums.card_state)
+
 # initial state
-@onready var state: CardState = get_node("InDeck")
+@onready var state: CardState = get_node("InDeck"):
+	set(new_state):
+		state_changed.emit(new_state.state_enum)
+		state = new_state
 
 func _ready() -> void:
 	await owner.ready
@@ -12,6 +17,9 @@ func _ready() -> void:
 	for child in get_children():
 		child.state_machine = self
 	state.enter()
+
+func get_state_enum() -> GEnums.card_state:
+	return state.state_enum
 
 func invoke_enter() -> void:
 	state.enter()

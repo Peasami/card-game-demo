@@ -4,7 +4,7 @@ extends CardState
 @export var amountToDodge: int # How far should cards other than hovered one move out of the way
 
 func _init() -> void:
-	state_name = GEnums.card_state.IN_HAND_DODGING
+	state_enum = GEnums.card_state.IN_HAND_DODGING
 	super()
 
 func enter(_msg := {}) -> void:

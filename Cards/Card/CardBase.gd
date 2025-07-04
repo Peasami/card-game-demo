@@ -16,6 +16,10 @@ signal de_hovered_in_hand
 @onready var fsm := $StateMachine
 @onready var state_label := $StateLabel
 
+var card_state_name: String:
+	set = set_card_state_name
+
+
 var cardInfo: Dictionary
 var cardProperties: Node
 var legalTargets: Array
@@ -30,6 +34,10 @@ const deckPos := Vector2(50, 550)
 
 func _ready() -> void:
 	cardGraphics.set_header(card_res.name)
+	fsm.state_changed.connect(set_card_state_name)
+
+func set_card_state_name(new_state_name: String) -> void:
+	card_state_name = new_state_name
 
 func _process(_delta: float) -> void:
 	# DEBUGGING #

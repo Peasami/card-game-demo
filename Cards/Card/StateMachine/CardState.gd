@@ -9,10 +9,10 @@ var cardBase: CardBase
 var tween: Tween
 
 # Assigning no value also defaults to 0, so might as well make no_state state for readability
-var state_name: GEnums.card_state = GEnums.card_state.NO_STATE
+var state_enum: GEnums.card_state = GEnums.card_state.NO_STATE
 
 func _init() -> void:
-	assert(state_name != GEnums.card_state.NO_STATE, "State must have a state_name assigned to it")
+	assert(state_enum != GEnums.card_state.NO_STATE, "State must have a state_enum assigned to it")
 
 func _ready() -> void:
 	await owner.ready

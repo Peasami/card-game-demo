@@ -10,7 +10,7 @@ var hasLegalTarget: bool = false
 var targeted_slot_id: int
 
 func _init() -> void:
-	state_name = GEnums.card_state.IN_MOUSE_TARGETING
+	state_enum = GEnums.card_state.IN_MOUSE_TARGETING
 	super()
 
 func enter(_msg := {}) -> void:

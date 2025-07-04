@@ -4,7 +4,7 @@ extends CardState
 @export var Focus: TextureButton
 
 func _init() -> void:
-	state_name = GEnums.card_state.IN_HAND
+	state_enum = GEnums.card_state.IN_HAND
 	super()
 
 func enter(_msg := {}) -> void:

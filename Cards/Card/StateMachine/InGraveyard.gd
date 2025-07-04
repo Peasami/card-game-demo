@@ -1,7 +1,7 @@
 extends CardState
 
 func _init() -> void:
-	state_name = GEnums.card_state.IN_GRAVEYARD
+	state_enum = GEnums.card_state.IN_GRAVEYARD
 	super()
 
 func enter(_msg := {}):
