@@ -8,10 +8,17 @@ var state_machine: Node = null
 var cardBase: CardBase
 var tween: Tween
 
+# Assigning no value also defaults to 0, so might as well make no_state state for readability
+var state_name: GEnums.card_state = GEnums.card_state.NO_STATE
+
+func _init() -> void:
+	assert(state_name != GEnums.card_state.NO_STATE, "State must have a state_name assigned to it")
+
 func _ready() -> void:
 	await owner.ready
 	cardBase = owner as CardBase
 	assert(cardBase != null)
+
 
 # All methods below are virtual and called by the state machine.
 func handle_input(_event: InputEvent) -> void:
@@ -32,6 +39,7 @@ func physics_update(_delta: float) -> void:
 # is a dictionary with arbitrary data the state can use to initialize itself.
 func enter(_msg := {}) -> void:
 	pass
+	# CardTracking.change_card_location(cardBase, )
 
 
 # Called by the state machine before changing the active state. Use this function

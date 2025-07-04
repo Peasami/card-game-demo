@@ -3,6 +3,10 @@ extends CardState
 
 @export var Focus: TextureButton
 
+func _init() -> void:
+	state_name = GEnums.card_state.IN_HAND
+	super()
+
 func enter(_msg := {}) -> void:
 	print(name)
 	if !CardTracking.cardsInHand.has(cardBase):

@@ -9,6 +9,10 @@ extends CardState
 var hasLegalTarget: bool = false
 var targeted_slot_id: int
 
+func _init() -> void:
+	state_name = GEnums.card_state.IN_MOUSE_TARGETING
+	super()
+
 func enter(_msg := {}) -> void:
 	Events.slot_hovered.connect(_on_slot_hovered)
 	Events.slot_de_hovered.connect(_on_slot_de_hovered)

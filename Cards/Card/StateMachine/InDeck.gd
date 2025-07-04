@@ -1,5 +1,8 @@
 extends CardState
 
+func _init() -> void:
+	state_name = GEnums.card_state.IN_DECK
+	super()
 
 func enter(_msg := {}) -> void:
 	CardTracking.cardsInDeck.append(cardBase)

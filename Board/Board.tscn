@@ -37,6 +37,7 @@ texture_normal = ExtResource("3_641ut")
 script = ExtResource("4_i0c0l")
 
 [node name="Label" type="Label" parent="EndTurnButton"]
+layout_mode = 0
 offset_left = 16.1392
 offset_top = 1.0
 offset_right = 98.1392
@@ -73,7 +74,6 @@ script = ExtResource("10_yycy3")
 [node name="BoardSprite" type="Sprite2D" parent="."]
 z_index = -10
 texture_filter = 1
-position = Vector2(337, 161)
 scale = Vector2(4, 4)
 texture = ExtResource("12_4m3al")
 centered = false

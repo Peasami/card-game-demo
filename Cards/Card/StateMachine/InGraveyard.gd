@@ -1,5 +1,9 @@
 extends CardState
 
+func _init() -> void:
+	state_name = GEnums.card_state.IN_GRAVEYARD
+	super()
+
 func enter(_msg := {}):
 	CardTracking.cardsInGraveyard.append(cardBase)
 	tween = create_tween().set_parallel(true)

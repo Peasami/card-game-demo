@@ -10,7 +10,7 @@ extends Node
 
 func _ready() -> void:
 	# loads and instantiates cards
-	for i in 3:
+	for i in 10:
 		var card1: CardBase = load("res://Cards/Card/CardBase.tscn").instantiate()
 		card1.connect("hovered_in_hand", hovering_in_hand)
 		card1.connect("de_hovered_in_hand", de_hovering_in_hand)
