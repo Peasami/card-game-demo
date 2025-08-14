@@ -12,6 +12,7 @@ const slot_center: int = slot_width / 2
 const middle_gap_size: int = 28
 const gap_size: int = 12
 
+# Not used for now
 const legal_slots_enemy: Array[int] = [0, 1, 2, 3, 4, 5, 6, 7]
 const legal_slots_ally: Array[int] = [8, 9, 10, 11, 12, 13, 14, 15]
 

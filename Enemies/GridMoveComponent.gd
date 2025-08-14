@@ -27,9 +27,13 @@ func move(moving_node: EnemyBase, target_slot: int) -> void:
 # Called with an offset by move_dir() methods
 func directional_move(moving_node: EnemyBase, target_offset: int) -> void:
 	var target_slot: int = on_slot_id + target_offset
-	if !legal_slots.has(target_slot):
+	# Check if the target slot is within bounds and not a wall
+	if target_slot < 0 or (target_slot + 1) % CardSlotData.x_length == 0:
 		print('invalid move direction')
 		return
+	# if !legal_slots.has(target_slot):
+	# 	print('invalid move direction')
+	# 	return
 	moving_node.position = CardSlotData.get_slot_position(target_slot)
 	set_current_slot(target_slot)
 
