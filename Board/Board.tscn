@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cfborqb723c4i"]
+[gd_scene load_steps=17 format=3 uid="uid://cfborqb723c4i"]
 
 [ext_resource type="Texture2D" uid="uid://0n3nwxr7avum" path="res://Assets/icon.png" id="1_ha250"]
 [ext_resource type="Script" uid="uid://7o2yy76amsfs" path="res://Board/DrawCard.gd" id="2_056xs"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dkna0d5kqfbrn" path="res://Board/PlayerDeck.gd" id="10_yycy3"]
 [ext_resource type="Texture2D" uid="uid://byfxbvt7s0v1k" path="res://Assets/BoardBase.png" id="12_4m3al"]
 [ext_resource type="Script" uid="uid://b86swxhhmu5pr" path="res://helpers/TurnHelper.gd" id="12_rkmjv"]
+[ext_resource type="Script" uid="uid://r65p7wxdhvk5" path="res://Board/PlayerMana.gd" id="13_4phcx"]
 [ext_resource type="Script" uid="uid://cfyyhu4chakev" path="res://Board/PlayerHealth.gd" id="13_y64o3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i0c0l"]
@@ -85,12 +86,29 @@ centered = false
 [node name="TurnHelper" type="Node" parent="."]
 script = ExtResource("12_rkmjv")
 
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 49.0
+offset_top = 939.0
+offset_right = 89.0
+offset_bottom = 979.0
+color = Color(0, 0, 0.447059, 1)
+
+[node name="PlayerMana" type="Label" parent="ColorRect2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "3"
+label_settings = SubResource("LabelSettings_4phcx")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_4phcx")
+
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 49.0
 offset_top = 868.0
 offset_right = 89.0
 offset_bottom = 908.0
-color = Color(0, 0, 0, 1)
+color = Color(0.309804, 0, 0, 1)
 
 [node name="PlayerHealth" type="Label" parent="ColorRect"]
 layout_mode = 0

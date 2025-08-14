@@ -41,8 +41,9 @@ func physics_update(_delta: float) -> void:
 
 func on_input(_event):
 	if Input.is_action_just_released("left_click"):
-		if hasLegalTarget == true:
+		if hasLegalTarget == true && PlayerVariables.current_mana >= cardBase.card_res.cost:
 			state_machine.transition_to("InGraveyard")
+			Events.emit_signal("mana_spent", cardBase.card_res.cost)
 			Events.emit_signal("card_moved_within_hand")
 			cardBase.is_not_hovering_in_hand()
 			cardBase.card_res._on_play(cardBase, [targeted_slot_id])
