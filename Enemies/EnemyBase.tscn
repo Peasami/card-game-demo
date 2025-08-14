@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://umgwevyujq4"]
+[gd_scene load_steps=9 format=3 uid="uid://umgwevyujq4"]
 
 [ext_resource type="Script" uid="uid://dog3c6dkjgdtn" path="res://Enemies/EnemyBase.gd" id="1_qsgn3"]
 [ext_resource type="Resource" uid="uid://chlkxvr5ttvrk" path="res://Enemies/EnemyResources/GunRat.tres" id="2_q7rrj"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" uid="uid://2uty4i7y77e2" path="res://Enemies/GridMoveComponent.gd" id="6_8tcx2"]
 [ext_resource type="Script" uid="uid://b4n0etxsdhsxt" path="res://Enemies/AttackComponent.gd" id="7_0w44g"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_7vcpx"]
+font_size = 28
+
 [node name="EnemyBase" type="Node2D"]
 script = ExtResource("1_qsgn3")
 enemy_resource = ExtResource("2_q7rrj")
@@ -15,7 +18,7 @@ enemy_resource = ExtResource("2_q7rrj")
 [node name="EnemyGraphics" type="Node2D" parent="." node_paths=PackedStringArray("health_ui")]
 unique_name_in_owner = true
 script = ExtResource("3_jt3ia")
-health_ui = NodePath("Health")
+health_ui = NodePath("ColorRect/Health")
 
 [node name="EnemySprite" type="Sprite2D" parent="EnemyGraphics"]
 unique_name_in_owner = true
@@ -24,12 +27,20 @@ position = Vector2(0, -20)
 scale = Vector2(4, 4)
 texture = ExtResource("3_cx6vc")
 
-[node name="Health" type="Label" parent="EnemyGraphics"]
-offset_left = -97.0
-offset_top = -100.0
-offset_right = -57.0
-offset_bottom = -77.0
+[node name="ColorRect" type="ColorRect" parent="EnemyGraphics"]
+offset_left = 50.0
+offset_top = -102.0
+offset_right = 90.0
+offset_bottom = -62.0
+color = Color(0, 0, 0, 1)
+
+[node name="Health" type="Label" parent="EnemyGraphics/ColorRect"]
+offset_right = 40.0
+offset_bottom = 23.0
 text = "3"
+label_settings = SubResource("LabelSettings_7vcpx")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StateMachine" type="Node" parent="."]
 
