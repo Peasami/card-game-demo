@@ -12,7 +12,7 @@ signal de_hovered_in_hand
 
 ## Takes the node that owns this node just above as cardsManager
 @onready var cardsManager: Node = $".."
-@onready var cardGraphics := $CardGraphics
+@onready var cardGraphics := %CardGraphics
 @onready var fsm := $StateMachine
 @onready var state_label := $StateLabel
 
@@ -34,6 +34,8 @@ func get_state_enum() -> GEnums.card_state:
 
 func _ready() -> void:
 	cardGraphics.set_header(card_res.name)
+	cardGraphics.set_image(card_res.sprite)
+	cardGraphics.set_description(card_res.description)
 	# fsm.state_changed.connect(set_card_state_name)
 
 func _process(_delta: float) -> void:
@@ -42,7 +44,7 @@ func _process(_delta: float) -> void:
 
 # Set graphics and text
 func initialize_graphics() -> void:
-	$CardGraphics.set_header(cardInfo["name"])
+	cardGraphics.set_header(cardInfo["name"])
 
 func get_state_name() -> String:
 	return fsm.state.name

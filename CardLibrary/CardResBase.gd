@@ -1,8 +1,11 @@
 class_name CardResBase
 extends Resource
 
+@export_category("Visual")
 @export var name: String
+@export var description: String
 @export var sprite: CompressedTexture2D
+@export_category("Functional")
 @export var legal_targets: Array[CardEnums.card_target]
 @export var on_play_script: Resource
 @export var cost: int

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ddujmpbw7u7gp"]
+[gd_scene load_steps=17 format=3 uid="uid://ddujmpbw7u7gp"]
 
 [ext_resource type="Script" uid="uid://c6jtgw1f1hlpt" path="res://Cards/Card/CardBase.gd" id="1_xh6q3"]
 [ext_resource type="Resource" uid="uid://c3x4wh20w8euw" path="res://CardLibrary/CardResources/Firebolt.tres" id="2_m7akh"]
@@ -14,7 +14,10 @@
 [ext_resource type="Script" uid="uid://fxydmcrfq4ay" path="res://Cards/Card/Focus.gd" id="11_htnrv"]
 [ext_resource type="Script" uid="uid://buut15wnmif5u" path="res://Cards/Card/CardGraphics.gd" id="12_2suqo"]
 [ext_resource type="Texture2D" uid="uid://guvepjtwla6o" path="res://Assets/card-base-blue.png" id="14_smlq8"]
-[ext_resource type="Texture2D" uid="uid://ce5de8gh3j60j" path="res://Assets/cat-mage-card-art.png" id="15_83ml2"]
+[ext_resource type="Texture2D" uid="uid://dufw4pi4pkto3" path="res://Assets/Plink.png" id="15_gpocv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gpocv"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="CardBase" type="Node2D" groups=["cards"]]
 script = ExtResource("1_xh6q3")
@@ -62,12 +65,12 @@ script = ExtResource("10_umcyt")
 bezierCurve2ndPoint = Vector2(0, -200)
 
 [node name="CardGraphics" type="Node2D" parent="." node_paths=PackedStringArray("Header")]
+unique_name_in_owner = true
 script = ExtResource("12_2suqo")
 Header = NodePath("Header")
 
 [node name="CardBackground" type="Sprite2D" parent="CardGraphics"]
 texture_filter = 1
-position = Vector2(8, 0)
 scale = Vector2(4, 4)
 texture = ExtResource("14_smlq8")
 
@@ -81,9 +84,19 @@ text = "HEADER"
 
 [node name="CardImage" type="Sprite2D" parent="CardGraphics"]
 texture_filter = 1
-position = Vector2(8, 0)
-scale = Vector2(4, 4)
-texture = ExtResource("15_83ml2")
+position = Vector2(-100, -144)
+scale = Vector2(0.319482, 0.276954)
+texture = ExtResource("15_gpocv")
+centered = false
+
+[node name="Description" type="Label" parent="CardGraphics"]
+offset_left = -98.0
+offset_top = 58.0
+offset_right = 98.0
+offset_bottom = 142.0
+text = "Card description"
+label_settings = SubResource("LabelSettings_gpocv")
+autowrap_mode = 3
 
 [node name="StateLabel" type="Label" parent="."]
 offset_right = 40.0

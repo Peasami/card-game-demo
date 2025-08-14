@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_3ecgt")
 name = "Firebolt"
+description = "Deal 3 damage to an enemy"
 sprite = ExtResource("3_1jlkr")
 legal_targets = Array[int]([1])
 on_play_script = ExtResource("1_y1v0s")
