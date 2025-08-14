@@ -17,6 +17,9 @@ signal grid_created
 # Sent when a card or unit deals damage
 signal damage_triggered(source: Node, slot_numbers: Array[int], amount: int)
 
+# Sent when damage is dealt to the player
+signal player_damaged(source: Node, amount: int)
+
 signal turn_ended
 
 signal enemies_move_called(direction: GEnums.DIR)

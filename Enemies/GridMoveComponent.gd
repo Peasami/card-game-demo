@@ -1,6 +1,7 @@
 extends Node
 
 signal moved_in_grid(new_slot_id: int)
+signal reached_end_of_grid()
 
 @export var movespeed: int
 @export var clamp_values: int
@@ -29,7 +30,8 @@ func directional_move(moving_node: EnemyBase, target_offset: int) -> void:
 	var target_slot: int = on_slot_id + target_offset
 	# Check if the target slot is within bounds and not a wall
 	if target_slot < 0 or (target_slot + 1) % CardSlotData.x_length == 0:
-		print('invalid move direction')
+		print('enemy "' + moving_node.name + '" reached end of grid')
+		emit_signal('reached_end_of_grid')
 		return
 	# if !legal_slots.has(target_slot):
 	# 	print('invalid move direction')

@@ -1,7 +1,7 @@
 extends Node2D
 class_name EnemyBase
 
-@export var enemy_resource: Resource
+@export var enemy_resource: EnemyResBase
 
 # stores slot id of the slot currently on
 var on_slot_id: int
@@ -10,6 +10,7 @@ func _ready() -> void:
 	
 	## Connect signals
 	%GridMoveComponent.moved_in_grid.connect(set_on_slot_id) # whenever move occurs
+	%GridMoveComponent.reached_end_of_grid.connect(_on_reached_end_of_grid) # when enemy reaches end of grid
 	%HealthComponent.died.connect(_on_death)
 	
 	# Sub to signal that triggers whenever card is dealing damage
@@ -25,8 +26,18 @@ func _ready() -> void:
 	# Set health
 	%HealthComponent.set_current_health(enemy_resource.max_health)
 
-func _on_death() -> void:
+func _on_reached_end_of_grid() -> void:
+	deal_damage_to_player()
+	die()
+
+func deal_damage_to_player() -> void:
+	Events.player_damaged.emit(self, %HealthComponent.current_health)
+
+func die() -> void:
 	queue_free()
+
+func _on_death() -> void:
+	die()
 
 # called when a signal is received from a move component
 func set_on_slot_id(slot_id: int) -> void:
