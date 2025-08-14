@@ -8,10 +8,6 @@ func _init() -> void:
 	super()
 
 func enter(_msg := {}) -> void:
-	print(name)
-	if !CardTracking.cardsInHand.has(cardBase):
-		CardTracking.cardsInHand.append(cardBase)
-
 	tween = create_tween().set_parallel(true).set_ease(Tween.EASE_OUT)
 	tween.tween_property(cardBase, 'scale', cardBase.baseScale, 0.2)
 	tween.tween_property(cardBase, 'position', cardBase.anchorPosition, 0.2)

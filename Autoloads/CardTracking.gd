@@ -21,17 +21,9 @@ func get_cards_in_hand() -> Array[CardBase]:
 			cards_in_hand.append(card)
 	return cards_in_hand
 
-var cardsInDeck := []
-var cardsInHand := []
-var cardsInGraveyard := []
-var cardsInMouse := []
-
-var listOfLocations := [cardsInDeck, cardsInHand, cardsInGraveyard, cardsInMouse]
-
-# Changes card location.
-# Removes card from previous location and adds it to the next location.
-func change_card_location(card: CardBase, next_location: Array) -> void:
-	for location: Array in listOfLocations:
-		if location.has(card):
-			location.erase(card)
-	next_location.append(card)
+func get_cards_in_state(state: GEnums.card_state) -> Array[CardBase]:
+	var cards_in_state: Array[CardBase]
+	for card: CardBase in cards_manager_node.get_children():
+		if card.get_state_enum() == state:
+			cards_in_state.append(card)
+	return cards_in_state

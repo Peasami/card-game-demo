@@ -30,7 +30,7 @@ func reset_hand(redraw_amount: int) -> void:
 	draw_cards(redraw_amount)
 
 func discard_hand() -> void:
-	for card: CardBase in CardTracking.cardsInHand:
+	for card: CardBase in CardTracking.get_cards_in_hand():
 		card.transition_state_to("InGraveyard")
 
 # Called when a card is moved within hand
@@ -45,12 +45,12 @@ func _on_draw_card_clicked(amountToDraw: int = 1) -> void:
 func draw_cards(amountToDraw: int = 1) -> void:
 	for i in amountToDraw:
 		# Checks if hand is full or deck is empty
-		if CardTracking.cardsInHand.size() >= playerStats.maxHandSize || CardTracking.cardsInDeck.size() == 0:
+		if CardTracking.get_cards_in_hand().size() >= playerStats.maxHandSize || CardTracking.get_cards_in_deck().size() == 0:
 			return
 		
 		# Get random card from deck
-		var drawnCard: CardBase = CardTracking.cardsInDeck[randi() % CardTracking.cardsInDeck.size()]
-		drawnCard.anchorZIndex = CardTracking.cardsInHand.size()
+		var drawnCard: CardBase = CardTracking.get_cards_in_deck()[randi() % CardTracking.get_cards_in_deck().size()]
+		drawnCard.anchorZIndex = CardTracking.get_cards_in_hand().size()
 		drawnCard.transition_state_to("InHand")
 		organize_hand()
 
@@ -60,15 +60,15 @@ func draw_cards(amountToDraw: int = 1) -> void:
 # transition_state_to() function just calls current node exit() and new node enter()
 # Takes into account cards that are InMouse.
 func organize_hand() -> void:
-	for card: CardBase in CardTracking.cardsInHand:
-		card.anchorPosition = CardPositionData.get_card_position_in_hand(CardTracking.cardsInHand.find(card), CardTracking.cardsInHand.size())
+	for card: CardBase in CardTracking.get_cards_in_hand():
+		card.anchorPosition = CardPositionData.get_card_position_in_hand(CardTracking.get_cards_in_hand().find(card), CardTracking.get_cards_in_hand().size())
 		card.anchorRotation = CardPositionData.get_card_hand_rotation(card.anchorPosition.x)
 		card.transition_state_to("InHand")
 
 # Called when a card is hovered. Informs other CardBases to dodge
 func hovering_in_hand(targetCard: CardBase) -> void:
 	# Iterates through each other card, to make them move aside by changing their state
-	for i: CardBase in CardTracking.cardsInHand:
+	for i: CardBase in CardTracking.get_cards_in_hand():
 		if i == targetCard:
 			continue
 		if i.position.x < targetCard.position.x:
@@ -79,7 +79,7 @@ func hovering_in_hand(targetCard: CardBase) -> void:
 # Called when a card is dehovered. Informs other CardBases to go back to anchorPositions
 func de_hovering_in_hand(targetCard: CardBase) -> void:
 	print("Signal to dehovering in hand")
-	for i: CardBase in CardTracking.cardsInHand:
+	for i: CardBase in CardTracking.get_cards_in_state(GEnums.card_state.IN_HAND_DODGING):
 		if i == targetCard:
 			continue
 		i.transition_state_to("InHand")
