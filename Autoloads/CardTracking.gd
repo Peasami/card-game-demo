@@ -27,3 +27,6 @@ func get_cards_in_state(state: GEnums.card_state) -> Array[CardBase]:
 		if card.get_state_enum() == state:
 			cards_in_state.append(card)
 	return cards_in_state
+
+## TODO: Implement caching for card states, so we don't have to search through all cards every time
+## for fast lookups. Implement function to manually update cache.

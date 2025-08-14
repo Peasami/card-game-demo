@@ -1,8 +1,8 @@
 # Stores positional data for card slots.
 class_name CardSlotData
 
-const x_length: int = GConst.grid_x_length
-const y_length: int = GConst.grid_y_length
+const x_length: int = 8
+const y_length: int = 4
 
 const total_slot_amount: int = x_length * y_length
 

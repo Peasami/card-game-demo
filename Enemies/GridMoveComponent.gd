@@ -56,7 +56,7 @@ func move_right(moving_node: EnemyBase) -> void:
 	directional_move(moving_node, +1)
 
 func move_up(moving_node: EnemyBase) -> void:
-	directional_move(moving_node, -GConst.grid_x_length)
+	directional_move(moving_node, -CardSlotData.x_length)
 
 func move_down(moving_node: EnemyBase) -> void:
-	directional_move(moving_node, GConst.grid_x_length)
+	directional_move(moving_node, CardSlotData.x_length)

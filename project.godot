@@ -22,7 +22,6 @@ Events="*res://Autoloads/Events.gd"
 GEnums="*res://Autoloads/GlobalEnums.gd"
 CardTracking="*res://Autoloads/CardTracking.gd"
 EventQueue="*res://Autoloads/EventQueue.gd"
-GConst="*res://Autoloads/GlobalConstants.gd"
 
 [debug]
 

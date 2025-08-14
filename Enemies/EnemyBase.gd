@@ -42,6 +42,7 @@ func move_enemy_to(target_slot: int) -> void:
 	$GridMoveComponent.move(self, target_slot)
 
 func move_enemy_direction(direction: GEnums.DIR) -> void:
+	print("Moving enemy in direction: ", direction)
 	$GridMoveComponent.move_direction(direction, self)
 
 # TODO remove this
