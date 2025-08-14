@@ -10,7 +10,7 @@ func _ready() -> void:
 func get_cards_in_deck() -> Array[CardBase]:
 	var cards_in_deck: Array[CardBase]
 	for card: CardBase in cards_manager_node.get_children():
-		if card.card_state_name == "InDeck":
+		if card.get_state_enum() == GEnums.card_state.IN_DECK:
 			cards_in_deck.append(card)
 	return cards_in_deck
 	
@@ -29,4 +29,3 @@ func change_card_location(card: CardBase, next_location: Array) -> void:
 		if location.has(card):
 			location.erase(card)
 	next_location.append(card)
-

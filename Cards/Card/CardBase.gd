@@ -16,9 +16,6 @@ signal de_hovered_in_hand
 @onready var fsm := $StateMachine
 @onready var state_label := $StateLabel
 
-var card_state_name: String:
-	set = set_card_state_name
-
 
 var cardInfo: Dictionary
 var cardProperties: Node
@@ -32,12 +29,12 @@ var baseScale := Vector2(1, 1)
 
 const deckPos := Vector2(50, 550)
 
+func get_state_enum() -> GEnums.card_state:
+	return fsm.get_state_enum()
+
 func _ready() -> void:
 	cardGraphics.set_header(card_res.name)
-	fsm.state_changed.connect(set_card_state_name)
-
-func set_card_state_name(new_state_name: String) -> void:
-	card_state_name = new_state_name
+	# fsm.state_changed.connect(set_card_state_name)
 
 func _process(_delta: float) -> void:
 	# DEBUGGING #
@@ -47,7 +44,7 @@ func _process(_delta: float) -> void:
 func initialize_graphics() -> void:
 	$CardGraphics.set_header(cardInfo["name"])
 
-func get_state() -> String:
+func get_state_name() -> String:
 	return fsm.state.name
 
 # Other nodes outside of this node can call this function to 
