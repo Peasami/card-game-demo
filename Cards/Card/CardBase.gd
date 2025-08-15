@@ -36,6 +36,7 @@ func _ready() -> void:
 	cardGraphics.set_header(card_res.name)
 	cardGraphics.set_image(card_res.sprite)
 	cardGraphics.set_description(card_res.description)
+	cardGraphics.set_manacost(card_res.cost)
 	# fsm.state_changed.connect(set_card_state_name)
 
 func _process(_delta: float) -> void:

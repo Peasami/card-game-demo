@@ -16,3 +16,6 @@ func set_image(image: Texture2D) -> void:
 
 func set_description(description: String) -> void:
 	$Description.text = description
+
+func set_manacost(cost: int) -> void:
+	$ManacostBG/Manacost.text = str(cost)

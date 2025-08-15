@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ddujmpbw7u7gp"]
+[gd_scene load_steps=18 format=3 uid="uid://ddujmpbw7u7gp"]
 
 [ext_resource type="Script" uid="uid://c6jtgw1f1hlpt" path="res://Cards/Card/CardBase.gd" id="1_xh6q3"]
 [ext_resource type="Resource" uid="uid://c3x4wh20w8euw" path="res://CardLibrary/CardResources/Firebolt.tres" id="2_m7akh"]
@@ -18,6 +18,9 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_gpocv"]
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_84rfd"]
+font_size = 28
 
 [node name="CardBase" type="Node2D" groups=["cards"]]
 script = ExtResource("1_xh6q3")
@@ -97,6 +100,22 @@ offset_bottom = 142.0
 text = "Card description"
 label_settings = SubResource("LabelSettings_gpocv")
 autowrap_mode = 3
+
+[node name="ManacostBG" type="ColorRect" parent="CardGraphics"]
+offset_left = 72.0
+offset_top = -160.0
+offset_right = 112.0
+offset_bottom = -120.0
+color = Color(0, 0, 0.462745, 1)
+
+[node name="Manacost" type="Label" parent="CardGraphics/ManacostBG"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "5"
+label_settings = SubResource("LabelSettings_84rfd")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StateLabel" type="Label" parent="."]
 offset_right = 40.0
