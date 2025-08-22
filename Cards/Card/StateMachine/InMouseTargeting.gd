@@ -65,8 +65,9 @@ func _on_slot_hovered(slot_state: GEnums.slot_state, slot_id: int):
 			CardEnums.card_target.SINGLE, \
 			CardEnums.card_target.AOE_ENEMY, \
 			CardEnums.card_target.SINGLE_ENEMY:
-				hasLegalTarget = true
-				TargetingPath.targeting_line_valid() 
+				if slot_state == GEnums.slot_state.ENEMY:
+					hasLegalTarget = true
+					TargetingPath.targeting_line_valid() 
 			_:
 				return
 
