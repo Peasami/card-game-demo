@@ -57,7 +57,8 @@ func on_input(_event):
 
 # Called when a slot sends a signal that it is hovered.
 #/ TODO: Match each slot state to card's legal targets
-func _on_slot_hovered(slotState: int, slot_id: int):
+func _on_slot_hovered(slot_state: GEnums.slot_state, slot_id: int):
+	print("Slot state: ", slot_state)
 	targeted_slot_id = slot_id
 	for i in cardBase.card_res.legal_targets:
 		match i:

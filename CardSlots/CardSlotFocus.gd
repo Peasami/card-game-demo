@@ -1,9 +1,9 @@
 extends Node
 
-@export var parent: Node2D
+@export var parent: CardSlotBase
 
 func _on_mouse_entered():
-	Events.emit_signal("slot_hovered", true, parent.card_slot_id)
+	Events.emit_signal("slot_hovered", parent.slot_state, parent.card_slot_id)
 
 func _on_mouse_exited():
 	Events.emit_signal("slot_de_hovered")

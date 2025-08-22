@@ -5,12 +5,12 @@ extends Node
 # Signals are being used by other classes
 @warning_ignore_start("unused_signal")
 
-signal slot_hovered(slotState: int, slot_id: int)
+signal slot_hovered(slotState: GEnums.slot_state, slot_id: int)
 signal slot_de_hovered
 
 signal card_moved_within_hand
 
-signal enemy_moved_in_grid(moving_enemy: Node2D, slot_id: int)
+signal enemy_moved_in_grid(moving_enemy: Node2D, slot_id: int, previous_slot_id: int)
 
 signal grid_created
 

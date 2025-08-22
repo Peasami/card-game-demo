@@ -41,8 +41,9 @@ func _on_death() -> void:
 
 # called when a signal is received from a move component
 func set_on_slot_id(slot_id: int) -> void:
+	var previous_slot_id = on_slot_id
 	on_slot_id = slot_id
-	Events.emit_signal('enemy_moved_in_grid', self, slot_id)
+	Events.emit_signal('enemy_moved_in_grid', self, slot_id, previous_slot_id)
 
 # check if on damaged slot when attack is signaled
 func check_damage_event(_source: Node, target_slots: Array[int], amount: int) -> void:
