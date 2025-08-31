@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StarterDecksResource" load_steps=4 format=3 uid="uid://c8200epn3iic3"]
+
+[ext_resource type="Script" uid="uid://c6yj7gja0jde1" path="res://Deck/StarterDecksResource.gd" id="1_nb7bg"]
+[ext_resource type="Script" uid="uid://cta1ovu6b8v22" path="res://Deck/DeckResource.gd" id="2_uusj1"]
+[ext_resource type="Resource" uid="uid://dhj3qjpbu34ob" path="res://Deck/StarterDeck.tres" id="3_uusj1"]
+
+[resource]
+script = ExtResource("1_nb7bg")
+starter_decks = Array[ExtResource("2_uusj1")]([ExtResource("3_uusj1")])
+metadata/_custom_type_script = "uid://c6yj7gja0jde1"

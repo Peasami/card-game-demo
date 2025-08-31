@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjc32nm5pk1ue"]
+
+[ext_resource type="Script" uid="uid://b35a3l0l0f4kv" path="res://Menus/SelectDeckButton.gd" id="1_6uguv"]
+
+[node name="SelectDeckButton" type="Button"]
+script = ExtResource("1_6uguv")

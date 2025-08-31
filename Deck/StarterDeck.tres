@@ -7,5 +7,6 @@
 
 [resource]
 script = ExtResource("2_u1wk4")
+name = "Starter Deck"
 cards = Array[ExtResource("1_s1nl5")]([ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("3_g0umt"), ExtResource("3_g0umt"), ExtResource("3_g0umt"), ExtResource("3_g0umt"), ExtResource("3_g0umt")])
 metadata/_custom_type_script = "uid://cta1ovu6b8v22"
