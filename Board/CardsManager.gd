@@ -11,16 +11,19 @@ extends Node
 func _ready() -> void:
 	# loads and instantiates cards
 	for i in 15:
-		var card1: CardBase = load("res://Cards/Card/CardBase.tscn").instantiate()
-		card1.connect("hovered_in_hand", hovering_in_hand)
-		card1.connect("de_hovered_in_hand", de_hovering_in_hand)
-		#card1.initialize_card_as(playerDeck.get_card_instance("Firebolt"))
-		add_child(card1)
-	
+		var card: CardBase = instantiate_card("Meteor")
+		add_child(card)
+
 	# Connect signal from event bus. Called whenever a card is moved within hand
 	Events.card_moved_within_hand.connect(_on_card_moved_within_hand)
 	Events.draw_cards_called.connect(draw_cards)
 	Events.hand_reset_called.connect(reset_hand)
+
+func instantiate_card(card_name: String) -> CardBase:
+	var card_scene: PackedScene = load("res://CardLibrary/CardScenes/" + card_name + ".tscn")
+	card_scene.connect("hovered_in_hand", hovering_in_hand)
+	card_scene.connect("de_hovered_in_hand", de_hovering_in_hand)
+	return card_scene.instantiate()
 
 func reset_hand(redraw_amount: int) -> void:
 	discard_hand()

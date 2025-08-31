@@ -1,0 +1,126 @@
+[gd_scene load_steps=18 format=3 uid="uid://cv03m3uxukel1"]
+
+[ext_resource type="Script" uid="uid://c6jtgw1f1hlpt" path="res://Cards/Card/CardBase.gd" id="1_gco2s"]
+[ext_resource type="Resource" uid="uid://b4i2y3mgtmh2l" path="res://CardLibrary/CardResources/Meteor.tres" id="2_gco2s"]
+[ext_resource type="Script" uid="uid://dmmpapme3uw04" path="res://Cards/Card/StateMachine/StateMachine.gd" id="3_n1rfj"]
+[ext_resource type="Script" uid="uid://cfw2ly1rj2n24" path="res://Cards/Card/StateMachine/InHand.gd" id="4_ohjp5"]
+[ext_resource type="Script" uid="uid://bkduwudy2dgdn" path="res://Cards/Card/StateMachine/InHandDodging.gd" id="5_vk3kt"]
+[ext_resource type="Script" uid="uid://cqi5mj6166gvd" path="res://Cards/Card/StateMachine/InHandHovering.gd" id="6_mlutj"]
+[ext_resource type="Script" uid="uid://blql5cc6ka7wb" path="res://Cards/Card/StateMachine/InDeck.gd" id="7_ko4u0"]
+[ext_resource type="Script" uid="uid://daenobx4xtt0c" path="res://Cards/Card/StateMachine/InMouse.gd" id="8_iisop"]
+[ext_resource type="Script" uid="uid://bsoage8qip5gi" path="res://Cards/Card/StateMachine/InMouseTargeting.gd" id="9_5cday"]
+[ext_resource type="Script" uid="uid://bcmcmqugsr160" path="res://Cards/Card/StateMachine/InGraveyard.gd" id="10_21mdc"]
+[ext_resource type="Script" uid="uid://fxydmcrfq4ay" path="res://Cards/Card/Focus.gd" id="11_3m4nw"]
+[ext_resource type="Script" uid="uid://d3kkxjvj0egcw" path="res://Cards/Card/TargetingPath.gd" id="12_p148t"]
+[ext_resource type="Script" uid="uid://buut15wnmif5u" path="res://Cards/Card/CardGraphics.gd" id="13_7h3lq"]
+[ext_resource type="Texture2D" uid="uid://guvepjtwla6o" path="res://Assets/card-base-blue.png" id="14_qv6m1"]
+[ext_resource type="Texture2D" uid="uid://dufw4pi4pkto3" path="res://Assets/Plink.png" id="15_gs81v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gpocv"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_84rfd"]
+font_size = 28
+
+[node name="CardBase" type="Node2D" groups=["cards"]]
+script = ExtResource("1_gco2s")
+card_res = ExtResource("2_gco2s")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_n1rfj")
+
+[node name="InHand" type="Node" parent="StateMachine" node_paths=PackedStringArray("Focus")]
+script = ExtResource("4_ohjp5")
+Focus = NodePath("../../Focus")
+
+[node name="InHandDodging" type="Node" parent="StateMachine"]
+script = ExtResource("5_vk3kt")
+amountToDodge = 85
+
+[node name="InHandHovering" type="Node" parent="StateMachine"]
+script = ExtResource("6_mlutj")
+
+[node name="InDeck" type="Node" parent="StateMachine"]
+script = ExtResource("7_ko4u0")
+
+[node name="InMouse" type="Node" parent="StateMachine"]
+script = ExtResource("8_iisop")
+
+[node name="InMouseTargeting" type="Node" parent="StateMachine" node_paths=PackedStringArray("TargetingPath")]
+script = ExtResource("9_5cday")
+targetingCardPos = Vector2(120, 300)
+TargetingPath = NodePath("../../TargetingPath")
+
+[node name="InGraveyard" type="Node" parent="StateMachine"]
+script = ExtResource("10_21mdc")
+
+[node name="Focus" type="TextureButton" parent="."]
+unique_name_in_owner = true
+offset_left = -100.0
+offset_top = -152.0
+offset_right = 116.0
+offset_bottom = 152.0
+script = ExtResource("11_3m4nw")
+
+[node name="TargetingPath" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("12_p148t")
+bezierCurve2ndPoint = Vector2(0, -200)
+
+[node name="CardGraphics" type="Node2D" parent="." node_paths=PackedStringArray("Header")]
+unique_name_in_owner = true
+script = ExtResource("13_7h3lq")
+Header = NodePath("Header")
+
+[node name="CardBackground" type="Sprite2D" parent="CardGraphics"]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("14_qv6m1")
+
+[node name="Header" type="Label" parent="CardGraphics"]
+offset_left = -90.0
+offset_top = 30.0
+offset_right = -27.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "HEADER"
+
+[node name="CardImage" type="Sprite2D" parent="CardGraphics"]
+texture_filter = 1
+position = Vector2(-100, -144)
+scale = Vector2(0.319482, 0.276954)
+texture = ExtResource("15_gs81v")
+centered = false
+
+[node name="Description" type="Label" parent="CardGraphics"]
+offset_left = -98.0
+offset_top = 58.0
+offset_right = 98.0
+offset_bottom = 142.0
+text = "Card description"
+label_settings = SubResource("LabelSettings_gpocv")
+autowrap_mode = 3
+
+[node name="ManacostBG" type="ColorRect" parent="CardGraphics"]
+offset_left = 72.0
+offset_top = -160.0
+offset_right = 112.0
+offset_bottom = -120.0
+color = Color(0, 0, 0.462745, 1)
+
+[node name="Manacost" type="Label" parent="CardGraphics/ManacostBG"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+text = "5"
+label_settings = SubResource("LabelSettings_84rfd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StateLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="gui_input" from="Focus" to="StateMachine" method="_on_Focus_gui_input"]
+[connection signal="mouse_entered" from="Focus" to="StateMachine" method="_on_focus_mouse_entered"]
+[connection signal="mouse_exited" from="Focus" to="StateMachine" method="_on_focus_mouse_exited"]

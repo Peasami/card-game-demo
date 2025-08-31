@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CardResBase" load_steps=4 format=3 uid="uid://b4i2y3mgtmh2l"]
+
+[ext_resource type="Script" uid="uid://dos7uuaf0tbov" path="res://CardLibrary/CardResBase.gd" id="1_37rye"]
+[ext_resource type="Script" uid="uid://mlrat8inuy2x" path="res://CardLibrary/CardScripts/MeteorAction.gd" id="1_qrxgr"]
+[ext_resource type="Texture2D" uid="uid://ce5de8gh3j60j" path="res://Assets/cat-mage-card-art.png" id="2_rwesg"]
+
+[resource]
+script = ExtResource("1_37rye")
+name = "Meteor"
+description = "deal 2 damage to a column"
+sprite = ExtResource("2_rwesg")
+legal_targets = Array[int]([5])
+on_play_script = ExtResource("1_qrxgr")
+cost = 1
+values = Array[int]([2])
+metadata/_custom_type_script = "uid://dos7uuaf0tbov"
