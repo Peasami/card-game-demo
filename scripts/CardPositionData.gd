@@ -24,7 +24,9 @@ const distanceBetweenCards = 120
 const hand_targeting_height := 900
 const zoom_height := 950
 
-const graveyard_position := Vector2(1800, 900)
+## Visual position of cards in different states
+const graveyard_position := Vector2(1800, 500)
+const deck_position := Vector2(150, 200)
 
 # Returns the y coordinate of the ellipse at the given x coordinate.
 static func calculate_ellipse_y(xA):

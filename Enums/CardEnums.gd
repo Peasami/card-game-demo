@@ -8,5 +8,6 @@ enum card_target{
 	SINGLE_ENEMY,
 	SINGLE_ALLY,
 	AOE_ENEMY,
-	AOE_ALLY
+	AOE_ALLY,
+	AOE,
 }

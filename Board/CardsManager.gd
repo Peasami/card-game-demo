@@ -13,7 +13,7 @@ func _init() -> void:
 
 func _ready() -> void:
 	# loads and instantiates cards
-	for i in 10:
+	for i in 15:
 		var card1: CardBase = load("res://Cards/Card/CardBase.tscn").instantiate()
 		card1.connect("hovered_in_hand", hovering_in_hand)
 		card1.connect("de_hovered_in_hand", de_hovering_in_hand)
@@ -45,15 +45,22 @@ func _on_draw_card_clicked(amountToDraw: int = 1) -> void:
 func draw_cards(amountToDraw: int = 1) -> void:
 	for i in amountToDraw:
 		# Checks if hand is full or deck is empty
-		if CardTracking.get_cards_in_hand().size() >= playerStats.maxHandSize || CardTracking.get_cards_in_deck().size() == 0:
+		if CardTracking.get_cards_in_hand().size() >= playerStats.maxHandSize:
+			print("Hand is full")
 			return
-		
+		if CardTracking.get_cards_in_deck().size() == 0:
+			reshuffle_deck()
+
 		# Get random card from deck
 		var drawnCard: CardBase = CardTracking.get_cards_in_deck()[randi() % CardTracking.get_cards_in_deck().size()]
 		drawnCard.anchorZIndex = CardTracking.get_cards_in_hand().size()
 		drawnCard.transition_state_to("InHand")
 		organize_hand()
 
+func reshuffle_deck() -> void:
+	# Move all cards from the graveyard back to the deck
+	for card: CardBase in CardTracking.get_cards_in_state(GEnums.card_state.IN_GRAVEYARD):
+		card.transition_state_to("InDeck")
 
 # Organizes cards in hand. Assigns anchorPositions to cards based on the number of cards in hand.
 # Calls transition to InHand even when they are already in InHand state.

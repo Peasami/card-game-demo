@@ -19,7 +19,7 @@ var card_slot_base := preload("res://CardSlots/CardSlotBase.tscn")
 func _ready() -> void:
 	for i in CardSlotData.total_slot_amount:
 		var card_slot_instance: CardSlotBase = card_slot_base.instantiate()
-		card_slot_instance.position = CardSlotData.get_slot_position(i)
+		card_slot_instance.position = CardSlotData.slot_id_to_vector(i)
 		
 		# TODO Delete this, prints slot number for debugging
 		var test_label := Label.new()

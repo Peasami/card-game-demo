@@ -27,7 +27,7 @@ const legal_slots_ally: Array[int] = [8, 9, 10, 11, 12, 13, 14, 15]
 # ---------------
 
 # Returns the upper left position of given slot id
-static func get_slot_position(slot_id: int) -> Vector2:
+static func slot_id_to_vector(slot_id: int) -> Vector2:
 	return grid_position + Vector2(
 		(slot_id % x_length) * (slot_width + gap_size) + slot_center,
 		(slot_id / x_length % y_length) * (slot_width + gap_size) # + middle_gap_size * (slot_id / 16 % 16) + slot_center

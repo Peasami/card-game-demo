@@ -12,3 +12,6 @@ func _on_grid_created() -> void:
 	var enemy_instance2: EnemyBase = enemy_base.instantiate()
 	add_child(enemy_instance2)
 	enemy_instance2.move_enemy_to(23)
+	var enemy_instance3: EnemyBase = enemy_base.instantiate()
+	add_child(enemy_instance3)
+	enemy_instance3.move_enemy_to(31)
