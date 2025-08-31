@@ -9,9 +9,12 @@ extends Node
 @export var playerDeck: Node # info on all cards in deck
 
 func _ready() -> void:
+
+	var fight_deck: DeckResource = load("res://Deck/StarterDeck.tres")
+
 	# loads and instantiates cards
-	for i in 15:
-		var card: CardBase = instantiate_card("Meteor")
+	for i in fight_deck.cards:
+		var card: CardBase = instantiate_card(i.name)
 		add_child(card)
 
 	# Connect signal from event bus. Called whenever a card is moved within hand

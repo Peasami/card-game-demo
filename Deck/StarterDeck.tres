@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DeckResource" load_steps=5 format=3 uid="uid://dhj3qjpbu34ob"]
+
+[ext_resource type="Script" uid="uid://dos7uuaf0tbov" path="res://CardLibrary/CardResBase.gd" id="1_s1nl5"]
+[ext_resource type="Resource" uid="uid://b4i2y3mgtmh2l" path="res://CardLibrary/CardResources/Meteor.tres" id="2_64rp5"]
+[ext_resource type="Script" uid="uid://cta1ovu6b8v22" path="res://Deck/DeckResource.gd" id="2_u1wk4"]
+[ext_resource type="Resource" uid="uid://c3x4wh20w8euw" path="res://CardLibrary/CardResources/Firebolt.tres" id="3_g0umt"]
+
+[resource]
+script = ExtResource("2_u1wk4")
+cards = Array[ExtResource("1_s1nl5")]([ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("2_64rp5"), ExtResource("3_g0umt"), ExtResource("3_g0umt"), ExtResource("3_g0umt"), ExtResource("3_g0umt"), ExtResource("3_g0umt")])
+metadata/_custom_type_script = "uid://cta1ovu6b8v22"
