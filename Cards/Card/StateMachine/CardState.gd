@@ -47,15 +47,15 @@ func enter(_msg := {}) -> void:
 func exit() -> void:
 	pass
 
-func on_Focus_input_update(_event) -> void:
+func on_Focus_input_update(_event: InputEvent) -> void:
 	pass
 
-func on_input(_event) -> void:
+func on_input(_event: InputEvent) -> void:
 	pass
 
-func on_mouse_entered():
+func on_mouse_entered() -> void:
 	pass
 
 
-func on_mouse_exited():
+func on_mouse_exited() -> void:
 	pass

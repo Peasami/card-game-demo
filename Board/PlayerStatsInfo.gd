@@ -3,5 +3,5 @@
 
 extends Node
 
-var maxHandSize = 7
-var reDrawNumber = 2
+var maxHandSize := 7
+var reDrawNumber := 2
