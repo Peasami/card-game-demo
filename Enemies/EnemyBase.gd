@@ -6,6 +6,13 @@ class_name EnemyBase
 # stores slot id of the slot currently on
 var on_slot_id: int
 
+# Get and store health in health component
+var current_health: int:
+	get:
+		return %HealthComponent.current_health
+	set(value):
+		%HealthComponent.set_current_health(value)
+
 func _ready() -> void:
 	
 	## Connect signals
