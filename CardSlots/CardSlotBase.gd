@@ -9,12 +9,12 @@ var slot_state: GEnums.slot_state = GEnums.slot_state.EMPTY
 
 var slotted_enemy: EnemyBase
 
-func _init():
+func _init() -> void:
 	Events.enemy_moved_in_grid.connect(_on_enemy_moved_in_grid)
 
 # Check if moving enemy moved to this slot
 # Save enemy to slotted_enemy
-func _on_enemy_moved_in_grid(enemy: EnemyBase, new_slot_id: int, previous_slot_id: int):
+func _on_enemy_moved_in_grid(enemy: EnemyBase, new_slot_id: int, previous_slot_id: int) -> void:
 	if slotted_enemy == enemy:
 		slot_state = GEnums.slot_state.EMPTY
 		slotted_enemy = null
