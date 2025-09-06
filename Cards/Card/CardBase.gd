@@ -7,6 +7,7 @@ extends Node2D
 
 signal hovered_in_hand
 signal de_hovered_in_hand
+signal slots_to_highlight(slot_ids: Array[int])
 
 @export var card_res: CardResBase
 
@@ -66,3 +67,6 @@ func is_hovering_in_hand() -> void:
 # Child nodes can call this to inform main scene that this is not being hovered
 func is_not_hovering_in_hand() -> void:
 	emit_signal("de_hovered_in_hand", self)
+
+func highlight_slots(slot_ids: Array[int]) -> void:
+	emit_signal("slots_to_highlight", slot_ids)

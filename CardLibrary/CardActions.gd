@@ -6,10 +6,13 @@ static func deal_damage (source_card: CardBase, target_slots: Array[int], damage
 
 ## Takes in targeted slot, and aoe size.
 ## Returns array of slots to target.
-# TODO
-static func get_aoe_targets(source_card: CardBase, target_slot: int, aoe_size: Vector2i) -> Array[int]:
+static func get_aoe_targets(target_slot: int, aoe_size: Vector2i) -> Array[int]:
 	var aoe_target_slots: Array[int] = []
 	
+	var last_y_slot: int = target_slot + ((aoe_size.y - 1) * CardSlotData.x_length)
+	for y in range(target_slot, last_y_slot + 1, CardSlotData.x_length):
+		for x in range(y, y + aoe_size.x):
+			aoe_target_slots.append(x)
 	
 	return aoe_target_slots
 

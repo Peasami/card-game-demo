@@ -5,6 +5,8 @@
 class_name CardsManager
 extends Node
 
+signal cards_to_highlight(slot_ids: Array[int])
+
 @export var playerStats: Node # stats like hp and base mana
 @export var playerDeck: Node # info on all cards in deck
 
@@ -15,6 +17,7 @@ func _ready() -> void:
 	# loads and instantiates cards
 	for i in fight_deck.cards:
 		var card: CardBase = instantiate_card(i.name)
+		card.slots_to_highlight.connect(_on_cards_to_highlight)
 		add_child(card)
 
 	# Connect signal from event bus. Called whenever a card is moved within hand
@@ -93,3 +96,6 @@ func de_hovering_in_hand(targetCard: CardBase) -> void:
 		if i == targetCard:
 			continue
 		i.transition_state_to("InHand")
+
+func _on_cards_to_highlight(slot_ids: Array[int]) -> void:
+	emit_signal("cards_to_highlight", slot_ids)

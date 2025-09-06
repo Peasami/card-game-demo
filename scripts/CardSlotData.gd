@@ -6,6 +6,7 @@ const y_length: int = 4
 
 const total_slot_amount: int = x_length * y_length
 
+# Grid size and position on board data
 const grid_position: Vector2 = Vector2(584, 400)
 const slot_width: int = 168 / 2
 const slot_center: int = slot_width / 2

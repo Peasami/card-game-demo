@@ -27,6 +27,7 @@ func exit() -> void:
 	hasLegalTarget = false
 	Events.slot_hovered.disconnect(_on_slot_hovered)
 	Events.slot_de_hovered.disconnect(_on_slot_de_hovered)
+	cardBase.highlight_slots([]) # Clear highlights
 	cardBase.z_index = cardBase.anchorZIndex
 	
 	TargetingPath.clear_draw()
@@ -68,6 +69,9 @@ func _on_slot_hovered(slot_state: GEnums.slot_state, slot_id: int) -> void:
 				if slot_state == GEnums.slot_state.ENEMY:
 					hasLegalTarget = true
 					TargetingPath.targeting_line_valid()
+					cardBase.highlight_slots([slot_id])
+				else:
+					cardBase.highlight_slots([])
 			CardEnums.card_target.AOE:
 				hasLegalTarget = true
 				TargetingPath.targeting_line_valid()

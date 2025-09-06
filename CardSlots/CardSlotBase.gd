@@ -25,3 +25,9 @@ func _on_enemy_moved_in_grid(enemy: EnemyBase, new_slot_id: int, previous_slot_i
 
 func get_state() -> String:
 	return state_machine.name
+
+func highlight_slot() -> void:
+	modulate = Color(0.5, 1, 0.5)
+
+func unhighlight_slot() -> void:
+	modulate = Color(1, 1, 1)

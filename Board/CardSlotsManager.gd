@@ -35,3 +35,14 @@ func get_card_slot_position(slot_id: int) -> Vector2:
 	if ! get_child(slot_id):
 		push_error('invalid card slot number')
 	return get_child(slot_id).position
+
+func highlight_slots(slot_ids: Array[int]) -> void:
+	if slot_ids.size() == 0:
+		for slot: CardSlotBase in get_children():
+			slot.unhighlight_slot()
+	else:
+		for slot: CardSlotBase in get_children():
+			if slot.card_slot_id in slot_ids:
+				slot.highlight_slot()
+			else:
+				slot.unhighlight_slot()
