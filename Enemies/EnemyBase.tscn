@@ -52,7 +52,6 @@ script = ExtResource("5_oo3tg")
 [node name="GridMoveComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_8tcx2")
-ENEMY = true
 
 [node name="AttackComponent" type="Node2D" parent="."]
 unique_name_in_owner = true

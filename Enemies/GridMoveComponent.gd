@@ -6,19 +6,8 @@ signal reached_end_of_grid()
 @export var movespeed: int
 @export var clamp_values: int
 @export_category('legal_slots')
-@export var ALLY: bool
-@export var ENEMY: bool
-
-var legal_slots: Array[int]
 
 var on_slot_id: int # stores id of slot the enemy is on
-
-func _ready() -> void:
-	# Append legal slots
-	if ALLY == true:
-		legal_slots.append_array(CardSlotData.legal_slots_ally)
-	if ENEMY == true:
-		legal_slots.append_array(CardSlotData.legal_slots_enemy)
 
 # Request move to slot id without checking legality
 func move_to_slot(target_slot: int) -> void:
@@ -64,9 +53,7 @@ func _directional_move(target_offset: int) -> void:
 		print('enemy reached end of grid')
 		emit_signal('reached_end_of_grid')
 		return
-	# if !legal_slots.has(target_slot):
-	# 	print('invalid move direction')
-	# 	return
+	
 	var new_position: Vector2 = CardSlotData.slot_id_to_vector(target_slot)
 	grid_move_requested.emit(new_position, target_slot)
 	on_slot_id = target_slot
