@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cfborqb723c4i"]
+[gd_scene load_steps=19 format=3 uid="uid://cfborqb723c4i"]
 
 [ext_resource type="Texture2D" uid="uid://0n3nwxr7avum" path="res://Assets/icon.png" id="1_ha250"]
+[ext_resource type="Script" uid="uid://bo6o5ud5leq5q" path="res://Board/Board.gd" id="1_wn2yo"]
 [ext_resource type="Script" uid="uid://7o2yy76amsfs" path="res://Board/DrawCard.gd" id="2_056xs"]
 [ext_resource type="Texture2D" uid="uid://bsp06w4l42j2t" path="res://Assets/CardSlotSimple.png" id="3_641ut"]
 [ext_resource type="Script" uid="uid://d2n7n7lro34vc" path="res://Board/CardsManager.gd" id="3_gaugg"]
@@ -14,6 +15,7 @@
 [ext_resource type="Script" uid="uid://b86swxhhmu5pr" path="res://helpers/TurnHelper.gd" id="12_rkmjv"]
 [ext_resource type="Script" uid="uid://r65p7wxdhvk5" path="res://Board/PlayerMana.gd" id="13_4phcx"]
 [ext_resource type="Script" uid="uid://cfyyhu4chakev" path="res://Board/PlayerHealth.gd" id="13_y64o3"]
+[ext_resource type="Script" uid="uid://bor2u1il8qrvi" path="res://Autoloads/CardTracking.gd" id="15_qjlpy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_i0c0l"]
 font_color = Color(0, 0, 0, 1)
@@ -23,6 +25,7 @@ outline_size = 5
 font_size = 29
 
 [node name="BoardBase" type="Node2D"]
+script = ExtResource("1_wn2yo")
 
 [node name="DrawCard" type="TextureButton" parent="."]
 offset_left = 1708.0
@@ -120,4 +123,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("13_y64o3")
 
-[connection signal="clicked" from="DrawCard" to="CardsManager" method="_on_draw_card_clicked"]
+[node name="CardTracking" type="Node" parent="." groups=["Board global scripts"]]
+script = ExtResource("15_qjlpy")

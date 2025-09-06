@@ -4,8 +4,8 @@ extends Node
 
 var cards_manager_node: CardsManager
 
-func _ready() -> void:
-	cards_manager_node = get_node("/root/BoardBase/CardsManager")
+func initialize(cards_manager: CardsManager) -> void:
+	cards_manager_node = cards_manager
 
 func get_cards_in_deck() -> Array[CardBase]:
 	var cards_in_deck: Array[CardBase]

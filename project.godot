@@ -36,6 +36,10 @@ window/size/window_width_override=1440
 window/size/window_height_override=810
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+"Board global scripts"="Scripts that should be accessed by many nodes in Board scene."
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
