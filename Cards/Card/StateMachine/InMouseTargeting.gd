@@ -23,7 +23,7 @@ func enter(_msg := {}) -> void:
 	tween.tween_property(cardBase, 'position', targetingCardPos, 0.1)
 	tween.tween_property(cardBase, 'rotation', 0, 0.1)
 
-func exit():
+func exit() -> void:
 	hasLegalTarget = false
 	Events.slot_hovered.disconnect(_on_slot_hovered)
 	Events.slot_de_hovered.disconnect(_on_slot_de_hovered)
@@ -39,7 +39,7 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("InMouse")
 
 
-func on_input(_event):
+func on_input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("left_click"):
 		if hasLegalTarget == true && PlayerVariables.current_mana >= cardBase.card_res.cost:
 			state_machine.transition_to("InGraveyard")
@@ -57,7 +57,7 @@ func on_input(_event):
 
 # Called when a slot sends a signal that it is hovered.
 #/ TODO: Match each slot state to card's legal targets
-func _on_slot_hovered(slot_state: GEnums.slot_state, slot_id: int):
+func _on_slot_hovered(slot_state: GEnums.slot_state, slot_id: int) -> void:
 	print("Slot state: ", slot_state)
 	targeted_slot_id = slot_id
 	for i in cardBase.card_res.legal_targets:
@@ -74,6 +74,6 @@ func _on_slot_hovered(slot_state: GEnums.slot_state, slot_id: int):
 			_:
 				return
 
-func _on_slot_de_hovered():
+func _on_slot_de_hovered() -> void:
 	hasLegalTarget = false
 	TargetingPath.targeting_line_invalid()
