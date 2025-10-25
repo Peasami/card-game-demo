@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CardGameTwo"
-run/main_scene="res://Board/Board.tscn"
+run/main_scene="uid://d302y5v7xpqvl"
 config/features=PackedStringArray("4.4")
 config/icon="res://Assets/icon.png"
 
@@ -22,6 +22,7 @@ Events="*res://Autoloads/Events.gd"
 GEnums="*res://Autoloads/GlobalEnums.gd"
 CardTracking="*res://Autoloads/CardTracking.gd"
 EventQueue="*res://Autoloads/EventQueue.gd"
+PlayerDeck="*res://Autoloads/PlayerDeck.gd"
 
 [debug]
 

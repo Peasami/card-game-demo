@@ -69,4 +69,11 @@ func is_not_hovering_in_hand() -> void:
 	emit_signal("de_hovered_in_hand", self)
 
 func highlight_slots(slot_ids: Array[int]) -> void:
-	emit_signal("slots_to_highlight", slot_ids)
+	if card_res.legal_targets.any(func(t: CardEnums.card_target) -> bool: return t in CardEnums.aoe_target_types):
+		if slot_ids.size() == 0:
+			emit_signal("slots_to_highlight", slot_ids)
+		else:
+			var aoe_target_slots: Array[int] = CardActions.get_aoe_targets(slot_ids[0], card_res.aoe_size)
+			emit_signal("slots_to_highlight", aoe_target_slots)
+	elif card_res.legal_targets.any(func(t: CardEnums.card_target) -> bool: return t in CardEnums.single_target_types):
+		emit_signal("slots_to_highlight", slot_ids)

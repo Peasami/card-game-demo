@@ -12,7 +12,7 @@ signal cards_to_highlight(slot_ids: Array[int])
 
 func _ready() -> void:
 
-	var fight_deck: DeckResource = load("res://Deck/StarterDeck.tres")
+	var fight_deck: DeckResource = PlayerDeck.main_deck
 
 	# loads and instantiates cards
 	for i in fight_deck.cards:

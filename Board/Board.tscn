@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://lduuj4uuxq4l" path="res://Board/EnemyManager.gd" id="7_un35l"]
 [ext_resource type="Script" uid="uid://dmwcg15s6b2t6" path="res://Board/CardSlotsManager.gd" id="8_hmci2"]
 [ext_resource type="Script" uid="uid://shqoix7oi015" path="res://Board/CardTracker.gd" id="8_ifeit"]
-[ext_resource type="Script" uid="uid://dkna0d5kqfbrn" path="res://Board/PlayerDeck.gd" id="10_yycy3"]
 [ext_resource type="Texture2D" uid="uid://byfxbvt7s0v1k" path="res://Assets/BoardBase.png" id="12_4m3al"]
 [ext_resource type="Script" uid="uid://b86swxhhmu5pr" path="res://helpers/TurnHelper.gd" id="12_rkmjv"]
 [ext_resource type="Script" uid="uid://r65p7wxdhvk5" path="res://Board/PlayerMana.gd" id="13_4phcx"]
@@ -20,6 +19,20 @@
 [sub_resource type="LabelSettings" id="LabelSettings_i0c0l"]
 font_color = Color(0, 0, 0, 1)
 outline_size = 5
+
+[sub_resource type="GDScript" id="GDScript_qjlpy"]
+script/source = "# Contains name of all cards in player's deck
+extends Node
+
+var mainDeck: Array = [\"Firebolt\", \"Firebolt\", \"Firebolt\"]
+
+func get_card_instance(cardName: String) -> Node:
+	var path: Resource = load(\"res://CardLibrary/\"+cardName+\"/\"+cardName+\".tscn\")
+	return path.instantiate()
+
+func add_card_to_deck(cardName: String) -> void:
+	mainDeck.append(cardName)
+"
 
 [sub_resource type="LabelSettings" id="LabelSettings_4phcx"]
 font_size = 29
@@ -77,7 +90,7 @@ script = ExtResource("8_ifeit")
 script = ExtResource("8_hmci2")
 
 [node name="PlayerDeck" type="Node" parent="."]
-script = ExtResource("10_yycy3")
+script = SubResource("GDScript_qjlpy")
 
 [node name="BoardSprite" type="Sprite2D" parent="."]
 z_index = -10

@@ -13,3 +13,4 @@ legal_targets = Array[int]([1])
 on_play_script = ExtResource("1_y1v0s")
 cost = 1
 values = Array[int]([3])
+aoe_size = Vector2i(1, 1)

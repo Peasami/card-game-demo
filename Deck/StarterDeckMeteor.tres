@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DeckResource" load_steps=4 format=3 uid="uid://bimiowv7w615x"]
+
+[ext_resource type="Script" uid="uid://dos7uuaf0tbov" path="res://CardLibrary/CardResBase.gd" id="1_gb1do"]
+[ext_resource type="Resource" uid="uid://b4i2y3mgtmh2l" path="res://CardLibrary/CardResources/Meteor.tres" id="2_mak27"]
+[ext_resource type="Script" uid="uid://cta1ovu6b8v22" path="res://Deck/DeckResource.gd" id="3_77xay"]
+
+[resource]
+script = ExtResource("3_77xay")
+name = "Meteors"
+cards = Array[ExtResource("1_gb1do")]([ExtResource("2_mak27"), ExtResource("2_mak27"), ExtResource("2_mak27"), ExtResource("2_mak27"), ExtResource("2_mak27"), ExtResource("2_mak27"), ExtResource("2_mak27"), ExtResource("2_mak27"), ExtResource("2_mak27"), ExtResource("2_mak27"), ExtResource("2_mak27"), ExtResource("2_mak27"), ExtResource("2_mak27"), ExtResource("2_mak27")])
+metadata/_custom_type_script = "uid://cta1ovu6b8v22"

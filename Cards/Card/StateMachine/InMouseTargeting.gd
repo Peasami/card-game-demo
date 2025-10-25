@@ -75,6 +75,7 @@ func _on_slot_hovered(slot_state: GEnums.slot_state, slot_id: int) -> void:
 			CardEnums.card_target.AOE:
 				hasLegalTarget = true
 				TargetingPath.targeting_line_valid()
+				cardBase.highlight_slots([slot_id])
 			_:
 				return
 

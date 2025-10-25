@@ -11,3 +11,15 @@ enum card_target{
 	AOE_ALLY,
 	AOE,
 }
+
+const aoe_target_types := [
+	card_target.AOE_ENEMY,
+	card_target.AOE_ALLY,
+	card_target.AOE,
+]
+
+const single_target_types := [
+	card_target.SINGLE,
+	card_target.SINGLE_ENEMY,
+	card_target.SINGLE_ALLY,
+]

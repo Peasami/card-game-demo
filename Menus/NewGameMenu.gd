@@ -12,4 +12,5 @@ func _ready() -> void:
 
 func _on_deck_button_pressed(deck: DeckResource) -> void:
 	print("Selected starter deck: " + deck.name)
+	PlayerDeck.initialize(deck)
 	get_tree().change_scene_to_file("res://Board/Board.tscn")

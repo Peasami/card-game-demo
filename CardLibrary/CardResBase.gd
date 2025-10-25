@@ -1,3 +1,4 @@
+@tool
 class_name CardResBase
 extends Resource
 
@@ -10,6 +11,7 @@ extends Resource
 @export var on_play_script: Resource
 @export var cost: int
 @export var values: Array[int]
+@export var aoe_size: Vector2i = Vector2i(1, 1) # Width, Height in slots
 
 func _on_play(source_card: CardBase, target_slots: Array[int]) -> void:
 	if on_play_script != null:

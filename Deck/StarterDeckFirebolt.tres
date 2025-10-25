@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DeckResource" load_steps=4 format=3 uid="uid://qjf6efd6kn35"]
+
+[ext_resource type="Script" uid="uid://dos7uuaf0tbov" path="res://CardLibrary/CardResBase.gd" id="1_vus5y"]
+[ext_resource type="Resource" uid="uid://c3x4wh20w8euw" path="res://CardLibrary/CardResources/Firebolt.tres" id="3_qpkau"]
+[ext_resource type="Script" uid="uid://cta1ovu6b8v22" path="res://Deck/DeckResource.gd" id="4_uho68"]
+
+[resource]
+script = ExtResource("4_uho68")
+name = "Firebolts"
+cards = Array[ExtResource("1_vus5y")]([ExtResource("3_qpkau"), ExtResource("3_qpkau"), ExtResource("3_qpkau"), ExtResource("3_qpkau"), ExtResource("3_qpkau"), ExtResource("3_qpkau"), ExtResource("3_qpkau"), ExtResource("3_qpkau"), ExtResource("3_qpkau"), ExtResource("3_qpkau"), ExtResource("3_qpkau"), ExtResource("3_qpkau"), ExtResource("3_qpkau"), ExtResource("3_qpkau")])
+metadata/_custom_type_script = "uid://cta1ovu6b8v22"
