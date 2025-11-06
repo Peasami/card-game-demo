@@ -39,16 +39,18 @@ signal dummysignal
 ## Append an event and start queue. If you don't want to start, insert [start_queue] = false
 func append_event(new_event: Callable, finished_signal: Signal = dummysignal) -> void:
 	print(new_event, " signal: ", finished_signal, "\nConnections: ", finished_signal.get_connections())
+
 	var new_queue_event := QueueEvent.new(finished_signal, new_event)
+	
 	if finished_signal != dummysignal:
 		finished_signal.connect(_on_finished_signal, CONNECT_ONE_SHOT)
+	
 	event_queue.push_back(new_queue_event)
+	
 	if event_running == true:
 		return
+	
 	call_next_event()
-	if finished_signal == dummysignal:
-		event_running = false
-		call_next_event()
 
 func _on_finished_signal() -> void:
 	event_running = false
