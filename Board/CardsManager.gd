@@ -5,7 +5,9 @@
 class_name CardsManager
 extends Node
 
+# Signals
 signal cards_to_highlight(slot_ids: Array[int])
+signal card_tween_ended
 
 @export var playerStats: Node # stats like hp and base mana
 @export var playerDeck: Node # info on all cards in deck
@@ -23,7 +25,20 @@ func _ready() -> void:
 	# Connect signal from event bus. Called whenever a card is moved within hand
 	Events.card_moved_within_hand.connect(_on_card_moved_within_hand)
 	Events.draw_cards_called.connect(draw_cards)
-	Events.hand_reset_called.connect(reset_hand)
+	Events.hand_reset_called.connect(_on_reset_hand_called)
+
+func initialize_end_turn() -> void:
+	EventQueue.append_event(
+		func() -> void: reset_hand(5),
+		card_tween_ended
+	)
+
+
+func _on_reset_hand_called(amount: int) -> void:
+	reset_hand(amount)
+
+func start_turn() -> void:
+	draw_cards(5)
 
 func instantiate_card(card_name: String) -> CardBase:
 	var card_scene: PackedScene = load("res://CardLibrary/CardScenes/" + card_name + ".tscn")

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dog3c6dkjgdtn" path="res://Enemies/EnemyBase.gd" id="1_qsgn3"]
 [ext_resource type="Resource" uid="uid://chlkxvr5ttvrk" path="res://Enemies/EnemyResources/GunRat.tres" id="2_q7rrj"]
-[ext_resource type="Texture2D" uid="uid://bqldpxyjn3abg" path="res://Assets/Tortoise.png" id="3_cx6vc"]
 [ext_resource type="Script" uid="uid://qam2ef5twmq4" path="res://Enemies/EnemyGraphics.gd" id="3_jt3ia"]
+[ext_resource type="Texture2D" uid="uid://blna4vlnrs72w" path="res://Assets/Rat.png" id="4_7vcpx"]
 [ext_resource type="Script" uid="uid://c0hmy0kv14b24" path="res://Enemies/HealthComponent.gd" id="5_oo3tg"]
 [ext_resource type="Script" uid="uid://2uty4i7y77e2" path="res://Enemies/GridMoveComponent.gd" id="6_8tcx2"]
 [ext_resource type="Script" uid="uid://b4n0etxsdhsxt" path="res://Enemies/AttackComponent.gd" id="7_0w44g"]
@@ -25,7 +25,7 @@ unique_name_in_owner = true
 texture_filter = 1
 position = Vector2(0, -20)
 scale = Vector2(4, 4)
-texture = ExtResource("3_cx6vc")
+texture = ExtResource("4_7vcpx")
 
 [node name="ColorRect" type="ColorRect" parent="EnemyGraphics"]
 offset_left = 50.0
@@ -52,6 +52,7 @@ script = ExtResource("5_oo3tg")
 [node name="GridMoveComponent" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_8tcx2")
+movespeed = 1000.0
 
 [node name="AttackComponent" type="Node2D" parent="."]
 unique_name_in_owner = true

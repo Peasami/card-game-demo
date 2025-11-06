@@ -26,3 +26,5 @@ signal turn_ended
 signal enemies_move_called(direction: GEnums.DIR)
 signal draw_cards_called(amount: int)
 signal hand_reset_called(redraw_amount: int)
+
+signal enemies_move_finished

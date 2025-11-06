@@ -3,7 +3,7 @@ extends Node
 signal grid_move_requested(new_position: Vector2, new_slot_id: int)
 signal reached_end_of_grid()
 
-@export var movespeed: int
+@export var movespeed: float
 @export var clamp_values: int
 @export_category('legal_slots')
 

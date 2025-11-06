@@ -4,6 +4,7 @@ class_name StateMachine
 extends Node
 
 signal state_changed(new_state_enum: GEnums.card_state)
+signal card_tween_finished
 
 # initial state
 @onready var state: CardState = get_node("InDeck"):
@@ -22,6 +23,7 @@ func get_state_enum() -> GEnums.card_state:
 	return state.state_enum
 
 func invoke_enter() -> void:
+	state.tween.finished.connect(_on_card_tween_finished)
 	state.enter()
 
 # The state machine subscribes to node callbacks and delegates them to the state objects.
@@ -58,3 +60,7 @@ func _on_focus_mouse_entered():
 
 func _on_focus_mouse_exited():
 	state.on_mouse_exited()
+
+func _on_card_tween_finished() -> void:
+	print("card StateMachine _on_card_tween_finished")
+	card_tween_finished.emit()

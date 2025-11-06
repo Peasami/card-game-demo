@@ -16,6 +16,7 @@ func enter(_msg := {}) -> void:
 	# If tweening finishes and mouse is on card, change state accordingly.
 	# Has to be custom function inside Focus.gd, because mouse_entered signal 
 	# doesn't work when mouse isn't moving.
+	tween.finished.connect(state_machine._on_card_tween_finished)
 	await tween.finished
 	if Focus.is_being_hovered():
 		if tween:

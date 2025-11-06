@@ -3,6 +3,9 @@ class_name EnemyBase
 
 @export var enemy_resource: EnemyResBase
 
+# Signals
+signal move_tween_finished
+
 # stores slot id of the slot currently on
 var on_slot_id: int
 
@@ -34,12 +37,33 @@ func _ready() -> void:
 	# Set health
 	%HealthComponent.set_current_health(enemy_resource.max_health)
 
+## Teleport to slot without tweening
+func teleport_to_slot(target_slot: int) -> void:
+	%GridMoveComponent.on_slot_id = target_slot
+	on_slot_id = %GridMoveComponent.on_slot_id
+	position = CardSlotData.slot_id_to_vector(target_slot)
+
+
+func initialize_end_turn() -> void:
+	EventQueue.append_event(
+		func() -> void: move_enemy_direction(GEnums.DIR.LEFT),
+		move_tween_finished
+	)
+
 func _on_grid_move_requested(new_position: Vector2, new_slot_id: int) -> void:
 	# Move to the new position
-	var tween := create_tween()
-	tween.tween_property(self, "position", new_position, %GridMoveComponent.movespeed / 1000)
+	# Use distance-based duration so movement speed is consistent regardless of distance.
+	# Interpret movespeed as pixels-per-second. Duration = distance / speed.
+	var tween := create_tween().set_trans(Tween.TRANS_LINEAR)
+	var distance: float = position.distance_to(new_position)
+	var speed: float = max(1.0, float(%GridMoveComponent.movespeed))
+	var duration: float = distance / speed
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position", new_position, duration)
 	# Update the current slot id
 	set_on_slot_id(new_slot_id)
+	await tween.finished
+	move_tween_finished.emit()
 
 func _on_reached_end_of_grid() -> void:
 	deal_damage_to_player()
