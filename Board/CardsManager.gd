@@ -29,8 +29,7 @@ func _ready() -> void:
 
 func initialize_end_turn() -> void:
 	EventQueue.append_event(
-		func() -> void: reset_hand(5),
-		card_tween_ended
+		func() -> void: reset_hand(5)
 	)
 
 

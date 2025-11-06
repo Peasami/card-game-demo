@@ -4,17 +4,17 @@
 ## TODO: fix this
 extends Node
 
-var event_queue: Array[Callable]
+var event_queue: Array[QueueEvent]
 var queue_running: bool = false
 
 var event_running: bool = false
 
 class QueueEvent:
 	var my_signal: Signal
-	var args: Array
-	func _init(my_signal: Signal, args: Array = []) -> void:
+	var callable: Callable
+	func _init(my_signal: Signal, callable: Callable) -> void:
 		self.my_signal = my_signal
-		self.args = args
+		self.callable = callable
 
 func _init() -> void:
 	# Events.connect("turn_ended", start_event_queue)
@@ -38,9 +38,11 @@ func start_event_queue() -> void:
 signal dummysignal
 ## Append an event and start queue. If you don't want to start, insert [start_queue] = false
 func append_event(new_event: Callable, finished_signal: Signal = dummysignal) -> void:
+	print(new_event, " signal: ", finished_signal, "\nConnections: ", finished_signal.get_connections())
+	var new_queue_event := QueueEvent.new(finished_signal, new_event)
 	if finished_signal != dummysignal:
 		finished_signal.connect(_on_finished_signal, CONNECT_ONE_SHOT)
-	event_queue.push_back(new_event)
+	event_queue.push_back(new_queue_event)
 	if event_running == true:
 		return
 	call_next_event()
@@ -56,6 +58,7 @@ func call_next_event() -> void:
 	# event_running = true
 	if event_queue.is_empty():
 		return
-	var next_event: Callable = event_queue.pop_at(0)
-	event_running = true
-	next_event.call()
+	var next_event: QueueEvent = event_queue.pop_at(0)
+	if next_event.my_signal != dummysignal:
+		event_running = true
+	next_event.callable.call()

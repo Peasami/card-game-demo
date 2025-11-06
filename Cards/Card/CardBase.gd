@@ -8,6 +8,7 @@ extends Node2D
 signal hovered_in_hand
 signal de_hovered_in_hand
 signal slots_to_highlight(slot_ids: Array[int])
+signal card_tween_finished
 
 @export var card_res: CardResBase
 
@@ -40,9 +41,14 @@ func _ready() -> void:
 	cardGraphics.set_manacost(card_res.cost)
 	# fsm.state_changed.connect(set_card_state_name)
 
+	fsm.card_tween_finished.connect(_on_card_tween_finished)
+
 func _process(_delta: float) -> void:
 	# DEBUGGING #
 	state_label.text = fsm.state.name + "\n" + str(z_index) + "\n" + str(anchorPosition)
+
+func _on_card_tween_finished() -> void:
+	card_tween_finished.emit()
 
 # Set graphics and text
 func initialize_graphics() -> void:
@@ -77,3 +83,7 @@ func highlight_slots(slot_ids: Array[int]) -> void:
 			emit_signal("slots_to_highlight", aoe_target_slots)
 	elif card_res.legal_targets.any(func(t: CardEnums.card_target) -> bool: return t in CardEnums.single_target_types):
 		emit_signal("slots_to_highlight", slot_ids)
+
+func is_tweening() -> bool:
+	var state_card: CardState = fsm.state
+	return state_card.tween != null
